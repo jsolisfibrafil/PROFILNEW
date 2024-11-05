@@ -1,0 +1,11 @@
+C:\Users\jsolis\source\repos\Pesaje\Pesaje\bin\Debug\Pesaje.exe.config
+C:\Users\jsolis\source\repos\Pesaje\Pesaje\bin\Debug\Pesaje.exe
+C:\Users\jsolis\source\repos\Pesaje\Pesaje\bin\Debug\Pesaje.pdb
+C:\Users\jsolis\source\repos\Pesaje\Pesaje\obj\Debug\Pesaje.csproj.AssemblyReference.cache
+C:\Users\jsolis\source\repos\Pesaje\Pesaje\obj\Debug\Pesaje.frmArticuloBusqueda.resources
+C:\Users\jsolis\source\repos\Pesaje\Pesaje\obj\Debug\Pesaje.Form1.resources
+C:\Users\jsolis\source\repos\Pesaje\Pesaje\obj\Debug\Pesaje.Properties.Resources.resources
+C:\Users\jsolis\source\repos\Pesaje\Pesaje\obj\Debug\Pesaje.csproj.GenerateResource.cache
+C:\Users\jsolis\source\repos\Pesaje\Pesaje\obj\Debug\Pesaje.csproj.CoreCompileInputs.cache
+C:\Users\jsolis\source\repos\Pesaje\Pesaje\obj\Debug\Pesaje.exe
+C:\Users\jsolis\source\repos\Pesaje\Pesaje\obj\Debug\Pesaje.pdb
