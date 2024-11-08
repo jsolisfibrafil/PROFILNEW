@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_codigoarticulo = new System.Windows.Forms.TextBox();
@@ -37,8 +38,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cbMaquinaria = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.bt_anadir = new System.Windows.Forms.Button();
             this.tb_sede = new System.Windows.Forms.TextBox();
@@ -46,16 +45,35 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lbl_count = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.tb_area = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tb_nameOperario = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tb_codeOperario = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lbl_countbul_s = new System.Windows.Forms.Label();
+            this.lbl_pesotot_s = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lbl_pesotot = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lbl_countbul = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lbl_item = new System.Windows.Forms.Label();
+            this.lbl_idlin = new System.Windows.Forms.Label();
+            this.lbl_linS = new System.Windows.Forms.Label();
+            this.sppuerto = new System.IO.Ports.SerialPort(this.components);
+            this.imprimirticket = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(393, 0);
+            this.button1.Location = new System.Drawing.Point(457, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 35);
+            this.button1.Size = new System.Drawing.Size(159, 26);
             this.button1.TabIndex = 0;
             this.button1.Text = "Iniciar Pesaje";
             this.button1.UseVisualStyleBackColor = true;
@@ -64,22 +82,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 61);
+            this.label1.Location = new System.Drawing.Point(59, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 16);
+            this.label1.Size = new System.Drawing.Size(103, 16);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Codigo articulo";
+            this.label1.Text = "Codigo articulo :";
             // 
             // tb_codigoarticulo
             // 
-            this.tb_codigoarticulo.Location = new System.Drawing.Point(185, 58);
+            this.tb_codigoarticulo.Location = new System.Drawing.Point(168, 67);
             this.tb_codigoarticulo.Name = "tb_codigoarticulo";
             this.tb_codigoarticulo.Size = new System.Drawing.Size(340, 22);
             this.tb_codigoarticulo.TabIndex = 2;
             // 
             // tb_descArticulo
             // 
-            this.tb_descArticulo.Location = new System.Drawing.Point(185, 86);
+            this.tb_descArticulo.Location = new System.Drawing.Point(168, 91);
             this.tb_descArticulo.Name = "tb_descArticulo";
             this.tb_descArticulo.Size = new System.Drawing.Size(340, 22);
             this.tb_descArticulo.TabIndex = 4;
@@ -87,15 +105,15 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 89);
+            this.label2.Location = new System.Drawing.Point(8, 95);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(148, 16);
+            this.label2.Size = new System.Drawing.Size(154, 16);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Descripción del Articulo";
+            this.label2.Text = "Descripción del Articulo :";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(487, 129);
+            this.textBox3.Location = new System.Drawing.Point(790, 36);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(168, 22);
             this.textBox3.TabIndex = 5;
@@ -103,7 +121,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(695, 29);
+            this.label3.Location = new System.Drawing.Point(703, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 16);
             this.label3.TabIndex = 6;
@@ -112,14 +130,14 @@
             // cbMaquinaria
             // 
             this.cbMaquinaria.FormattingEnabled = true;
-            this.cbMaquinaria.Location = new System.Drawing.Point(786, 24);
+            this.cbMaquinaria.Location = new System.Drawing.Point(790, 6);
             this.cbMaquinaria.Name = "cbMaquinaria";
             this.cbMaquinaria.Size = new System.Drawing.Size(217, 24);
             this.cbMaquinaria.TabIndex = 7;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(536, 56);
+            this.button2.Location = new System.Drawing.Point(514, 68);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(67, 23);
             this.button2.TabIndex = 8;
@@ -127,32 +145,9 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.event_buscarArticulo);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonShadow;
-            this.dataGridView1.Location = new System.Drawing.Point(487, 503);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(473, 91);
-            this.dataGridView1.TabIndex = 9;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(487, 160);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(473, 304);
-            this.dataGridView2.TabIndex = 10;
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 553);
+            this.button3.Location = new System.Drawing.Point(11, 509);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 11;
@@ -161,7 +156,7 @@
             // 
             // bt_anadir
             // 
-            this.bt_anadir.Location = new System.Drawing.Point(11, 119);
+            this.bt_anadir.Location = new System.Drawing.Point(11, 133);
             this.bt_anadir.Name = "bt_anadir";
             this.bt_anadir.Size = new System.Drawing.Size(108, 23);
             this.bt_anadir.TabIndex = 12;
@@ -171,7 +166,7 @@
             // 
             // tb_sede
             // 
-            this.tb_sede.Location = new System.Drawing.Point(54, 5);
+            this.tb_sede.Location = new System.Drawing.Point(58, 6);
             this.tb_sede.Name = "tb_sede";
             this.tb_sede.ReadOnly = true;
             this.tb_sede.Size = new System.Drawing.Size(29, 22);
@@ -181,7 +176,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 9);
+            this.label4.Location = new System.Drawing.Point(12, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 16);
             this.label4.TabIndex = 13;
@@ -193,8 +188,10 @@
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(11, 160);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(432, 196);
+            this.listBox1.Size = new System.Drawing.Size(570, 196);
             this.listBox1.TabIndex = 15;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox1_KeyDown);
             // 
             // label5
             // 
@@ -214,11 +211,212 @@
             this.lbl_count.TabIndex = 17;
             this.lbl_count.Text = "*";
             // 
+            // tb_area
+            // 
+            this.tb_area.Location = new System.Drawing.Point(146, 6);
+            this.tb_area.Name = "tb_area";
+            this.tb_area.ReadOnly = true;
+            this.tb_area.Size = new System.Drawing.Size(29, 22);
+            this.tb_area.TabIndex = 19;
+            this.tb_area.Text = "A";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(98, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 16);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Area :";
+            // 
+            // tb_nameOperario
+            // 
+            this.tb_nameOperario.Location = new System.Drawing.Point(259, 6);
+            this.tb_nameOperario.Name = "tb_nameOperario";
+            this.tb_nameOperario.ReadOnly = true;
+            this.tb_nameOperario.Size = new System.Drawing.Size(157, 22);
+            this.tb_nameOperario.TabIndex = 21;
+            this.tb_nameOperario.Text = "HUAYHUAPOMA:LEON";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(194, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 16);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Operario :";
+            // 
+            // tb_codeOperario
+            // 
+            this.tb_codeOperario.Location = new System.Drawing.Point(259, 28);
+            this.tb_codeOperario.Name = "tb_codeOperario";
+            this.tb_codeOperario.ReadOnly = true;
+            this.tb_codeOperario.Size = new System.Drawing.Size(50, 22);
+            this.tb_codeOperario.TabIndex = 23;
+            this.tb_codeOperario.Text = "152";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(203, 31);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 16);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Codigo :";
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 16;
+            this.listBox2.Location = new System.Drawing.Point(679, 160);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(432, 196);
+            this.listBox2.TabIndex = 24;
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.ItemHeight = 16;
+            this.listBox3.Location = new System.Drawing.Point(679, 406);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(432, 100);
+            this.listBox3.TabIndex = 25;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(679, 382);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(80, 16);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "Cant Bultos :";
+            // 
+            // lbl_countbul_s
+            // 
+            this.lbl_countbul_s.AutoSize = true;
+            this.lbl_countbul_s.Location = new System.Drawing.Point(765, 382);
+            this.lbl_countbul_s.Name = "lbl_countbul_s";
+            this.lbl_countbul_s.Size = new System.Drawing.Size(12, 16);
+            this.lbl_countbul_s.TabIndex = 27;
+            this.lbl_countbul_s.Text = "*";
+            // 
+            // lbl_pesotot_s
+            // 
+            this.lbl_pesotot_s.AutoSize = true;
+            this.lbl_pesotot_s.Location = new System.Drawing.Point(924, 382);
+            this.lbl_pesotot_s.Name = "lbl_pesotot_s";
+            this.lbl_pesotot_s.Size = new System.Drawing.Size(12, 16);
+            this.lbl_pesotot_s.TabIndex = 29;
+            this.lbl_pesotot_s.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(838, 382);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(79, 16);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "Peso Total :";
+            // 
+            // lbl_pesotot
+            // 
+            this.lbl_pesotot.AutoSize = true;
+            this.lbl_pesotot.Location = new System.Drawing.Point(923, 136);
+            this.lbl_pesotot.Name = "lbl_pesotot";
+            this.lbl_pesotot.Size = new System.Drawing.Size(12, 16);
+            this.lbl_pesotot.TabIndex = 33;
+            this.lbl_pesotot.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(837, 136);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(79, 16);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Peso Total :";
+            // 
+            // lbl_countbul
+            // 
+            this.lbl_countbul.AutoSize = true;
+            this.lbl_countbul.Location = new System.Drawing.Point(764, 136);
+            this.lbl_countbul.Name = "lbl_countbul";
+            this.lbl_countbul.Size = new System.Drawing.Size(12, 16);
+            this.lbl_countbul.TabIndex = 31;
+            this.lbl_countbul.Text = "*";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(678, 136);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(80, 16);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "Cant Bultos :";
+            // 
+            // lbl_item
+            // 
+            this.lbl_item.AutoSize = true;
+            this.lbl_item.Location = new System.Drawing.Point(604, 96);
+            this.lbl_item.Name = "lbl_item";
+            this.lbl_item.Size = new System.Drawing.Size(23, 16);
+            this.lbl_item.TabIndex = 34;
+            this.lbl_item.Text = "----";
+            // 
+            // lbl_idlin
+            // 
+            this.lbl_idlin.AutoSize = true;
+            this.lbl_idlin.Location = new System.Drawing.Point(12, 416);
+            this.lbl_idlin.Name = "lbl_idlin";
+            this.lbl_idlin.Size = new System.Drawing.Size(52, 16);
+            this.lbl_idlin.TabIndex = 35;
+            this.lbl_idlin.Text = "lbl_idlin";
+            // 
+            // lbl_linS
+            // 
+            this.lbl_linS.AutoSize = true;
+            this.lbl_linS.Location = new System.Drawing.Point(13, 442);
+            this.lbl_linS.Name = "lbl_linS";
+            this.lbl_linS.Size = new System.Drawing.Size(50, 16);
+            this.lbl_linS.TabIndex = 36;
+            this.lbl_linS.Text = "lbl_linS";
+            // 
+            // imprimirticket
+            // 
+            this.imprimirticket.Location = new System.Drawing.Point(111, 509);
+            this.imprimirticket.Name = "imprimirticket";
+            this.imprimirticket.Size = new System.Drawing.Size(75, 23);
+            this.imprimirticket.TabIndex = 38;
+            this.imprimirticket.Text = "Imprimir";
+            this.imprimirticket.UseVisualStyleBackColor = true;
+            this.imprimirticket.Click += new System.EventHandler(this.imprimirticket_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1042, 648);
+            this.ClientSize = new System.Drawing.Size(1169, 590);
+            this.Controls.Add(this.imprimirticket);
+            this.Controls.Add(this.lbl_linS);
+            this.Controls.Add(this.lbl_idlin);
+            this.Controls.Add(this.lbl_item);
+            this.Controls.Add(this.lbl_pesotot);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lbl_countbul);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.lbl_pesotot_s);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lbl_countbul_s);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.tb_codeOperario);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.tb_nameOperario);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.tb_area);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.lbl_count);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox1);
@@ -226,8 +424,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.bt_anadir);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.cbMaquinaria);
             this.Controls.Add(this.label3);
@@ -241,8 +437,6 @@
             this.Text = "Pesaje";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.event_clickAnadirItem);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,8 +453,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbMaquinaria;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button bt_anadir;
         private System.Windows.Forms.TextBox tb_sede;
@@ -268,6 +460,27 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lbl_count;
+        private System.Windows.Forms.TextBox tb_area;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tb_nameOperario;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tb_codeOperario;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbl_countbul_s;
+        private System.Windows.Forms.Label lbl_pesotot_s;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lbl_pesotot;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbl_countbul;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lbl_item;
+        private System.Windows.Forms.Label lbl_idlin;
+        private System.Windows.Forms.Label lbl_linS;
+        private System.IO.Ports.SerialPort sppuerto;
+        private System.Windows.Forms.Button imprimirticket;
     }
 }
 
