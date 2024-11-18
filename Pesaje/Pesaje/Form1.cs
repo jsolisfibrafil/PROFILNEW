@@ -46,6 +46,7 @@ namespace Pesaje
         static Stopwatch stopwatch;
 
 
+
         //public static string connectionStringnew = ConfigurationManager.ConnectionStrings["logFile"].ConnectionString;
 
        
@@ -53,6 +54,7 @@ namespace Pesaje
 
         public Form1()
         {
+            serialport2 = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
 
             Log.Logger = new LoggerConfiguration()
             .WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day)
@@ -76,38 +78,30 @@ namespace Pesaje
             string dataIn = string.Empty;
             DateTime  lastReceivedTime = DateTime.Now;
             DateTime lastDataTime = DateTime.Now;
-           
             string lastValidData = string.Empty;
 
-            Boolean tempvalorObtenidop = false;
+           
+
+
+            string data2 = string.Empty;
+            string datosrespo = string.Empty;
 
             try
             {
-                string data2 = string.Empty; 
-                string datosrespo = string.Empty;
-                serialport2 = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
+                
+                
                 //serialport2.Open();
 
                 //validacion de puerto
 
                 if (!serialport2.IsOpen)
                 {
-                    try
-                    {
-                        serialport2.Open();
-                        Log.Information("Puerto COM abierto con éxito");
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error("Error al abrir el puerto COM: " + ex.Message);
-                    }
-                }
-                else
-                {
-                    Log.Error("El puerto COM ya está abierto.");
+                    serialport2.Open();
+                    Log.Information("Puerto COM abierto. ");
+                    //Console.WriteLine("Puerto COM cerrado.");
                 }
 
-
+                Log.Information("Iniciar a escuchar datos desde la balanza. ");
 
                 while (true)
                 {
@@ -115,6 +109,7 @@ namespace Pesaje
                     data2 = serialport2.ReadExisting();
                     //string data2 = serialport2.by ;
 
+                    Log.Information(data2);
                     dataIn = data2;
 
                     //if (!string.IsNullOrEmpty(data2))
@@ -141,17 +136,25 @@ namespace Pesaje
 
                                 //codigo si va
                                 string[] lines2 = dataIn.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                                datosrespo = lines2[1].Replace(" ", "");
-                                datosrespo = datosrespo.Replace("GS", "");
-                                datosrespo = datosrespo.Replace("NT", "");
 
-                                ////PESO EN DURO
-                                //datosrespo = "103.00";
+                                //lines2
 
-                                //tb1_setdato.Text = datosrespo.ToString();
-                                ////tb1_setdato.Invoke(new Action(() => tb1_setdato.Text = datosrespo.ToString()));
-                                UpdateUI(datosrespo);
-                                contador1 = 0;
+                                
+                                if (lines2 != null && lines2.Length > 1)
+                                {
+                                    datosrespo = lines2[1].Replace(" ", ""); // Reemplaza los espacios
+                                    datosrespo = datosrespo.Replace("GS", "");
+                                    datosrespo = datosrespo.Replace("NT", "");
+
+                                    if (Convert.ToDouble(datosrespo) > 1)
+                                    {
+
+                                        UpdateUI(datosrespo);
+                                        contador1 = 0;
+                                    }
+
+                                }
+
 
                             }
 
@@ -169,43 +172,29 @@ namespace Pesaje
 
                         }
 
-
                         datosrespo = dataIn;
 
-                        ////// Procesa los datos de la balanza
-                        ////Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-                        ////Console.WriteLine($"{datosrespo}");
-                        ////Thread.Sleep(500);
-                        ////Console.ReadLine();
-
-
-
-                        StreamWriter writer = null;
-                        string rutaArchivo = "C:\\Users\\SISTEMAS\\Documents\\v40.txt";
-                        writer = new StreamWriter(rutaArchivo, true);
 
                         string[] lines = datosrespo.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-                        writer.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-                        writer.WriteLine($"{datosrespo}");
-                        writer.WriteLine("---------------------------------- ");
+                        
 
                         Thread.Sleep(100);
 
-                        if (writer != null)
-                        {
-                            writer.Close();
-                        }
+
 
                     }
+
+
                 }
 
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al leer la balanza: {ex.Message}");
-                Log.Error("Error en Inicio de pesaje : "+ex.Message);
+
+                Log.Error(ex, "Error en Inicio de pesaje : " + ex.Message + " - " + data2);
+                MessageBox.Show($"Error al leer la balanza: {ex.Message}" + " - " + data2);
             }
             finally
             {
@@ -253,11 +242,13 @@ namespace Pesaje
             //CHILCA 2
             tb_sede.Text = "02";
 
+            try
+            {
 
-            string sentencia = "Select ItemNo, ItemName from OPROM0 " +
-                        "inner join SBO_Fibrafil..OITM on Itemcode collate SQL_Latin1_General_CP850_CI_AS = ItemNo collate SQL_Latin1_General_CP850_CI_AS " +
-                        "where U_FIB_AREA = '" + idarea + "' and U_FIB_SEDE = '" + tb_sede.Text + "' and U_fib_telar = '" + cbMaquinaria.SelectedValue + "' " +
-                        "order by RECORDKEY";
+                string sentencia = "Select ItemNo, ItemName from OPROM0 " +
+                            "inner join SBO_Fibrafil..OITM on Itemcode collate SQL_Latin1_General_CP850_CI_AS = ItemNo collate SQL_Latin1_General_CP850_CI_AS " +
+                            "where U_FIB_AREA = '" + idarea + "' and U_FIB_SEDE = '" + tb_sede.Text + "' and U_fib_telar = '" + cbMaquinaria.SelectedValue + "' " +
+                            "order by RECORDKEY";
 
                 SqlDataAdapter dap1 = new SqlDataAdapter(sentencia, connectionString);
 
@@ -272,67 +263,87 @@ namespace Pesaje
                 // Referenciamos el objeto DataTable
                 DataTable dt = dts.Tables["vLISTTMP"];
 
-               
+
 
                 var withBlock = listBox1;
                 withBlock.DataSource = dt;
                 withBlock.DisplayMember = "ItemName";
                 withBlock.ValueMember = "Itemno";
 
-            Contadores();
+                Contadores();
+            }
+            catch (Exception ex)
+            {
+
+                Log.Error(ex, ex.Message);
+            }
+
 
         }
         private void Contadores()
         {
-            int in_pesos = 0;
-            int in_pesosS = 0;
-
-
-            //Dim in_pesos As Integer = 0
-            //Dim in_pesosS As Integer = 0
-
-            
-            for (int x = 0; x < listBox2.Items.Count; x++)
+            try
             {
-                if (Convert.ToDecimal(listBox2.GetItemText(listBox2.Items[x])) > 0)
+
+
+                int in_pesos = 0;
+                int in_pesosS = 0;
+
+
+                //Dim in_pesos As Integer = 0
+                //Dim in_pesosS As Integer = 0
+
+
+                for (int x = 0; x < listBox2.Items.Count; x++)
                 {
-                    in_pesos++;
+                    if (Convert.ToDecimal(listBox2.GetItemText(listBox2.Items[x])) > 0)
+                    {
+                        in_pesos++;
+                    }
                 }
-            }
 
-            for (int X = 0; X < listBox3.Items.Count; X++)
-            {
-                if (Convert.ToDouble(listBox3.GetItemText(listBox3.Items[X])) > 0)
+                for (int X = 0; X < listBox3.Items.Count; X++)
                 {
-                    in_pesosS += 1;
+                    if (Convert.ToDouble(listBox3.GetItemText(listBox3.Items[X])) > 0)
+                    {
+                        in_pesosS += 1;
+                    }
                 }
+
+
+                double db_sumpeso = 0;
+                double db_sumpesoS = 0;
+
+                // Suma de todos los elementos en ListBox2
+                for (int X = 0; X < listBox2.Items.Count; X++)
+                {
+                    db_sumpeso += Convert.ToDouble(listBox2.GetItemText(listBox2.Items[X]));
+                }
+
+                // Suma de todos los elementos en ListBox3
+                for (int X = 0; X < listBox3.Items.Count; X++)
+                {
+                    db_sumpesoS += Convert.ToDouble(listBox3.GetItemText(listBox3.Items[X]));
+                }
+
+
+
+
+                lbl_count.Text = listBox1.Items.Count.ToString();
+                lbl_countbul.Text = in_pesos.ToString();
+                lbl_pesotot.Text = db_sumpeso.ToString();
+
+                lbl_countbul_s.Text = in_pesosS.ToString();
+                lbl_pesotot_s.Text = db_sumpesoS.ToString();
+
             }
-
-
-            double db_sumpeso = 0;
-            double db_sumpesoS = 0;
-
-            // Suma de todos los elementos en ListBox2
-            for (int X = 0; X < listBox2.Items.Count; X++)
+            catch (Exception ex)
             {
-                db_sumpeso += Convert.ToDouble(listBox2.GetItemText(listBox2.Items[X]));
-            }
-
-            // Suma de todos los elementos en ListBox3
-            for (int X = 0; X < listBox3.Items.Count; X++)
-            {
-                db_sumpesoS += Convert.ToDouble(listBox3.GetItemText(listBox3.Items[X]));
+                Log.Error(ex,ex.ToString());
+               
             }
 
 
-
-
-            lbl_count.Text = listBox1.Items.Count.ToString();
-            lbl_countbul.Text = in_pesos.ToString();
-            lbl_pesotot.Text = db_sumpeso.ToString();
-
-            lbl_countbul_s.Text = in_pesosS.ToString();
-            lbl_pesotot_s.Text = db_sumpesoS.ToString();
 
         }
 
@@ -408,63 +419,79 @@ namespace Pesaje
 
         private void bt_anadir_Click(object sender, EventArgs e)
         {
-            string cnc3 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
-            SqlConnection sqt3 = new SqlConnection(cnc3);
-
-            if (listBox1.Items.Count > 19)
-            {
-                MessageBox.Show("Límite de items (20) excedido", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
+            try
             {
 
-                if (dts.Tables.Contains("vLISTTMP"))
+                string cnc3 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
+                SqlConnection sqt3 = new SqlConnection(cnc3);
+
+                if (listBox1.Items.Count > 19)
                 {
-                    DataRow[] foundRow;
-                    foundRow = dts.Tables["vLISTTMP"].Select("ItemNo = '" + tb_codigoarticulo.Text + "'");
-                    
-                    //valida que no tenga escogido el mismo equipo en el ListBox
-                    if (foundRow.Length > 0)
+                    MessageBox.Show("Límite de items (20) excedido", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+
+                    if (dts.Tables.Contains("vLISTTMP"))
                     {
-                        MessageBox.Show("Item ya ingresado", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }   
-                    else
-                    {
-                        if (tb_codigoarticulo.Text.Trim() == string.Empty  || tb_descArticulo.Text.Trim() == string.Empty)
+                        DataRow[] foundRow;
+                        foundRow = dts.Tables["vLISTTMP"].Select("ItemNo = '" + tb_codigoarticulo.Text + "'");
+
+                        //valida que no tenga escogido el mismo equipo en el ListBox
+                        if (foundRow.Length > 0)
                         {
-                            MessageBox.Show("Codigo de Item inválido", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Item ya ingresado", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         else
                         {
-                            DatosInsUpd("U_SP_FIB_INS_OPROM0", 0, false);
-                            if (sqt3.State == ConnectionState.Closed) sqt3.Open();
-                            try
+                            if (tb_codigoarticulo.Text.Trim() == string.Empty || tb_descArticulo.Text.Trim() == string.Empty)
                             {
-                                cmd.Connection = sqt3;
-                                cmd.ExecuteNonQuery();
-
-                                if (cmd.Parameters["@msg"].Value.ToString() != "")
+                                MessageBox.Show("Codigo de Item inválido", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                            else
+                            {
+                                DatosInsUpd("U_SP_FIB_INS_OPROM0", 0, false);
+                                if (sqt3.State == ConnectionState.Closed) sqt3.Open();
+                                try
                                 {
-                                    MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    cmd.Connection = sqt3;
+                                    cmd.ExecuteNonQuery();
+
+                                    if (cmd.Parameters["@msg"].Value.ToString() != "")
+                                    {
+                                        MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        Log.Error(cmd.Parameters["@msg"].Value.ToString());
+                                    }
                                 }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                catch (Exception ex)
+                                {
+                                    Log.Error(ex, ex.Message);
+                                    MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                                }
+
+                                CargoDatos();
                             }
 
-                            CargoDatos();
+
+
                         }
-
-
-                       
                     }
+
+                    tb_codigoarticulo.Text = string.Empty;
+                    tb_descArticulo.Text = string.Empty;
+                    tb_codigoarticulo.Focus();
+                    tb_pesoobtenido.Text = string.Empty;
+
                 }
 
-                tb_codigoarticulo.Text = string.Empty;
-                tb_descArticulo.Text = string.Empty;
-                tb_codigoarticulo.Focus();
             }
+            catch (Exception ex)
+            {
+
+                Log.Error(ex, " Error : " + ex.Message);
+            }
+
 
         }
 
@@ -472,6 +499,8 @@ namespace Pesaje
         {
             if (NameProced == "U_SP_FIB_INS_OPROM0")
             {
+                Log.Information("usando SP U_SP_FIB_INS_OPROM0");
+
                 string cnc3 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
                 SqlConnection sqt3 = new SqlConnection(cnc3);
 
@@ -498,12 +527,15 @@ namespace Pesaje
                 }
                 catch (Exception ex)
                 {
+                    Log.Error(ex, " Error : " + ex.Message);
                     MessageBox.Show(ex.Message);
                 }
             }
 
             if (NameProced == "U_SP_FIB_DEL_OPROM")
             {
+                Log.Information("usando SP U_SP_FIB_DEL_OPROM");
+
                 string cnc5 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
                 SqlConnection sqt5 = new SqlConnection(cnc5);
 
@@ -533,6 +565,8 @@ namespace Pesaje
                 }
                 catch (Exception ex)
                 {
+
+                    Log.Error(ex, "Error : " + ex.Message);
                     // Manejo de excepción opcional
                 }
 
@@ -564,6 +598,8 @@ namespace Pesaje
 
             if (NameProced == "U_SP_FIB_INS_OPROM1")
             {
+                Log.Information("usando SP U_SP_FIB_INS_OPROM1");
+
                 string cnc8 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
                 SqlConnection sqt8= new SqlConnection(cnc8);
 
@@ -588,41 +624,12 @@ namespace Pesaje
                 }
                 catch (Exception ex)
                 {
+                    Log.Error(ex, "Error : " + ex.Message);
                     MessageBox.Show(ex.Message);
                 }
             }
 
-            /*
-            if (NameProced == "U_SP_FIB_INS_OPROM1_15112024")
-            {
-                string cnc8 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
-                SqlConnection sqt8 = new SqlConnection(cnc8);
-
-                try
-                {
-                    cmd.Parameters.Clear();
-                    cmd.Connection = sqt8;
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = NameProced;
-
-                    //string descrItemNo = GetSelectedValue()?.ToString();
-                    //string invokergetComboBoxMaquinaria =  GetComboBoxSelectedValue().ToString();
-                    //string invokerSede = GetTextBoxText();
-
-                    //// Configuración de los parámetros
-                    //cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = listBox1.SelectedValue.ToString(); // Código de item
-                    cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = listBox1.SelectedValue.ToString(); //descrItemNo;
-                    cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = db_peso; // Peso producido, se manda 0 para registrar items
-                    cmd.Parameters.Add(new SqlParameter("@U_FIB_SEDE", SqlDbType.VarChar)).Value = tb_sede.Text;// invokerSede;
-                    cmd.Parameters.Add(new SqlParameter("@U_FIB_TELAR", SqlDbType.VarChar)).Value = cbMaquinaria.SelectedValue;
-                    cmd.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            */
+         
 
         }
 
@@ -679,7 +686,7 @@ namespace Pesaje
             }
             catch (Exception ex)
             {
-
+                Log.Error(ex, "Error  : " + ex.Message);
             }
 
 
@@ -757,11 +764,15 @@ namespace Pesaje
             try
             {
 
+                string value = listBox1.SelectedValue != null
+                ? listBox1.SelectedValue.ToString()
+                : string.Empty;
+
                 string query4 = string.Empty;
 
                 query4 = "Select Isnull(Convert(decimal(14,2), pesobob,2),0.0) As 'PesoBob', idlin as 'Lin' " +
                     "from OPROM1 T1 inner join OPROM0 T0 on T1.recordkey = T0.recordkey " +
-                    "where Isnull(isScrap,'')<>'Y' and T0.ItemNo = '" + listBox1.SelectedValue.ToString() +
+                    "where Isnull(isScrap,'')<>'Y' and T0.ItemNo = '" + value +
                     "' and U_FIB_SEDE = '" + tb_sede.Text + "' and U_fib_telar = '" + cbMaquinaria.SelectedValue + "' order by idlin asc";
 
                 // Configuración del primer SqlDataAdapter para ListBox2
@@ -781,12 +792,16 @@ namespace Pesaje
                 listBox2.DisplayMember = "PesoBob";
                 listBox2.ValueMember = "PesoBob";
 
+                string value2 = listBox1.SelectedValue != null
+                ? listBox1.SelectedValue.ToString()
+                : string.Empty;
+
                 string query5 = string.Empty;
                 // Configuración del segundo SqlDataAdapter para ListBox3
 
                 query5 = "Select Isnull(Convert(decimal(14,2), pesobob,2),0.0) As 'PesoBob', idlin as 'Lin' " +
                     "from OPROM1 T1 inner join OPROM0 T0 on T1.recordkey = T0.recordkey " +
-                    "where Isnull(isScrap,'')='Y' and T0.ItemNo = '" + listBox1.SelectedValue.ToString() +
+                    "where Isnull(isScrap,'')='Y' and T0.ItemNo = '" + value2 +
                     "' and U_FIB_SEDE = '" + tb_sede.Text + "' and U_fib_telar = '" + cbMaquinaria.SelectedValue + "' order by idlin asc";
 
 
@@ -824,7 +839,7 @@ namespace Pesaje
                 // Manejo opcional de excepciones
                 // MessageBox.Show(ex.Message);
 
-                Log.Error("Error en cargar peso : " + ex.Message);
+                Log.Error(ex,"Error en cargar peso : " + ex.Message);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
@@ -1006,7 +1021,7 @@ namespace Pesaje
                 catch (Exception ex)
                 {
 
-                    //throw;
+                    Log.Error(ex," - " + ex.Message);
                 }
 
             }
@@ -1074,7 +1089,13 @@ namespace Pesaje
             }
             else
             {
-                SetText(tb_pesoobtenido.Text);
+                //
+                if (Convert.ToDouble( tb_pesoobtenido.Text) > 1 )
+                {
+                    SetText(tb_pesoobtenido.Text);
+                    tb_pesoobtenido.Text = string.Empty; 
+                }
+                
             }
         }
 

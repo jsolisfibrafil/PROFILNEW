@@ -425,10 +425,12 @@
             this.imprimirticket.TabIndex = 38;
             this.imprimirticket.Text = "Imprimir";
             this.imprimirticket.UseVisualStyleBackColor = true;
+            this.imprimirticket.Visible = false;
             this.imprimirticket.Click += new System.EventHandler(this.imprimirticket_Click);
             // 
             // tb_pesoobtenido
             // 
+            this.tb_pesoobtenido.Enabled = false;
             this.tb_pesoobtenido.Location = new System.Drawing.Point(343, 30);
             this.tb_pesoobtenido.Margin = new System.Windows.Forms.Padding(2);
             this.tb_pesoobtenido.Name = "tb_pesoobtenido";

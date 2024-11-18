@@ -1,4 +1,0 @@
-2024-11-18 11:21:44.107 -05:00 [INF] Iniciar pesaje
-2024-11-18 11:21:57.722 -05:00 [ERR] Error al abrir el puerto COM: El puerto 'COM1' no existe.
-2024-11-18 11:22:14.389 -05:00 [ERR] Error en Inicio de pesaje : El puerto está cerrado.
-2024-11-18 11:22:52.750 -05:00 [INF] La aplicación ha iniciado.
