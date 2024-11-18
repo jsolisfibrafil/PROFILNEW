@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -19,40 +20,53 @@ using System.Windows.Forms;
 using static System.Windows.Forms.LinkLabel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Serilog;
+using Serilog.Core;
 
 
 namespace Pesaje
 {
-
-
-
-
+    
+    
     public partial class Form1 : Form
      {
 
-            string  idarea = "TC";
+        string  idarea = "TC";
 
-            DataSet dts = new DataSet();
-            public string scode, sname, sumed;
-            SqlCommand cmd = new SqlCommand();
-            SqlCommand cmd2 = new SqlCommand();
+        DataSet dts = new DataSet();
+        public string scode, sname, sumed;
+        SqlCommand cmd = new SqlCommand();
+        SqlCommand cmd2 = new SqlCommand();
 
-            static int contador1 = 0;
-            static string lastvalue = string.Empty;
+        static int contador1 = 0;
+        static string lastvalue = string.Empty;
 
-            public static SerialPort serialport2;
-            public static Thread balanceThread;
-            
-            
-
+        public static SerialPort serialport2;
+        public static Thread balanceThread;
         static Stopwatch stopwatch;
+
+
+        //public static string connectionStringnew = ConfigurationManager.ConnectionStrings["logFile"].ConnectionString;
+
+       
+
 
         public Form1()
         {
-                InitializeComponent();
 
-                //CargarDatosEnComboBox();
-                //CargoDatos();    
+            Log.Logger = new LoggerConfiguration()
+            .WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+            InitializeComponent();
+
+            //Log.Logger = new LoggerConfiguration()
+            //.WriteTo. File("Logs/log.txt", rollingInterval: RollingInterval.Day)  // El archivo de logs será "log.txt" y se rotará por día
+            //.CreateLogger();
+
+
+            //CargarDatosEnComboBox();
+            //CargoDatos();    
 
         }
 
@@ -72,9 +86,28 @@ namespace Pesaje
                 string data2 = string.Empty; 
                 string datosrespo = string.Empty;
                 serialport2 = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
-                serialport2.Open();
+                //serialport2.Open();
 
-                Console.WriteLine("Esperando datos de la balanza...");
+                //validacion de puerto
+
+                if (!serialport2.IsOpen)
+                {
+                    try
+                    {
+                        serialport2.Open();
+                        Log.Information("Puerto COM abierto con éxito");
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error("Error al abrir el puerto COM: " + ex.Message);
+                    }
+                }
+                else
+                {
+                    Log.Error("El puerto COM ya está abierto.");
+                }
+
+
 
                 while (true)
                 {
@@ -172,6 +205,7 @@ namespace Pesaje
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al leer la balanza: {ex.Message}");
+                Log.Error("Error en Inicio de pesaje : "+ex.Message);
             }
             finally
             {
@@ -326,6 +360,7 @@ namespace Pesaje
 
         private void iniciar_pesaje_click(object sender, EventArgs e)
         {
+            Log.Information("Iniciar pesaje");
 
             // Crea y comienza el subproceso para escuchar continuamente
             balanceThread = new Thread(new ThreadStart(ListenToBalance));
@@ -336,16 +371,16 @@ namespace Pesaje
 
         }
 
-            private void Form2_OnValueSubmitted(object sender, Form2Data data)
-            {
+        private void Form2_OnValueSubmitted(object sender, Form2Data data)
+        {
            
                 tb_codigoarticulo.Text = data.Valor1;
                 tb_descArticulo.Text = data.Valor2;
 
-            }
+        }
 
-            private void CargarDatosEnComboBox()
-            {
+        private void CargarDatosEnComboBox()
+        {
                 // 1. Obtener la cadena de conexión desde App.config
                 string connectionString = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
 
@@ -365,11 +400,11 @@ namespace Pesaje
         }
 
         private void event_clickAnadirItem(object sender, EventArgs e)
-            {
+        {
 
 
 
-            }
+        }
 
         private void bt_anadir_Click(object sender, EventArgs e)
         {
@@ -788,6 +823,8 @@ namespace Pesaje
             {
                 // Manejo opcional de excepciones
                 // MessageBox.Show(ex.Message);
+
+                Log.Error("Error en cargar peso : " + ex.Message);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 

@@ -1,0 +1,17 @@
+2024-11-18 11:01:54.308 -05:00 [INF] La aplicación ha iniciado.
+2024-11-18 11:07:18.731 -05:00 [INF] La aplicación ha iniciado.
+2024-11-18 11:08:02.509 -05:00 [INF] La aplicación ha iniciado.
+2024-11-18 11:08:17.872 -05:00 [INF] Iniciar pesaje
+2024-11-18 11:09:03.389 -05:00 [INF] Iniciar pesaje
+2024-11-18 11:09:13.583 -05:00 [INF] Iniciar pesaje
+2024-11-18 11:11:19.603 -05:00 [INF] La aplicación ha iniciado.
+2024-11-18 11:12:52.560 -05:00 [INF] La aplicación ha iniciado.
+2024-11-18 11:13:19.925 -05:00 [ERR] Error en cargar peso : Referencia a objeto no establecida como instancia de un objeto.
+2024-11-18 11:14:42.354 -05:00 [INF] Iniciar pesaje
+2024-11-18 11:15:02.555 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe.
+2024-11-18 11:15:44.916 -05:00 [INF] Iniciar pesaje
+2024-11-18 11:20:35.486 -05:00 [INF] La aplicación ha iniciado.
+2024-11-18 11:20:47.981 -05:00 [INF] Iniciar pesaje
+2024-11-18 11:21:19.251 -05:00 [INF] La aplicación ha iniciado.
+2024-11-18 11:21:24.961 -05:00 [INF] Iniciar pesaje
+2024-11-18 11:21:34.845 -05:00 [INF] La aplicación ha iniciado.
