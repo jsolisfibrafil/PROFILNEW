@@ -261,24 +261,34 @@ namespace Pesaje
                     }
                     else
                     {
-                        DatosInsUpd("U_SP_FIB_INS_OPROM0", 0, false);
-                        if (sqt3.State == ConnectionState.Closed) sqt3.Open();
-                        try
+                        if (tb_codigoarticulo.Text.Trim() == string.Empty  || tb_descArticulo.Text.Trim() == string.Empty)
                         {
-                            cmd.Connection = sqt3;
-                            cmd.ExecuteNonQuery();
-
-                            if (cmd.Parameters["@msg"].Value.ToString() != "")
+                            MessageBox.Show("Codigo de Item inválido", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            DatosInsUpd("U_SP_FIB_INS_OPROM0", 0, false);
+                            if (sqt3.State == ConnectionState.Closed) sqt3.Open();
+                            try
                             {
-                                MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                cmd.Connection = sqt3;
+                                cmd.ExecuteNonQuery();
+
+                                if (cmd.Parameters["@msg"].Value.ToString() != "")
+                                {
+                                    MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+
+                            CargoDatos();
                         }
 
-                        CargoDatos();
+
+                       
                     }
                 }
 
@@ -343,12 +353,12 @@ namespace Pesaje
                     {
                         
 
-                        //i_nline = string.IsNullOrEmpty(lbl_linS.Text) ? 0 : Convert.ToInt64(lbl_linS.Text);
-                        //d_peso = ListBox3.SelectedValue == null ? 0 : Convert.ToDecimal(ListBox3.SelectedValue);
+                        i_nline = string.IsNullOrEmpty(lbl_linS.Text) ? 0 : Convert.ToInt64(lbl_linS.Text);
+                        d_peso = listBox3.SelectedValue == null ? 0 : Convert.ToDecimal(listBox3.SelectedValue);
                     }
                     else
                     {
-                        //i_nline = string.IsNullOrEmpty(lbl_idlin.Text) ? 0 : Convert.ToInt64(lbl_idlin.Text);
+                        i_nline = string.IsNullOrEmpty(lbl_idlin.Text) ? 0 : Convert.ToInt64(lbl_idlin.Text);
                         d_peso = listBox2.SelectedValue == null ? 0 : Convert.ToDecimal(listBox2.SelectedValue);
                     }
                 }
@@ -378,6 +388,9 @@ namespace Pesaje
                 cmd.Parameters.Add(outputParam);
 
                 cmd.Parameters.Add(new SqlParameter("@opt", SqlDbType.Int)).Value = db_peso;
+
+               
+
             }
 
             if (NameProced == "U_SP_FIB_INS_OPROM1")
@@ -652,12 +665,9 @@ namespace Pesaje
                     CargaPesos();
 
                     string retorno2 = cmd.Parameters["@MSG"].Value.ToString();
-                    //retorno2 = "012410156806300";
-
-                    //if (rb_pofic.Checked)
-                    if (true)
+                    if (retorno2.ToString().Trim()  == string.Empty)
                     {
-                        //Imprime_Codebar(cmd.Parameters["@MSG"].Value.ToString(), Convert.ToDecimal(text.Trim()));
+                        retorno2 = "BD : NO SE OBTUVO CODIGO";
 
                         string mensajeLinea1 = "NPD : PM                                                                          FP : " + DateTime.Now.ToString();
                         string mensajeLinea2 = retorno2;
@@ -667,23 +677,54 @@ namespace Pesaje
                         string mensajeLinea6 = "DSC ITEM  :  " + lbl_item.Text;
 
                         // Crear la instancia de TicketPrinter y pasar las dos líneas de texto
-                        TicketPrinter ticketPrinter = new TicketPrinter(mensajeLinea1, 
+                        TicketPrinter ticketPrinter = new TicketPrinter(mensajeLinea1,
                                                                         mensajeLinea2,
                                                                         mensajeLinea3,
                                                                         mensajeLinea4,
                                                                         mensajeLinea5,
-                                                                        mensajeLinea6
+                                                                        mensajeLinea6,
+                                                                        retorno2
                                                                         );
 
                         // Imprimir el ticket directamente sin mostrar la ventana
-                        ticketPrinter.PrintTicket();
-
+                        ticketPrinter.PrintTicket2();
                     }
+                    else
+                    {
+                        //if (rb_pofic.Checked)
+                        if (true)
+                        {
+                            //Imprime_Codebar(cmd.Parameters["@MSG"].Value.ToString(), Convert.ToDecimal(text.Trim()));
+
+                            string mensajeLinea1 = "NPD : PM                                                                          FP : " + DateTime.Now.ToString();
+                            string mensajeLinea2 = retorno2;
+                            string mensajeLinea3 = retorno2;
+                            string mensajeLinea4 = text.ToString() + " KG";
+                            string mensajeLinea5 = "ID ITEM     : " + listBox1.SelectedValue.ToString();
+                            string mensajeLinea6 = "DSC ITEM  :  " + lbl_item.Text;
+
+                            // Crear la instancia de TicketPrinter y pasar las dos líneas de texto
+                            TicketPrinter ticketPrinter = new TicketPrinter(mensajeLinea1,
+                                                                            mensajeLinea2,
+                                                                            mensajeLinea3,
+                                                                            mensajeLinea4,
+                                                                            mensajeLinea5,
+                                                                            mensajeLinea6
+                                                                            );
+
+                            // Imprimir el ticket directamente sin mostrar la ventana
+                            ticketPrinter.PrintTicket();
+
+                        }
+                    }
+                    //retorno2 = "012410156806300";
+
+                   
 
 
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                     //throw;
@@ -699,6 +740,51 @@ namespace Pesaje
 
         }
 
+        private void listBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                DelPeso(false);
+            }
+
+
+        }
+
+        private void DelPeso(bool is_Scrap)
+        {
+            string cnc7 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
+            SqlConnection sqt7 = new SqlConnection(cnc7);
+
+            DialogResult result = MessageBox.Show("Seguro de eliminar peso?", "PROFIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
+            {
+                DatosInsUpd("U_SP_FIB_DEL_OPROM", 2, is_Scrap);
+
+                if (sqt7.State == ConnectionState.Closed) sqt7.Open();
+                try
+                {
+                    cmd.Connection = sqt7;
+                    string sq = string.Empty;
+                    foreach (SqlParameter param in cmd.Parameters)
+                    {
+                        sq = ($"{param.ParameterName}: {param.Value}") + " - " + sq;
+                    }
+
+                    cmd.ExecuteNonQuery();
+                    if (!string.IsNullOrEmpty(cmd.Parameters["@msg"].Value.ToString()))
+                    {
+                        MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+                CargaPesos();
+            }
+        }
 
         public class ComboBoxItem
             {

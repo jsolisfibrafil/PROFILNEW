@@ -234,7 +234,7 @@
             this.tb_nameOperario.Location = new System.Drawing.Point(259, 6);
             this.tb_nameOperario.Name = "tb_nameOperario";
             this.tb_nameOperario.ReadOnly = true;
-            this.tb_nameOperario.Size = new System.Drawing.Size(157, 22);
+            this.tb_nameOperario.Size = new System.Drawing.Size(192, 22);
             this.tb_nameOperario.TabIndex = 21;
             this.tb_nameOperario.Text = "HUAYHUAPOMA:LEON";
             // 
@@ -273,6 +273,7 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(432, 196);
             this.listBox2.TabIndex = 24;
+            this.listBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox2_KeyDown);
             // 
             // listBox3
             // 
