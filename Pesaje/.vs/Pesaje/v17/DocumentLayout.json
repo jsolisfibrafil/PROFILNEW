@@ -1,25 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\",
+  "WorkspaceRootPath": "C:\\Users\\SISTEMAS\\Desktop\\PROFILNEW\\Pesaje\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|c:\\fibrafil\\profilnew\\pesaje\\pesaje\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|c:\\users\\sistemas\\desktop\\profilnew\\pesaje\\pesaje\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|solutionrelative:pesaje\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\pesaje\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\Users\\SISTEMAS\\Desktop\\PROFILNEW\\Pesaje\\pesaje\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|solutionrelative:pesaje\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\pesaje\\ticketprinter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|solutionrelative:pesaje\\ticketprinter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\pesaje\\articulobusqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|solutionrelative:pesaje\\articulobusqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\pesaje\\articulobusqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\Users\\SISTEMAS\\Desktop\\PROFILNEW\\Pesaje\\pesaje\\articulobusqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|solutionrelative:pesaje\\articulobusqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -30,15 +22,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "ArticuloBusqueda.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs",
+              "DocumentMoniker": "C:\\Users\\SISTEMAS\\Desktop\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs",
               "RelativeDocumentMoniker": "Pesaje\\ArticuloBusqueda.cs",
-              "ToolTip": "C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\SISTEMAS\\Desktop\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs [Dise\u00F1o]",
               "RelativeToolTip": "Pesaje\\ArticuloBusqueda.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-31T13:36:51.9Z",
@@ -47,25 +39,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ArticuloBusqueda.cs",
-              "DocumentMoniker": "C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs",
-              "RelativeDocumentMoniker": "Pesaje\\ArticuloBusqueda.cs",
-              "ToolTip": "C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs",
-              "RelativeToolTip": "Pesaje\\ArticuloBusqueda.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAMwFAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T14:33:50.941Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\SISTEMAS\\Desktop\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs",
               "RelativeDocumentMoniker": "Pesaje\\Form1.cs",
-              "ToolTip": "C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\SISTEMAS\\Desktop\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "Pesaje\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-30T20:25:53.475Z",
@@ -76,28 +54,15 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\SISTEMAS\\Desktop\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs",
               "RelativeDocumentMoniker": "Pesaje\\Form1.cs",
-              "ToolTip": "C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs",
+              "ToolTip": "C:\\Users\\SISTEMAS\\Desktop\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs",
               "RelativeToolTip": "Pesaje\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIsAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAwwJYAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-06T16:13:03.264Z",
               "IsPinned": true,
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TicketPrinter.cs",
-              "DocumentMoniker": "C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\Pesaje\\TicketPrinter.cs",
-              "RelativeDocumentMoniker": "Pesaje\\TicketPrinter.cs",
-              "ToolTip": "C:\\FIBRAFIL\\PROFILNEW\\Pesaje\\Pesaje\\TicketPrinter.cs",
-              "RelativeToolTip": "Pesaje\\TicketPrinter.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAgwGoAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T20:57:13.652Z",
-              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -130,6 +95,16 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1070,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }

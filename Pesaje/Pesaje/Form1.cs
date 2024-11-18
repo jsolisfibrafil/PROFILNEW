@@ -4,15 +4,21 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.LinkLabel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 
 namespace Pesaje
@@ -22,16 +28,24 @@ namespace Pesaje
 
 
     public partial class Form1 : Form
-        {
+     {
 
-        string  idarea = "TC";
+            string  idarea = "TC";
 
-        DataSet dts = new DataSet();
+            DataSet dts = new DataSet();
             public string scode, sname, sumed;
             SqlCommand cmd = new SqlCommand();
-        SqlCommand cmd2 = new SqlCommand();
+            SqlCommand cmd2 = new SqlCommand();
 
+            static int contador1 = 0;
+            static string lastvalue = string.Empty;
 
+            public static SerialPort serialport2;
+            public static Thread balanceThread;
+            
+            
+
+        static Stopwatch stopwatch;
 
         public Form1()
         {
@@ -41,6 +55,161 @@ namespace Pesaje
                 //CargoDatos();    
 
         }
+
+        // Método para leer los datos de la balanza en un subproceso
+        private static void ListenToBalance()
+        {
+            string dataIn = string.Empty;
+            DateTime  lastReceivedTime = DateTime.Now;
+            DateTime lastDataTime = DateTime.Now;
+           
+            string lastValidData = string.Empty;
+
+            Boolean tempvalorObtenidop = false;
+
+            try
+            {
+                string data2 = string.Empty; 
+                string datosrespo = string.Empty;
+                serialport2 = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
+                serialport2.Open();
+
+                Console.WriteLine("Esperando datos de la balanza...");
+
+                while (true)
+                {
+                    
+                    data2 = serialport2.ReadExisting();
+                    //string data2 = serialport2.by ;
+
+                    dataIn = data2;
+
+                    //if (!string.IsNullOrEmpty(data2))
+                    //if (true)
+                    if (!string.IsNullOrEmpty(data2))
+                    {
+                        ////// Llamar al hilo principal para actualizar la interfaz de usuario
+
+                        //if (dataIn != string.Empty)
+                        //if (true)
+                        if (dataIn != string.Empty)
+                        {
+
+                            string[] lines1 = dataIn.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                            //
+                            //if (true)
+                            if(contador1 == 1 && lastvalue == "S")
+                            {
+                                //if (contador1 == 1 && lastvalue == "S")
+
+                                //eliminar
+
+
+                                //codigo si va
+                                string[] lines2 = dataIn.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                                datosrespo = lines2[1].Replace(" ", "");
+                                datosrespo = datosrespo.Replace("GS", "");
+                                datosrespo = datosrespo.Replace("NT", "");
+
+                                ////PESO EN DURO
+                                //datosrespo = "103.00";
+
+                                //tb1_setdato.Text = datosrespo.ToString();
+                                ////tb1_setdato.Invoke(new Action(() => tb1_setdato.Text = datosrespo.ToString()));
+                                UpdateUI(datosrespo);
+                                contador1 = 0;
+
+                            }
+
+                            if (lines1[0] == "S" && contador1 == 0)
+                            {
+                                contador1 = contador1 + 1;
+                                lastvalue = "S";
+                            }
+                            else
+                            {
+                                contador1 = 0;
+                                lastvalue = string.Empty;
+                            }
+
+
+                        }
+
+
+                        datosrespo = dataIn;
+
+                        ////// Procesa los datos de la balanza
+                        ////Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                        ////Console.WriteLine($"{datosrespo}");
+                        ////Thread.Sleep(500);
+                        ////Console.ReadLine();
+
+
+
+                        StreamWriter writer = null;
+                        string rutaArchivo = "C:\\Users\\SISTEMAS\\Documents\\v40.txt";
+                        writer = new StreamWriter(rutaArchivo, true);
+
+                        string[] lines = datosrespo.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                        writer.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                        writer.WriteLine($"{datosrespo}");
+                        writer.WriteLine("---------------------------------- ");
+
+                        Thread.Sleep(100);
+
+                        if (writer != null)
+                        {
+                            writer.Close();
+                        }
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al leer la balanza: {ex.Message}");
+            }
+            finally
+            {
+                serialport2.Close();
+            }
+        }
+
+        // Método para actualizar la interfaz de usuario desde el subproceso
+        private static void UpdateUI(string data)
+        {
+
+
+          
+            if (Application.OpenForms["Form1"] != null && Application.OpenForms["Form1"].InvokeRequired)
+            {
+                Application.OpenForms["Form1"].Invoke(new Action<string>(UpdateUI), data);
+            }
+            else
+            {
+                if (Application.OpenForms["Form1"] != null)
+                {
+                    var form = Application.OpenForms["Form1"];
+                    System.Windows.Forms.TextBox textBox = form.Controls["tb_pesoobtenido"] as System.Windows.Forms.TextBox;
+
+                    if (textBox != null)
+                    {
+                        textBox.Text = data;  // Asigna el valor recibido al TextBox
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró el TextBox.");
+                    }
+                }
+            }
+
+
+        }
+
 
         private void CargoDatos()
         {
@@ -135,37 +304,33 @@ namespace Pesaje
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Verifica si el puerto serial está abierto y lo cierra si es necesario
-
-            if (sppuerto.IsOpen)
-            {
-                sppuerto.Close();
-            }
-
-            // Configura el nombre del puerto
-            sppuerto.PortName = "COM1";
-            try
-            {
-                // Intenta abrir el puerto serial
-                sppuerto.Open();
-                MessageBox.Show("Conexión con balanza satisfactoria", "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                // Manejo de error en caso de que el puerto no esté disponible
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            
 
 
 
             CargarDatosEnComboBox();
             CargoDatos();
+           
 
         }
+
+        
+        private void conectarPuertoCom()
+        {
+
+            
+
+
+        }
+
 
         private void iniciar_pesaje_click(object sender, EventArgs e)
         {
 
+            // Crea y comienza el subproceso para escuchar continuamente
+            balanceThread = new Thread(new ThreadStart(ListenToBalance));
+            balanceThread.IsBackground = true; // Asegura que el subproceso termine cuando la app se cierre
+            balanceThread.Start();
 
 
 
@@ -184,37 +349,6 @@ namespace Pesaje
                 // 1. Obtener la cadena de conexión desde App.config
                 string connectionString = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
 
-            ////// 2. Crear la consulta SQL
-            ////string query = "Select Code, Descripcion As 'Maquina' from  OFIBMAC where STDMAC='A' and u_fib_sede = '02'"; // Ajusta 'NombreTabla', 'Id' y 'Nombre' según tu base de datos
-
-            ////// 3. Conectarse a la base de datos y obtener los datos
-            ////using (SqlConnection connection = new SqlConnection(connectionString))
-            ////{
-            ////    try
-            ////    {
-            ////        connection.Open();
-            ////        using (SqlCommand command = new SqlCommand(query, connection))
-            ////        {
-            ////            using (SqlDataReader reader = command.ExecuteReader())
-            ////            {
-            ////                // 4. Cargar los datos en el ComboBox
-            ////                while (reader.Read())
-            ////                {
-            ////                    // Añade cada ítem al ComboBox. Asocia el valor (Id) y el texto a mostrar (Nombre)
-            ////                    cbMaquinaria.Items.Add(new ComboBoxItem
-            ////                    {
-            ////                        Text = reader["Maquina"].ToString(),
-            ////                        Value = reader["Code"]
-            ////                    });
-            ////                }
-            ////            }
-            ////        }
-            ////    }
-            ////    catch (Exception ex)
-            ////    {
-            ////        MessageBox.Show("Error al cargar datos: " + ex.Message);
-            ////    }
-            ////}
 
             DataSet ds = new DataSet();
 
@@ -258,7 +392,7 @@ namespace Pesaje
                     if (foundRow.Length > 0)
                     {
                         MessageBox.Show("Item ya ingresado", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
+                    }   
                     else
                     {
                         if (tb_codigoarticulo.Text.Trim() == string.Empty  || tb_descArticulo.Text.Trim() == string.Empty)
@@ -405,11 +539,16 @@ namespace Pesaje
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = NameProced;
 
-                    // Configuración de los parámetros
-                    cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = listBox1.SelectedValue.ToString(); // Código de item
+                    //string descrItemNo = GetSelectedValue()?.ToString();
+                    //string invokergetComboBoxMaquinaria =  GetComboBoxSelectedValue().ToString();
+                    //string invokerSede = GetTextBoxText();
+
+                    //// Configuración de los parámetros
+                    //cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = listBox1.SelectedValue.ToString(); // Código de item
+                    cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = listBox1.SelectedValue.ToString(); //descrItemNo;
                     cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = db_peso; // Peso producido, se manda 0 para registrar items
-                    cmd.Parameters.Add(new SqlParameter("@U_FIB_SEDE", SqlDbType.VarChar)).Value = tb_sede.Text;
-                    cmd.Parameters.Add(new SqlParameter("@U_FIB_TELAR", SqlDbType.VarChar)).Value = cbMaquinaria.SelectedValue;// cmb_maq.SelectedValue;
+                    cmd.Parameters.Add(new SqlParameter("@U_FIB_SEDE", SqlDbType.VarChar)).Value = tb_sede.Text;// invokerSede;
+                    cmd.Parameters.Add(new SqlParameter("@U_FIB_TELAR", SqlDbType.VarChar)).Value = cbMaquinaria.SelectedValue;
                     cmd.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output;
                 }
                 catch (Exception ex)
@@ -418,6 +557,82 @@ namespace Pesaje
                 }
             }
 
+            /*
+            if (NameProced == "U_SP_FIB_INS_OPROM1_15112024")
+            {
+                string cnc8 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
+                SqlConnection sqt8 = new SqlConnection(cnc8);
+
+                try
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Connection = sqt8;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = NameProced;
+
+                    //string descrItemNo = GetSelectedValue()?.ToString();
+                    //string invokergetComboBoxMaquinaria =  GetComboBoxSelectedValue().ToString();
+                    //string invokerSede = GetTextBoxText();
+
+                    //// Configuración de los parámetros
+                    //cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = listBox1.SelectedValue.ToString(); // Código de item
+                    cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = listBox1.SelectedValue.ToString(); //descrItemNo;
+                    cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = db_peso; // Peso producido, se manda 0 para registrar items
+                    cmd.Parameters.Add(new SqlParameter("@U_FIB_SEDE", SqlDbType.VarChar)).Value = tb_sede.Text;// invokerSede;
+                    cmd.Parameters.Add(new SqlParameter("@U_FIB_TELAR", SqlDbType.VarChar)).Value = cbMaquinaria.SelectedValue;
+                    cmd.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            */
+
+        }
+
+
+
+        private string GetTextBoxText()
+        {
+            if (tb_sede.InvokeRequired)
+            {
+                // Usamos Invoke para obtener Text en el subproceso de la interfaz de usuario
+                return (string)tb_sede.Invoke(new Func<string>(() => tb_sede.Text));
+            }
+            else
+            {
+                // Si estamos en el subproceso de la interfaz de usuario, obtenemos directamente
+                return tb_sede.Text;
+            }
+        }
+
+        private object GetComboBoxSelectedValue()
+        {
+            if (cbMaquinaria.InvokeRequired)
+            {
+                // Usamos Invoke para obtener SelectedValue en el subproceso de la interfaz de usuario
+                return cbMaquinaria.Invoke(new Func<object>(() => cbMaquinaria.SelectedValue));
+            }
+            else
+            {
+                // Si estamos en el subproceso de la interfaz de usuario, obtenemos directamente
+                return cbMaquinaria.SelectedValue;
+            }
+        }
+
+        private object GetSelectedValue()
+        {
+            if (listBox1.InvokeRequired)
+            {
+                // Usamos Invoke para obtener SelectedValue en el subproceso de la interfaz de usuario
+                return listBox1.Invoke(new Func<object>(() => listBox1.SelectedValue));
+            }
+            else
+            {
+                // Si estamos en el subproceso de la interfaz de usuario, obtenemos directamente
+                return listBox1.SelectedValue;
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -604,12 +819,27 @@ namespace Pesaje
 
         }
 
+        private int GetSelectedIndex()
+        {
+            if (listBox1.InvokeRequired)
+            {
+                // Usamos Invoke para obtener SelectedIndex en el subproceso de la interfaz de usuario
+                return (int)listBox1.Invoke(new Func<int>(() => listBox1.SelectedIndex));
+            }
+            else
+            {
+                // Si estamos en el subproceso de la interfaz de usuario, obtenemos directamente
+                return listBox1.SelectedIndex;
+            }
+        }
+
         private void SetText(string text)
         {
             string cnc7 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
             SqlConnection sqt7 = new SqlConnection(cnc7);
-
+            //GetSelectedIndex()
             if (listBox1.SelectedIndex >= 0)
+            //if (GetSelectedIndex() >= 0)
             {
                 try
                 {
@@ -629,15 +859,20 @@ namespace Pesaje
 
                     }
 
+                    //DatosInsUpd("U_SP_FIB_INS_OPROM1", Convert.ToDouble(text), false);
                     DatosInsUpd("U_SP_FIB_INS_OPROM1", Convert.ToDouble(text), false);
 
                     cmd.Parameters.Clear();
                     cmd.Connection = sqt7;
                     cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.CommandText = "U_SP_FIB_INS_OPROM1";
                     cmd.CommandText = "U_SP_FIB_INS_OPROM1";
 
 
-                    cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = listBox1.SelectedValue.ToString(); // Código de item
+                    ////GetSelectedValue()?.ToString()
+                    cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.VarChar)).Value = listBox1.SelectedValue.ToString(); // Código de item
+                    //cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = GetSelectedValue()?.ToString(); // Código de item
+
                     // por el momento no va scrap
                     // false = scrap
                     // 
@@ -651,11 +886,18 @@ namespace Pesaje
                         cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = Convert.ToDecimal(text.Trim()) * -1;
                     }
 
-                    cmd.Parameters.Add(new SqlParameter("@U_FIB_SEDE", SqlDbType.Text)).Value = tb_sede.Text;
+                    cmd.Parameters.Add(new SqlParameter("@U_FIB_SEDE", SqlDbType.VarChar)).Value = tb_sede.Text;
                     cmd.Parameters.Add(new SqlParameter("@U_FIB_TELAR", SqlDbType.VarChar)).Value = cbMaquinaria.SelectedValue;
                     cmd.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output;
 
-                    
+                    string a = string.Empty;
+                    a = cmd.Parameters["@ItemNo"].Value +"-";
+                    a = cmd.Parameters["@ProducWeight"].Value + "-" + a;
+                    a = cmd.Parameters["@U_FIB_SEDE"].Value + "-" + a;
+                    a = cmd.Parameters["@U_FIB_TELAR"].Value + "-" + a;
+                    a = cmd.Parameters["@MSG"].Value + "-" + a;
+
+
 
                     // Parámetros para el comando
                     // Ejecutar comando
@@ -783,6 +1025,19 @@ namespace Pesaje
                 }
 
                 CargaPesos();
+            }
+        }
+
+        private void tb_pesoobtenido_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_pesoobtenido.Text == string.Empty)
+            {
+
+                return;
+            }
+            else
+            {
+                SetText(tb_pesoobtenido.Text);
             }
         }
 
