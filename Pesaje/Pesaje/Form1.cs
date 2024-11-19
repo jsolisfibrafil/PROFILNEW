@@ -358,12 +358,11 @@ namespace Pesaje
         {
 
 
-            Log.Information("antes");
+            Log.Information("ini load");
 
             CargarDatosEnComboBox();
             CargoDatos();
 
-            Log.Information("after");
 
         }
 
@@ -717,15 +716,20 @@ namespace Pesaje
             string cnc4 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
             SqlConnection sqt4 = new SqlConnection(cnc4);
 
+            Log.Information("DelItem Eliminación de Item ...");
 
             // Verifica si ListBox2 tiene elementos
             if (listBox2.Items.Count > 0)
             {
+                Log.Information("Para eliminar un ítem, primero elimine todos sus pesos asociados. ");
+
                 MessageBox.Show("Para eliminar un ítem, primero elimine todos sus pesos asociados.",
                                 "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
             else
             {
+                Log.Information("DatosInsUpd U_SP_FIB_DEL_OPROM ");
+
                 DatosInsUpd("U_SP_FIB_DEL_OPROM", 1, false); // Llama a la función para inicializar cmd
 
                 if (sqt4.State == ConnectionState.Closed)
@@ -757,6 +761,8 @@ namespace Pesaje
                     tb_codeOperario.Enabled = true;
                     //txt_code.Enabled = true;
                 }
+
+
             }
         }
 
@@ -1046,6 +1052,8 @@ namespace Pesaje
         {
             if (e.KeyCode == Keys.Delete)
             {
+                Log.Information("Eliminación de Peso... ");
+
                 DelPeso(false);
             }
 
@@ -1061,6 +1069,7 @@ namespace Pesaje
 
             if (result == DialogResult.Yes)
             {
+                Log.Information("DatosInsUpd U_SP_FIB_DEL_OPROM");
                 DatosInsUpd("U_SP_FIB_DEL_OPROM", 2, is_Scrap);
 
                 if (sqt7.State == ConnectionState.Closed) sqt7.Open();
@@ -1073,7 +1082,19 @@ namespace Pesaje
                         sq = ($"{param.ParameterName}: {param.Value}") + " - " + sq;
                     }
 
+
+                    var itemNoValue = cmd.Parameters["@ItemNo"].Value.ToString();
+                    var producWeightValue = cmd.Parameters["@ProducWeight"].Value;
+                    var indexPesoValue = cmd.Parameters["@IndexPeso"].Value;
+                    var uFIBSEDEValue = cmd.Parameters["@U_FIB_SEDE"].Value.ToString();
+                    var uFIBTELARValue = cmd.Parameters["@U_FIB_TELAR"].Value.ToString();
+                    //var outputMessage = cmd.Parameters["@msg"].Value.ToString();
+                    var optValue = cmd.Parameters["@opt"].Value;
+
                     cmd.ExecuteNonQuery();
+
+                    Log.Information("DelPeso -  msg " + cmd.Parameters["@msg"].Value.ToString());
+
                     if (!string.IsNullOrEmpty(cmd.Parameters["@msg"].Value.ToString()))
                     {
                         MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1081,6 +1102,8 @@ namespace Pesaje
                 }
                 catch (Exception ex)
                 {
+                    Log.Information(ex,ex.Message.ToString());
+
                     MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
