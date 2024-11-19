@@ -46,7 +46,8 @@ namespace Pesaje
         static Stopwatch stopwatch;
 
 
-
+        string logDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
+        
         //public static string connectionStringnew = ConfigurationManager.ConnectionStrings["logFile"].ConnectionString;
 
        
@@ -56,9 +57,15 @@ namespace Pesaje
         {
             serialport2 = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
 
+            //Log.Logger = new LoggerConfiguration()
+            //.WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day)
+            //    .CreateLogger();
+
+            Directory.CreateDirectory(logDirectory);
+
             Log.Logger = new LoggerConfiguration()
-            .WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day)
-                .CreateLogger();
+            .WriteTo.File(Path.Combine(logDirectory, "AppLog-.txt"), rollingInterval: RollingInterval.Day)
+            .CreateLogger();
 
             InitializeComponent();
 
@@ -148,7 +155,7 @@ namespace Pesaje
 
                                     if (Convert.ToDouble(datosrespo) > 1)
                                     {
-
+                                        Log.Information("UpdateUI(" + datosrespo.ToString() + ")");
                                         UpdateUI(datosrespo);
                                         contador1 = 0;
                                     }
@@ -349,13 +356,14 @@ namespace Pesaje
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
 
 
+            Log.Information("antes");
 
             CargarDatosEnComboBox();
             CargoDatos();
-           
+
+            Log.Information("after");
 
         }
 
