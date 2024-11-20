@@ -47,10 +47,10 @@ namespace Pesaje
 
 
         string logDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
-        
-        //public static string connectionStringnew = ConfigurationManager.ConnectionStrings["logFile"].ConnectionString;
 
-       
+        //public static string connectionStringnew = ConfigurationManager.ConnectionStrings["logFile"].ConnectionString;
+        public event EventHandler MiEvento;
+
 
 
         public Form1()
@@ -240,7 +240,6 @@ namespace Pesaje
 
         }
 
-
         private void CargoDatos()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
@@ -359,11 +358,11 @@ namespace Pesaje
 
 
             Log.Information("ini load");
-
+            
             CargarDatosEnComboBox();
             CargoDatos();
 
-
+            iniciar_pesaje_click(this, EventArgs.Empty);
         }
 
         
