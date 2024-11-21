@@ -1,26 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\",
+  "WorkspaceRootPath": "C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|c:\\source\\profilnew\\profilnew\\pesaje\\pesaje\\articulobusqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|c:\\fibrafil\\profilnew1\\profilnew\\pesaje\\pesaje\\articulobusqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|solutionrelative:pesaje\\articulobusqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\pesaje\\articulobusqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|solutionrelative:pesaje\\articulobusqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\pesaje\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\pesaje\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|solutionrelative:pesaje\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\pesaje\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|solutionrelative:pesaje\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\pesaje\\articulobusqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|solutionrelative:pesaje\\articulobusqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\pesaje\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\pesaje\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|solutionrelative:pesaje\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\pesaje\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|Pesaje\\Pesaje.csproj|solutionrelative:pesaje\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,11 +34,11 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs",
+              "DocumentMoniker": "C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs",
               "RelativeDocumentMoniker": "Pesaje\\Form1.cs",
-              "ToolTip": "C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "Pesaje\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-30T20:25:53.475Z",
@@ -47,13 +47,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs",
+              "DocumentMoniker": "C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs",
               "RelativeDocumentMoniker": "Pesaje\\Form1.cs",
-              "ToolTip": "C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs",
+              "ToolTip": "C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\Pesaje\\Form1.cs",
               "RelativeToolTip": "Pesaje\\Form1.cs",
-              "ViewState": "AgIAAA8BAAAAAAAAAAAmwGUBAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAwDAAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-06T16:13:03.264Z",
               "IsPinned": true,
@@ -95,22 +95,22 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ArticuloBusqueda.cs",
-              "DocumentMoniker": "C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs",
+              "DocumentMoniker": "C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs",
               "RelativeDocumentMoniker": "Pesaje\\ArticuloBusqueda.cs",
-              "ToolTip": "C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs",
+              "ToolTip": "C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs",
               "RelativeToolTip": "Pesaje\\ArticuloBusqueda.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAuwGYAAABKAAAAAAAAAA==",
+              "ViewState": "AgIAANIAAAAAAAAAAAAQwPMAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-20T21:04:06.025Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ArticuloBusqueda.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs",
+              "DocumentMoniker": "C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs",
               "RelativeDocumentMoniker": "Pesaje\\ArticuloBusqueda.cs",
-              "ToolTip": "C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\Pesaje\\ArticuloBusqueda.cs [Dise\u00F1o]",
               "RelativeToolTip": "Pesaje\\ArticuloBusqueda.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-20T21:03:46.391Z",
@@ -118,13 +118,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "App.config",
-              "DocumentMoniker": "C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\Pesaje\\App.config",
+              "DocumentMoniker": "C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\Pesaje\\App.config",
               "RelativeDocumentMoniker": "Pesaje\\App.config",
-              "ToolTip": "C:\\SOURCE\\PROFILNEW\\PROFILNEW\\Pesaje\\Pesaje\\App.config",
+              "ToolTip": "C:\\FIBRAFIL\\PROFILNEW1\\PROFILNEW\\Pesaje\\Pesaje\\App.config",
               "RelativeToolTip": "Pesaje\\App.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2024-11-19T16:21:49.235Z",
               "EditorCaption": ""

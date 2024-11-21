@@ -1,0 +1,67 @@
+2024-11-21 08:26:43.703 -05:00 [INF] ini load
+2024-11-21 08:26:44.044 -05:00 [INF] Iniciar pesaje
+2024-11-21 08:26:44.094 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\PROFILNEW1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 106
+2024-11-21 08:31:27.354 -05:00 [INF] ini load
+2024-11-21 08:31:27.947 -05:00 [INF] Iniciar pesaje
+2024-11-21 08:31:28.030 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\PROFILNEW1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 106
+2024-11-21 08:39:51.485 -05:00 [INF] ini load
+2024-11-21 08:39:52.121 -05:00 [INF] Iniciar pesaje
+2024-11-21 08:39:52.315 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\PROFILNEW1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 106
+2024-11-21 08:44:02.510 -05:00 [INF] ini load
+2024-11-21 08:44:02.952 -05:00 [INF] Iniciar pesaje
+2024-11-21 08:44:03.041 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\PROFILNEW1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 106
+2024-11-21 08:46:22.489 -05:00 [INF] ini load
+2024-11-21 08:46:22.765 -05:00 [INF] Iniciar pesaje
+2024-11-21 08:46:22.833 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\PROFILNEW1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 106
+2024-11-21 08:47:18.828 -05:00 [INF] ini load
+2024-11-21 08:47:18.958 -05:00 [INF] Iniciar pesaje
+2024-11-21 08:47:19.020 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\PROFILNEW1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 106
+2024-11-21 08:48:01.301 -05:00 [INF] DelItem Eliminación de Item ...
+2024-11-21 08:48:01.304 -05:00 [INF] Para eliminar un ítem, primero elimine todos sus pesos asociados. 
+2024-11-21 08:48:07.665 -05:00 [INF] Eliminación de Peso... 
+2024-11-21 09:24:25.410 -05:00 [INF] ini load
+2024-11-21 09:24:25.839 -05:00 [INF] Iniciar pesaje
+2024-11-21 09:24:25.899 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\PROFILNEW1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 106
+2024-11-21 09:31:38.413 -05:00 [INF] ini load
+2024-11-21 09:31:38.605 -05:00 [INF] Iniciar pesaje
+2024-11-21 09:31:38.652 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\PROFILNEW1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 106
