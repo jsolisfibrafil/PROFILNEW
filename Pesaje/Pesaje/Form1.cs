@@ -246,7 +246,7 @@ namespace Pesaje
             idarea = tb_area.Text;
 
             //CHILCA 2
-            tb_sede.Text = "02";
+            tb_sede.Text = "03";
 
             try
             {
@@ -355,7 +355,7 @@ namespace Pesaje
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //
 
             Log.Information("ini load");
             
@@ -865,22 +865,22 @@ namespace Pesaje
         {
             
 
-            string DataIn = string.Empty;
-            //datos recibidos por la balanza y listos para imprimir.
-            DataIn = "770.02";
+            //string DataIn = string.Empty;
+            ////datos recibidos por la balanza y listos para imprimir.
+            //DataIn = "770.02";
 
-            try
-            {
-                if (tb_sede.Text == "02")
-                {
-                    SetText(DataIn);
-                }
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    if (tb_sede.Text == "02")
+            //    {
+            //        SetText(DataIn);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
         }
 

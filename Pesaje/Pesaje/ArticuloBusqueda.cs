@@ -96,20 +96,48 @@ namespace Pesaje
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                // Obtener la fila actual
+                DataGridViewRow filaActual = dataGridView1.CurrentRow;
 
-                string code, name, um;
-                code = Convert.ToString(this.dataGridView1.CurrentRow.Cells["CODE"].Value);
-                name = Convert.ToString(this.dataGridView1.CurrentRow.Cells["NAME"].Value);
-                um = Convert.ToString(this.dataGridView1.CurrentRow.Cells["UM"].Value);
+                // Acceder al valor de una celda
+                string valor = filaActual.Cells["CODE"].Value?.ToString();
+                string v12a;
+
+                //if (dataGridView1.SelectedRows.Count > 0)
+                //{
+                //    // Obtener la primera fila seleccionada
+                //    DataGridViewRow filaSeleccionada = dataGridView1.SelectedRows[0];
+
+                //    // Obtener el índice de la fila
+                //    int indiceFila = filaSeleccionada.Index;
+                //    //indiceFila = indiceFila - 1;
+
+                //    //// Acceder a valores de las celdas
+                //    //var valorCelda1 = filaSeleccionada.Cells["NombreColumna1"].Value?.ToString();
+                //    //var valorCelda2 = filaSeleccionada.Cells[1].Value?.ToString(); // Por índice
 
 
-                // Creamos una instancia de Form2Data con los valores de txtInput1 y txtInput2
-                var data = new Form2Data(code, name);
 
-                // Invocamos el evento, enviando la instancia de Form2Data
-                OnValueSubmitted?.Invoke(this, data);
+                //    string code, name, um;
+                //    //code = Convert.ToString(this.dataGridView1.CurrentRow.Cells["CODE"].Value);
+                //    code = Convert.ToString(filaSeleccionada.Cells["CODE"].Value?.ToString());
+                //    name = Convert.ToString(this.dataGridView1.CurrentRow.Cells["NAME"].Value);
+                //    um = Convert.ToString(this.dataGridView1.CurrentRow.Cells["UM"].Value);
 
-                this.Close();
+
+                //    // Creamos una instancia de Form2Data con los valores de txtInput1 y txtInput2
+                //    var data = new Form2Data(code, name);
+
+                //    // Invocamos el evento, enviando la instancia de Form2Data
+                //    OnValueSubmitted?.Invoke(this, data);
+
+                //    this.Close();
+
+                //    //MessageBox.Show($"Índice de la fila: {indiceFila}\nColumna1: {valorCelda1}\nColumna2: {valorCelda2}");
+
+                //}
+
+
 
 
                 //Aceptar();

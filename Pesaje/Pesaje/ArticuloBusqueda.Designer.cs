@@ -40,35 +40,39 @@
             // 
             // tb_codigo
             // 
-            this.tb_codigo.Location = new System.Drawing.Point(124, 23);
+            this.tb_codigo.Location = new System.Drawing.Point(93, 19);
+            this.tb_codigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tb_codigo.Name = "tb_codigo";
-            this.tb_codigo.Size = new System.Drawing.Size(254, 22);
+            this.tb_codigo.Size = new System.Drawing.Size(192, 20);
             this.tb_codigo.TabIndex = 0;
             this.tb_codigo.TextChanged += new System.EventHandler(this.textchanged_articuloBusqueda);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 23);
+            this.label1.Location = new System.Drawing.Point(22, 19);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 16);
+            this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Codigo";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 51);
+            this.label2.Location = new System.Drawing.Point(22, 41);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Descripcion";
             // 
             // tb_Descripcion
             // 
-            this.tb_Descripcion.Location = new System.Drawing.Point(124, 51);
+            this.tb_Descripcion.Location = new System.Drawing.Point(93, 41);
+            this.tb_Descripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tb_Descripcion.Name = "tb_Descripcion";
-            this.tb_Descripcion.Size = new System.Drawing.Size(254, 22);
+            this.tb_Descripcion.Size = new System.Drawing.Size(192, 20);
             this.tb_Descripcion.TabIndex = 2;
             this.tb_Descripcion.TextChanged += new System.EventHandler(this.tc_descripcion_articuloBusqueda);
             // 
@@ -77,38 +81,43 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 116);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 94);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(869, 370);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(652, 301);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.keyPress_dgv1);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(15, 507);
+            this.button1.Location = new System.Drawing.Point(11, 412);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 29);
+            this.button1.Size = new System.Drawing.Size(93, 24);
             this.button1.TabIndex = 5;
             this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(156, 507);
+            this.button2.Location = new System.Drawing.Point(117, 412);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 29);
+            this.button2.Size = new System.Drawing.Size(93, 24);
             this.button2.TabIndex = 6;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // frmArticuloBusqueda
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 563);
+            this.ClientSize = new System.Drawing.Size(670, 457);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
@@ -116,6 +125,7 @@
             this.Controls.Add(this.tb_Descripcion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_codigo);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmArticuloBusqueda";
             this.Text = "ArticuloBusqueda";
             this.Load += new System.EventHandler(this.frmArticuloBusqueda_Load);

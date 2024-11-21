@@ -185,7 +185,7 @@
             this.tb_sede.ReadOnly = true;
             this.tb_sede.Size = new System.Drawing.Size(23, 20);
             this.tb_sede.TabIndex = 14;
-            this.tb_sede.Text = "02";
+            this.tb_sede.Text = "03";
             // 
             // label4
             // 
