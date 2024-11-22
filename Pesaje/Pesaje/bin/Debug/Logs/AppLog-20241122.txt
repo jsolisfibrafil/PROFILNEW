@@ -1,0 +1,17 @@
+2024-11-22 09:02:05.497 -05:00 [INF] ini load
+2024-11-22 09:02:05.982 -05:00 [INF] Iniciar pesaje
+2024-11-22 09:02:06.046 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\PROFILNEW1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 110
+2024-11-22 09:03:18.867 -05:00 [INF] usando SP U_FIB_PROD_MAS
+2024-11-22 09:07:12.675 -05:00 [INF] ini load
+2024-11-22 09:07:14.225 -05:00 [INF] Iniciar pesaje
+2024-11-22 09:07:14.373 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\PROFILNEW1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 110

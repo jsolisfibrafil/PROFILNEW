@@ -22,6 +22,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using Serilog;
 using Serilog.Core;
+using static System.Net.WebRequestMethods;
 
 
 namespace Pesaje
@@ -48,7 +49,10 @@ namespace Pesaje
 
         string logDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
 
-        //public static string connectionStringnew = ConfigurationManager.ConnectionStrings["logFile"].ConnectionString;
+        //public string connection_String = ConfigurationManager.ConnectionStrings["logFile"].ConnectionString;
+
+        string connection_String = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
+
         public event EventHandler MiEvento;
 
 
@@ -498,11 +502,12 @@ namespace Pesaje
                 Log.Error(ex, " Error : " + ex.Message);
             }
 
-
         }
 
         public void DatosInsUpd(string NameProced, double db_peso, bool is_Scrap)
         {
+            //U_FIB_PROD_MAS
+
             if (NameProced == "U_SP_FIB_INS_OPROM0")
             {
                 Log.Information("usando SP U_SP_FIB_INS_OPROM0");
@@ -635,7 +640,33 @@ namespace Pesaje
                 }
             }
 
-         
+            if (NameProced == "U_FIB_PROD_MAS")
+            {
+                Log.Information("usando SP U_FIB_PROD_MAS");
+
+                //string cnc8 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
+                SqlConnection sqt8 = new SqlConnection(connection_String);
+
+                try
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Connection = sqt8;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = NameProced;
+
+                    cmd.Parameters.Add(new SqlParameter("@Item", SqlDbType.Text)).Value = listBox1.SelectedValue.ToString(); // Código de ítem
+                    cmd.Parameters.Add(new SqlParameter("@Operario", SqlDbType.VarChar)).Value = tb_codeOperario.Text; // Operario seleccionado
+                    cmd.Parameters.Add(new SqlParameter("@Ayudante", SqlDbType.VarChar)).Value = "647";//cmb_ayud.SelectedValue; // Ayudante seleccionado
+                    cmd.Parameters.Add(new SqlParameter("@Maquina", SqlDbType.VarChar)).Value = cbMaquinaria.SelectedValue; // Máquina seleccionada
+                    cmd.Parameters.Add(new SqlParameter("@sede", SqlDbType.VarChar)).Value = tb_sede.Text; // Sede
+                    cmd.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output; // Mensaje de salida
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "Error : " + ex.Message.ToString());
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
         }
 
@@ -1127,6 +1158,179 @@ namespace Pesaje
                 }
                 
             }
+        }
+
+        private void btnBorrarPesos_Click(object sender, EventArgs e)
+        {
+
+
+            //string cnc3 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
+            SqlConnection sqt = new SqlConnection(connection_String);
+
+            int respuesta = Convert.ToInt32( MessageBox.Show("Desea eliminar todos los pesos?", "PROFIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)); //("¿Desea eliminar todos los pesos?","PROFIL",MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
+
+
+            if (respuesta == (int)DialogResult.Yes)
+            {
+
+
+                int confirmacion = Convert.ToInt32(MessageBox.Show("Recuerde, de eliminar todos los pesos no podrá recuperarlos, ¿procederá con eliminarlos?", 
+                        "PROFIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)); 
+
+                //int confirmacion = MessageBox.Show(
+                //    "Recuerde, de eliminar todos los pesos no podrá recuperarlos, ¿procederá con eliminarlos?",
+                //    "PROFIL",
+                //    MessageBoxButtons.YesNo,
+                //    MessageBoxIcon.Question,
+                //    MessageBoxDefaultButton.Button2
+                //);
+
+                if (confirmacion == (int)DialogResult.Yes)
+                {
+                    // Llamar al método de eliminación de datos
+                    DatosInsUpd("U_SP_FIB_DEL_OPROM", 3, false);
+
+                    if (sqt.State == ConnectionState.Closed)
+                    {
+                        sqt.Open();
+                    }
+
+                    try
+                    {
+
+                        cmd.Connection = sqt;
+                        cmd.ExecuteNonQuery();
+
+                        string temp = cmd.Parameters["@msg"].Value.ToString();
+                        // Verifica si el parámetro de salida @msg tiene contenido
+                        if (!string.IsNullOrEmpty(cmd.Parameters["@msg"].Value.ToString()))
+                        {
+                            Log.Information("[DEVFIL] : "+ cmd.Parameters["@msg"].Value.ToString());
+                            MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(ex,"[DEVFIL] : " + ex.Message.ToString());
+                        MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+
+                    // Llamar a la función para recargar los datos
+                    //CargaDatos();
+                    CargoDatos();
+
+
+                    //DatosInsUpd("U_SP_FIB_INS_OPROM0", 0, false);
+                    //if (sqt3.State == ConnectionState.Closed) sqt3.Open();
+                    //try
+                    //{
+                    //    cmd.Connection = sqt3;
+                    //    cmd.ExecuteNonQuery();
+
+                    //    if (cmd.Parameters["@msg"].Value.ToString() != "")
+                    //    {
+                    //        MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //        Log.Error(cmd.Parameters["@msg"].Value.ToString());
+                    //    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    Log.Error(ex, ex.Message);
+                    //    MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    //}
+
+
+
+                }
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            ////if (!string.IsNullOrEmpty(lbl_item.Text))
+            ////{
+            ////    if (lbl_countbul.Text == "0" || lbl_pesotot.Text == "0")
+            ////    {
+            ////        Log.Error("[DEVFIL] Por favor, revisar. No hay items por procesar.");
+            ////        MessageBox.Show("Por favor, revisar. No hay items por procesar.", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            ////    }
+            ////    else
+            ////    {
+            ////        if (!grp_combos.Visible)
+            ////        {
+            ////            grp_combos.Visible = true;
+            ////        }
+            ////    }
+            ////}
+            ////else
+            ////{
+            ////    Log.Error("[DEVFIL] Por favor, seleccione un Item correctamente.");
+            ////    MessageBox.Show("Por favor, seleccione un Item correctamente.", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            ////}
+
+
+            if (!grp_combos.Visible)
+            {
+                grp_combos.Visible = true;
+            }
+
+
+            ////    If lbl_item.Text<> "" Then
+            ////    If lbl_countbul.Text = 0 Or lbl_pesotot.Text = 0 Then
+            ////        MsgBox("Por favor, revisar. No hay items por procesar.", MsgBoxStyle.Exclamation, "PROFIL")
+            ////    Else
+            ////        If grp_combos.Visible = False Then
+            ////            grp_combos.Visible = True
+            ////        End If
+            ////    End If
+            ////Else
+            ////    MsgBox("Por favor, seleccione un Item correctamente.", MsgBoxStyle.Exclamation, "PROFIL")
+            ////End If
+
+
+        }
+
+        private void event_confirmar(object sender, EventArgs e)
+        {
+            SqlConnection sqt = new SqlConnection(connection_String);
+
+            
+            DatosInsUpd("U_FIB_PROD_MAS", 0, false);
+
+            if (sqt.State == ConnectionState.Closed)
+            {
+                sqt.Open();
+            }
+
+            cmd.Connection = sqt;
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                if (!string.IsNullOrEmpty(cmd.Parameters["@msg"].Value.ToString()))
+                {
+                    MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("OK");
+                    //CargaDatos();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            finally
+            {
+                grp_combos.Visible = false;
+            }
+
+
+
         }
 
         public class ComboBoxItem
