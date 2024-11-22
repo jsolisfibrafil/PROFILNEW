@@ -169,9 +169,20 @@ namespace Pesaje
 
                             }
 
-                            if (lines1[0] == "S" && contador1 == 0)
+                            //if (lines1[0] == "S" && contador1 == 0)
+                            //{
+                            //    contador1 = contador1 + 1;
+                            //    lastvalue = "S";
+                            //}
+                            //else
+                            //{
+                            //    contador1 = 0;
+                            //    lastvalue = string.Empty;
+                            //}
+
+                            if (lines1 != null && lines1.Length > 0 && !string.IsNullOrEmpty(lines1[0]) && lines1[0] == "S" && contador1 == 0)
                             {
-                                contador1 = contador1 + 1;
+                                contador1++;
                                 lastvalue = "S";
                             }
                             else
@@ -179,6 +190,7 @@ namespace Pesaje
                                 contador1 = 0;
                                 lastvalue = string.Empty;
                             }
+
 
 
                         }
