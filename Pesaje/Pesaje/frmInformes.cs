@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -18,10 +19,33 @@ namespace Pesaje
 
         DataSet dts = new DataSet();
         string cnc1 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
+        int i_ninforme = 0;
+        SqlDataAdapter dap = new SqlDataAdapter();
+
+        DataView dtPlan = new DataView();
+        DataView dtProd = new DataView();
+        DataView dtDespacho = new DataView();
+        DataView dtKardex = new DataView();
+        DataView dtProdDiario = new DataView();
+        DataView dtCodebar = new DataView();
+        DataView dtProdMes = new DataView();
+        DataView dtDetProd = new DataView();
+
 
         public frmInformes()
         {
             InitializeComponent();
+
+            optPlan.CheckedChanged += op_INFORMES;
+            optProd.CheckedChanged += op_INFORMES;
+            optDespacho.CheckedChanged += op_INFORMES;
+            optKardex.CheckedChanged += op_INFORMES;
+            optDiario.CheckedChanged += op_INFORMES;
+            optCodebar.CheckedChanged += op_INFORMES;
+            optProdMes.CheckedChanged += op_INFORMES;
+            optdetprod.CheckedChanged += op_INFORMES;
+
+
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -37,39 +61,92 @@ namespace Pesaje
             saveFileDialog1.Title = "Save a File";
             saveFileDialog1.ShowDialog();
 
-            try
-            {
+            
                 if (!string.IsNullOrEmpty(saveFileDialog1.FileName))
                 {
                     switch (saveFileDialog1.FilterIndex)
                     {
+                        ////case 1: // Excel File
+
+
+                        ////    Excel.Application xlApp = new Excel.Application();
+                        ////    Excel.Workbook xlWorkBook = xlApp.Workbooks.Add(Type.Missing);
+                        ////    Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Sheets[1];
+
+                        ////    int i, j;
+                        ////    for (i = 0; i < dataGridView1.RowCount - 1; i++)
+                        ////    {
+                        ////        for (j = 0; j < dataGridView1.ColumnCount; j++)
+                        ////        {
+                        ////            xlWorkSheet.Cells[i + 1, j + 1] = dataGridView1[j, i].Value?.ToString();
+                        ////        }
+                        ////    }
+
+                        ////    xlWorkBook.SaveAs(saveFileDialog1.FileName, Excel.XlFileFormat.xlWorkbookNormal,
+                        ////        Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                        ////        Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
+                        ////        Type.Missing, Type.Missing, Type.Missing);
+                        ////    xlWorkBook.Close(true, Type.Missing, Type.Missing);
+                        ////    xlApp.Quit();
+
+                        ////    ReleaseObject(xlWorkSheet);
+                        ////    ReleaseObject(xlWorkBook);
+                        ////    ReleaseObject(xlApp);
+                        ////    break;
+                        ///
+
                         case 1: // Excel File
-
-                            
-                            Excel.Application xlApp = new Excel.Application();
-                            Excel.Workbook xlWorkBook = xlApp.Workbooks.Add(Type.Missing);
-                            Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Sheets[1];
-
-                            int i, j;
-                            for (i = 0; i < dataGridView1.RowCount - 1; i++)
                             {
-                                for (j = 0; j < dataGridView1.ColumnCount; j++)
+                                try
                                 {
-                                    xlWorkSheet.Cells[i + 1, j + 1] = dataGridView1[j, i].Value?.ToString();
+                                    // Crear una nueva aplicación de Excel
+                                    Excel.Application xlApp = new Excel.Application();
+                                    Excel.Workbook xlWorkBook = xlApp.Workbooks.Add(Type.Missing);
+                                    Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Sheets[1];
+
+                                    // Llenar el Excel con los datos del DataGridView
+                                    int i, j;
+                                    for (i = 0; i < dataGridView1.RowCount - 1; i++)
+                                    {
+                                        for (j = 0; j < dataGridView1.ColumnCount; j++)
+                                        {
+                                            xlWorkSheet.Cells[i + 1, j + 1] = dataGridView1[j, i].Value?.ToString();
+                                        }
+                                    }
+
+                                    // Guardar el archivo de Excel
+                                    string filePath = saveFileDialog1.FileName;
+                                    xlWorkBook.SaveAs(filePath, Excel.XlFileFormat.xlWorkbookNormal,
+                                        Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                                        Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
+                                        Type.Missing, Type.Missing, Type.Missing);
+
+                                    // Cerrar y liberar los recursos de Excel
+                                    xlWorkBook.Close(true, Type.Missing, Type.Missing);
+                                    xlApp.Quit();
+
+                                    ReleaseObject(xlWorkSheet);
+                                    ReleaseObject(xlWorkBook);
+                                    ReleaseObject(xlApp);
+
+                                    // Verificar si el archivo Excel se creó correctamente
+                                    if (System.IO.File.Exists(filePath))
+                                    {
+                                        MessageBox.Show("El archivo Excel se creó exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Hubo un error al guardar el archivo Excel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
-                            }
+                                catch (Exception ex)
+                                {
+                                    // Si ocurre un error, mostrar un mensaje
+                                    MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                break;
 
-                            xlWorkBook.SaveAs(saveFileDialog1.FileName, Excel.XlFileFormat.xlWorkbookNormal,
-                                Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                                Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
-                                Type.Missing, Type.Missing, Type.Missing);
-                            xlWorkBook.Close(true, Type.Missing, Type.Missing);
-                            xlApp.Quit();
-
-                            ReleaseObject(xlWorkSheet);
-                            ReleaseObject(xlWorkBook);
-                            ReleaseObject(xlApp);
-                            break;
+                        }
 
                         case 2: // Text File
                                 // Implementar lógica para guardar como archivo de texto.
@@ -80,16 +157,11 @@ namespace Pesaje
                             break;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
 
 
 
         }
-
 
 
 
@@ -101,9 +173,27 @@ namespace Pesaje
 
         private void btnprocess_Click(object sender, EventArgs e)
         {
+            //int var = i_ninforme;
+
+
             ObtenerData();
 
         }
+
+
+        private void op_INFORMES(object sender, EventArgs e)
+        {
+            if (optPlan.Checked) i_ninforme = 1;
+            if (optProd.Checked) i_ninforme = 2;
+            if (optDespacho.Checked) i_ninforme = 3;
+            if (optKardex.Checked) i_ninforme = 4;
+            if (optDiario.Checked) i_ninforme = 5;
+            if (optCodebar.Checked) i_ninforme = 6;
+            if (optProdMes.Checked) i_ninforme = 7;
+            if (optdetprod.Checked) i_ninforme = 8;
+        }
+
+
 
         private void ObtenerData()
         {
@@ -141,12 +231,14 @@ namespace Pesaje
             {
                 CommandType = CommandType.StoredProcedure
             };
+
             CMD.Parameters.Add(new SqlParameter("@Ninforme", SqlDbType.Int)).Value = i_ninforme;  // Número informe
-            CMD.Parameters.Add(new SqlParameter("@Item1", SqlDbType.Text)).Value = txtItm1.Text;  // Item 01
-            CMD.Parameters.Add(new SqlParameter("@Maq", SqlDbType.Text)).Value = txt_s_Maq.Text;  // Máquina
+            //CMD.Parameters.Add(new SqlParameter("@Item1", SqlDbType.Text)).Value = "01";//txtItm1.Text;  // Item 01
+            CMD.Parameters.Add(new SqlParameter("@Item1", SqlDbType.Text)).Value = txtItm1.Text;
+            CMD.Parameters.Add(new SqlParameter("@Maq", SqlDbType.Text)).Value = txt_s_Maq.Text;//CMD.Parameters.Add(new SqlParameter("@Maq", SqlDbType.Text)).Value = "01";//txt_s_Maq.Text;  // Máquina
             CMD.Parameters.Add(new SqlParameter("@Fini", SqlDbType.SmallDateTime)).Value = dtpFini.Value; // Fecha 01
             CMD.Parameters.Add(new SqlParameter("@Ffin", SqlDbType.SmallDateTime)).Value = dtpFfin.Value; // Fecha 02
-            CMD.Parameters.Add(new SqlParameter("@Sede", SqlDbType.Text)).Value = cmb_sede.SelectedValue;  // Sede
+            CMD.Parameters.Add(new SqlParameter("@Sede", SqlDbType.Text)).Value = lb_sede.Text;// cmb_sede.SelectedValue;  // Sede
 
             dap.SelectCommand = CMD;
 
@@ -163,7 +255,13 @@ namespace Pesaje
                     case 2:
                         dap.Fill(dts, "dtProd");
                         dtProd = dts.Tables["dtProd"].DefaultView;
+                        int cantidadFilas = dts.Tables["dtProd"].Rows.Count;
+
+                        cantFilas.Text = cantidadFilas.ToString();
                         dataGridView1.DataSource = dtProd;
+
+
+
                         return;
 
                     case 3:
@@ -206,11 +304,14 @@ namespace Pesaje
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                Log.Error(ex,ex.Message.ToString());
             }
             finally
             {
-                OCN.Close();
+                sqt1.Close();
             }
+
+
         }
 
         private void ReleaseObject(object obj)
