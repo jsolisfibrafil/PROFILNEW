@@ -719,7 +719,7 @@ namespace Pesaje
             {
                 // asdasd123111
                 //lbl_item.Text = listBox1.Text;
-                //lbl_item.Text = listBox1.Text != null ? listBox1.Text : string.Empty;
+                lbl_item.Text = listBox1.Text != null ? listBox1.Text : string.Empty;
                 CargaPesos();
             }
             catch (Exception ex)
