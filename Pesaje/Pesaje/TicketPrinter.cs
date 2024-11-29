@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Printing;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using System.Drawing;
-using System.Drawing.Printing;
-using System.Windows.Forms;
-using BarcodeStandard;
+﻿using BarcodeStandard;
 using SkiaSharp;
+using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 
 
@@ -30,9 +21,9 @@ namespace Pesaje
 
         // Constructor que recibe las dos líneas de texto
         public TicketPrinter(string line1, string line2, string line3, string line4, string line5, string line6)
-        {   
+        {
             this.line1 = line1;
-            this.barcodeImage = GenerateBarcode(line2) ;
+            this.barcodeImage = GenerateBarcode(line2);
             this.line3 = line3;
             this.line4 = line4;
             this.line5 = line5;
@@ -40,7 +31,7 @@ namespace Pesaje
 
         }
 
-        public TicketPrinter(string line1, string line2, string line3, string line4, string line5, string line6 , string line7)
+        public TicketPrinter(string line1, string line2, string line3, string line4, string line5, string line6, string line7)
         {
             this.line1 = line1;
             //this.barcodeImage = GenerateBarcode(line2);
@@ -102,7 +93,7 @@ namespace Pesaje
 
             // Dibuja las dos líneas en el ticket con tamaños de fuente distintos
             e.Graphics.DrawString(line1, font1, Brushes.Black, new PointF(5, 10));  // Primera línea
-            
+
             //e.Graphics.DrawString(line2, font2, Brushes.Black, new PointF(5, 65));  // Segunda línea
             if (barcodeImage != null)
             {
@@ -147,7 +138,7 @@ namespace Pesaje
             e.Graphics.DrawString(line1, font1, Brushes.Black, new PointF(5, 10));  // Primera línea
 
             e.Graphics.DrawString(line7, font2, Brushes.Black, new PointF(20, 65));  // Segunda línea
-            
+
             e.Graphics.DrawString(line3, font3, Brushes.Black, new PointF(30, 110));  // 3 línea
             e.Graphics.DrawString(line4, font4, Brushes.Black, new PointF(5, 130));  // 4 línea
             e.Graphics.DrawString(line5, font5, Brushes.Black, new PointF(0, 190));  // 5 línea

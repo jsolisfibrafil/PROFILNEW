@@ -1,38 +1,23 @@
 ﻿using Serilog;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Printing;
 using System.IO;
 using System.IO.Ports;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.LinkLabel;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using Serilog;
-using Serilog.Core;
-using static System.Net.WebRequestMethods;
 
 
 namespace Pesaje
 {
-    
-    
-    public partial class Form1 : Form
-     {
 
-        string  idarea = "TC";
+
+    public partial class Form1 : Form
+    {
+
+        string idarea = "TC";
 
         DataSet dts = new DataSet();
         public string scode, sname, sumed;
@@ -87,11 +72,11 @@ namespace Pesaje
         private static void ListenToBalance()
         {
             string dataIn = string.Empty;
-            DateTime  lastReceivedTime = DateTime.Now;
+            DateTime lastReceivedTime = DateTime.Now;
             DateTime lastDataTime = DateTime.Now;
             string lastValidData = string.Empty;
 
-           
+
 
 
             string data2 = string.Empty;
@@ -99,8 +84,8 @@ namespace Pesaje
 
             try
             {
-                
-                
+
+
                 //serialport2.Open();
 
                 //validacion de puerto
@@ -116,7 +101,7 @@ namespace Pesaje
 
                 while (true)
                 {
-                    
+
                     data2 = serialport2.ReadExisting();
                     //string data2 = serialport2.by ;
 
@@ -138,7 +123,7 @@ namespace Pesaje
 
                             //
                             //if (true)
-                            if(contador1 == 1 && lastvalue == "S")
+                            if (contador1 == 1 && lastvalue == "S")
                             {
                                 //if (contador1 == 1 && lastvalue == "S")
 
@@ -150,7 +135,7 @@ namespace Pesaje
 
                                 //lines2
 
-                                
+
                                 if (lines2 != null && lines2.Length > 1)
                                 {
                                     datosrespo = lines2[1].Replace(" ", ""); // Reemplaza los espacios
@@ -200,7 +185,7 @@ namespace Pesaje
 
                         string[] lines = datosrespo.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-                        
+
 
                         Thread.Sleep(100);
 
@@ -230,7 +215,7 @@ namespace Pesaje
         {
 
 
-          
+
             if (Application.OpenForms["Form1"] != null && Application.OpenForms["Form1"].InvokeRequired)
             {
                 Application.OpenForms["Form1"].Invoke(new Action<string>(UpdateUI), data);
@@ -361,8 +346,8 @@ namespace Pesaje
             }
             catch (Exception ex)
             {
-                Log.Error(ex,ex.ToString());
-               
+                Log.Error(ex, ex.ToString());
+
             }
 
 
@@ -374,18 +359,18 @@ namespace Pesaje
             //
 
             Log.Information("ini load");
-            
+
             CargarDatosEnComboBox();
             CargoDatos();
 
             iniciar_pesaje_click(this, EventArgs.Empty);
         }
 
-        
+
         private void conectarPuertoCom()
         {
 
-            
+
 
 
         }
@@ -406,16 +391,16 @@ namespace Pesaje
 
         private void Form2_OnValueSubmitted(object sender, Form2Data data)
         {
-           
-                tb_codigoarticulo.Text = data.Valor1;
-                tb_descArticulo.Text = data.Valor2;
+
+            tb_codigoarticulo.Text = data.Valor1;
+            tb_descArticulo.Text = data.Valor2;
 
         }
 
         private void CargarDatosEnComboBox()
         {
-                // 1. Obtener la cadena de conexión desde App.config
-                string connectionString = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
+            // 1. Obtener la cadena de conexión desde App.config
+            string connectionString = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
 
 
             DataSet ds = new DataSet();
@@ -479,6 +464,8 @@ namespace Pesaje
                                     cmd.Connection = sqt3;
                                     cmd.ExecuteNonQuery();
 
+                                    Log.Information("dato devuelto cmd.Parameters[msg].Value.ToString() = " + cmd.Parameters["@msg"].Value.ToString());
+
                                     if (cmd.Parameters["@msg"].Value.ToString() != "")
                                     {
                                         MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -533,7 +520,7 @@ namespace Pesaje
                     cmd.Connection = sqt3;
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = NameProced;
-                    cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = tb_codigoarticulo.Text ; // Código de item
+                    cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = tb_codigoarticulo.Text; // Código de item
                     cmd.Parameters.Add(new SqlParameter("@ProducQuantity", SqlDbType.Decimal)).Value = 0; // Cant producida, se manda 0
                     cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = 0; // Peso producido, se manda 0
                     cmd.Parameters.Add(new SqlParameter("@COMMENT", SqlDbType.Text)).Value = string.Empty; // Comentario no implementado
@@ -546,7 +533,7 @@ namespace Pesaje
                     cmd.Parameters.Add(new SqlParameter("@Createfor", SqlDbType.Text)).Value = "152";
                     cmd.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(new SqlParameter("@FK", SqlDbType.BigInt)).Direction = ParameterDirection.Output;
-                
+
                 }
                 catch (Exception ex)
                 {
@@ -567,7 +554,7 @@ namespace Pesaje
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = NameProced;
 
-                decimal d_peso=0;
+                decimal d_peso = 0;
                 long i_nline;
 
                 try
@@ -575,7 +562,7 @@ namespace Pesaje
                     //// valor enviado es false, asi que va al else
                     if (is_Scrap)
                     {
-                        
+
 
                         i_nline = string.IsNullOrEmpty(lbl_linS.Text) ? 0 : Convert.ToInt64(lbl_linS.Text);
                         d_peso = listBox3.SelectedValue == null ? 0 : Convert.ToDecimal(listBox3.SelectedValue);
@@ -615,7 +602,7 @@ namespace Pesaje
 
                 cmd.Parameters.Add(new SqlParameter("@opt", SqlDbType.Int)).Value = db_peso;
 
-               
+
 
             }
 
@@ -624,7 +611,7 @@ namespace Pesaje
                 Log.Information("usando SP U_SP_FIB_INS_OPROM1");
 
                 string cnc8 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
-                SqlConnection sqt8= new SqlConnection(cnc8);
+                SqlConnection sqt8 = new SqlConnection(cnc8);
 
                 try
                 {
@@ -730,7 +717,9 @@ namespace Pesaje
         {
             try
             {
-                lbl_item.Text = listBox1.Text;
+                // asdasd123111
+                //lbl_item.Text = listBox1.Text;
+                //lbl_item.Text = listBox1.Text != null ? listBox1.Text : string.Empty;
                 CargaPesos();
             }
             catch (Exception ex)
@@ -895,7 +884,7 @@ namespace Pesaje
                 // Manejo opcional de excepciones
                 // MessageBox.Show(ex.Message);
 
-                Log.Error(ex,"Error en cargar peso : " + ex.Message);
+                Log.Error(ex, "Error en cargar peso : " + ex.Message);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
@@ -906,7 +895,7 @@ namespace Pesaje
 
         private void imprimirticket_Click(object sender, EventArgs e)
         {
-            
+
 
             //string DataIn = string.Empty;
             ////datos recibidos por la balanza y listos para imprimir.
@@ -999,7 +988,7 @@ namespace Pesaje
                     cmd.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output;
 
                     string a = string.Empty;
-                    a = cmd.Parameters["@ItemNo"].Value +"-";
+                    a = cmd.Parameters["@ItemNo"].Value + "-";
                     a = cmd.Parameters["@ProducWeight"].Value + "-" + a;
                     a = cmd.Parameters["@U_FIB_SEDE"].Value + "-" + a;
                     a = cmd.Parameters["@U_FIB_TELAR"].Value + "-" + a;
@@ -1015,7 +1004,7 @@ namespace Pesaje
                     CargaPesos();
 
                     string retorno2 = cmd.Parameters["@MSG"].Value.ToString();
-                    if (retorno2.ToString().Trim()  == string.Empty)
+                    if (retorno2.ToString().Trim() == string.Empty)
                     {
                         retorno2 = "BD : NO SE OBTUVO CODIGO";
 
@@ -1069,7 +1058,7 @@ namespace Pesaje
                     }
                     //retorno2 = "012410156806300";
 
-                   
+
 
 
 
@@ -1077,7 +1066,7 @@ namespace Pesaje
                 catch (Exception ex)
                 {
 
-                    Log.Error(ex," - " + ex.Message);
+                    Log.Error(ex, " - " + ex.Message);
                 }
 
             }
@@ -1144,7 +1133,7 @@ namespace Pesaje
                 }
                 catch (Exception ex)
                 {
-                    Log.Information(ex,ex.Message.ToString());
+                    Log.Information(ex, ex.Message.ToString());
 
                     MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
@@ -1163,12 +1152,12 @@ namespace Pesaje
             else
             {
                 //
-                if (Convert.ToDouble( tb_pesoobtenido.Text) > 1 )
+                if (Convert.ToDouble(tb_pesoobtenido.Text) > 1)
                 {
                     SetText(tb_pesoobtenido.Text);
-                    tb_pesoobtenido.Text = string.Empty; 
+                    tb_pesoobtenido.Text = string.Empty;
                 }
-                
+
             }
         }
 
@@ -1179,15 +1168,15 @@ namespace Pesaje
             //string cnc3 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
             SqlConnection sqt = new SqlConnection(connection_String);
 
-            int respuesta = Convert.ToInt32( MessageBox.Show("Desea eliminar todos los pesos?", "PROFIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)); //("¿Desea eliminar todos los pesos?","PROFIL",MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
+            int respuesta = Convert.ToInt32(MessageBox.Show("Desea eliminar todos los pesos?", "PROFIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)); //("¿Desea eliminar todos los pesos?","PROFIL",MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
 
 
             if (respuesta == (int)DialogResult.Yes)
             {
 
 
-                int confirmacion = Convert.ToInt32(MessageBox.Show("Recuerde, de eliminar todos los pesos no podrá recuperarlos, ¿procederá con eliminarlos?", 
-                        "PROFIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)); 
+                int confirmacion = Convert.ToInt32(MessageBox.Show("Recuerde, de eliminar todos los pesos no podrá recuperarlos, ¿procederá con eliminarlos?",
+                        "PROFIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2));
 
                 //int confirmacion = MessageBox.Show(
                 //    "Recuerde, de eliminar todos los pesos no podrá recuperarlos, ¿procederá con eliminarlos?",
@@ -1217,13 +1206,13 @@ namespace Pesaje
                         // Verifica si el parámetro de salida @msg tiene contenido
                         if (!string.IsNullOrEmpty(cmd.Parameters["@msg"].Value.ToString()))
                         {
-                            Log.Information("[DEVFIL] : "+ cmd.Parameters["@msg"].Value.ToString());
+                            Log.Information("[DEVFIL] : " + cmd.Parameters["@msg"].Value.ToString());
                             MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     catch (Exception ex)
                     {
-                        Log.Error(ex,"[DEVFIL] : " + ex.Message.ToString());
+                        Log.Error(ex, "[DEVFIL] : " + ex.Message.ToString());
                         MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
 
@@ -1309,7 +1298,7 @@ namespace Pesaje
         {
             SqlConnection sqt = new SqlConnection(connection_String);
 
-            
+
             DatosInsUpd("U_FIB_PROD_MAS", 0, false);
 
             if (sqt.State == ConnectionState.Closed)
@@ -1345,33 +1334,53 @@ namespace Pesaje
 
         }
 
-        public class ComboBoxItem
-            {
-                public string Text { get; set; }
-                public object Value { get; set; }
+        private void cmb_maq_Validated(object sender, System.ComponentModel.CancelEventArgs e)
+        {
 
-                public override string ToString()
-                {
-                    return Text; // Lo que se mostrará en el ComboBox
-                }
-            }
-
-            private void event_buscarArticulo(object sender, EventArgs e)
-            {
-
-                //frmArticuloBusqueda vista3 = new frmArticuloBusqueda();
-                //vista3.ShowDialog();
-
-
-                frmArticuloBusqueda form2 = new frmArticuloBusqueda();
-
-                // Nos suscribimos al evento OnValueSubmitted para recibir el valor
-                form2.OnValueSubmitted += Form2_OnValueSubmitted;
-
-                // Mostramos Form2
-                form2.ShowDialog(); ;
-
-            }
+            CargoDatos();
 
         }
+
+        private void cmb_maq_Click(object sender, EventArgs e)
+        {
+
+
+
+
+        }
+
+        private void cbMaquinaria_TextChanged(object sender, EventArgs e)
+        {
+            CargoDatos();
+        }
+
+        public class ComboBoxItem
+        {
+            public string Text { get; set; }
+            public object Value { get; set; }
+
+            public override string ToString()
+            {
+                return Text; // Lo que se mostrará en el ComboBox
+            }
+        }
+
+        private void event_buscarArticulo(object sender, EventArgs e)
+        {
+
+            //frmArticuloBusqueda vista3 = new frmArticuloBusqueda();
+            //vista3.ShowDialog();
+
+
+            frmArticuloBusqueda form2 = new frmArticuloBusqueda();
+
+            // Nos suscribimos al evento OnValueSubmitted para recibir el valor
+            form2.OnValueSubmitted += Form2_OnValueSubmitted;
+
+            // Mostramos Form2
+            form2.ShowDialog(); ;
+
+        }
+
+    }
 }

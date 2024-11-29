@@ -1,14 +1,8 @@
 ﻿using Serilog;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -61,103 +55,103 @@ namespace Pesaje
             saveFileDialog1.Title = "Save a File";
             saveFileDialog1.ShowDialog();
 
-            
-                if (!string.IsNullOrEmpty(saveFileDialog1.FileName))
+
+            if (!string.IsNullOrEmpty(saveFileDialog1.FileName))
+            {
+                switch (saveFileDialog1.FilterIndex)
                 {
-                    switch (saveFileDialog1.FilterIndex)
-                    {
-                        ////case 1: // Excel File
+                    ////case 1: // Excel File
 
 
-                        ////    Excel.Application xlApp = new Excel.Application();
-                        ////    Excel.Workbook xlWorkBook = xlApp.Workbooks.Add(Type.Missing);
-                        ////    Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Sheets[1];
+                    ////    Excel.Application xlApp = new Excel.Application();
+                    ////    Excel.Workbook xlWorkBook = xlApp.Workbooks.Add(Type.Missing);
+                    ////    Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Sheets[1];
 
-                        ////    int i, j;
-                        ////    for (i = 0; i < dataGridView1.RowCount - 1; i++)
-                        ////    {
-                        ////        for (j = 0; j < dataGridView1.ColumnCount; j++)
-                        ////        {
-                        ////            xlWorkSheet.Cells[i + 1, j + 1] = dataGridView1[j, i].Value?.ToString();
-                        ////        }
-                        ////    }
+                    ////    int i, j;
+                    ////    for (i = 0; i < dataGridView1.RowCount - 1; i++)
+                    ////    {
+                    ////        for (j = 0; j < dataGridView1.ColumnCount; j++)
+                    ////        {
+                    ////            xlWorkSheet.Cells[i + 1, j + 1] = dataGridView1[j, i].Value?.ToString();
+                    ////        }
+                    ////    }
 
-                        ////    xlWorkBook.SaveAs(saveFileDialog1.FileName, Excel.XlFileFormat.xlWorkbookNormal,
-                        ////        Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                        ////        Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
-                        ////        Type.Missing, Type.Missing, Type.Missing);
-                        ////    xlWorkBook.Close(true, Type.Missing, Type.Missing);
-                        ////    xlApp.Quit();
+                    ////    xlWorkBook.SaveAs(saveFileDialog1.FileName, Excel.XlFileFormat.xlWorkbookNormal,
+                    ////        Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                    ////        Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
+                    ////        Type.Missing, Type.Missing, Type.Missing);
+                    ////    xlWorkBook.Close(true, Type.Missing, Type.Missing);
+                    ////    xlApp.Quit();
 
-                        ////    ReleaseObject(xlWorkSheet);
-                        ////    ReleaseObject(xlWorkBook);
-                        ////    ReleaseObject(xlApp);
-                        ////    break;
-                        ///
+                    ////    ReleaseObject(xlWorkSheet);
+                    ////    ReleaseObject(xlWorkBook);
+                    ////    ReleaseObject(xlApp);
+                    ////    break;
+                    ///
 
-                        case 1: // Excel File
+                    case 1: // Excel File
+                        {
+                            try
                             {
-                                try
+                                // Crear una nueva aplicación de Excel
+                                Excel.Application xlApp = new Excel.Application();
+                                Excel.Workbook xlWorkBook = xlApp.Workbooks.Add(Type.Missing);
+                                Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Sheets[1];
+
+                                // Llenar el Excel con los datos del DataGridView
+                                int i, j;
+                                for (i = 0; i < dataGridView1.RowCount - 1; i++)
                                 {
-                                    // Crear una nueva aplicación de Excel
-                                    Excel.Application xlApp = new Excel.Application();
-                                    Excel.Workbook xlWorkBook = xlApp.Workbooks.Add(Type.Missing);
-                                    Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Sheets[1];
-
-                                    // Llenar el Excel con los datos del DataGridView
-                                    int i, j;
-                                    for (i = 0; i < dataGridView1.RowCount - 1; i++)
+                                    for (j = 0; j < dataGridView1.ColumnCount; j++)
                                     {
-                                        for (j = 0; j < dataGridView1.ColumnCount; j++)
-                                        {
-                                            xlWorkSheet.Cells[i + 1, j + 1] = dataGridView1[j, i].Value?.ToString();
-                                        }
-                                    }
-
-                                    // Guardar el archivo de Excel
-                                    string filePath = saveFileDialog1.FileName;
-                                    xlWorkBook.SaveAs(filePath, Excel.XlFileFormat.xlWorkbookNormal,
-                                        Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                                        Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
-                                        Type.Missing, Type.Missing, Type.Missing);
-
-                                    // Cerrar y liberar los recursos de Excel
-                                    xlWorkBook.Close(true, Type.Missing, Type.Missing);
-                                    xlApp.Quit();
-
-                                    ReleaseObject(xlWorkSheet);
-                                    ReleaseObject(xlWorkBook);
-                                    ReleaseObject(xlApp);
-
-                                    // Verificar si el archivo Excel se creó correctamente
-                                    if (System.IO.File.Exists(filePath))
-                                    {
-                                        MessageBox.Show("El archivo Excel se creó exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Hubo un error al guardar el archivo Excel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        xlWorkSheet.Cells[i + 1, j + 1] = dataGridView1[j, i].Value?.ToString();
                                     }
                                 }
-                                catch (Exception ex)
+
+                                // Guardar el archivo de Excel
+                                string filePath = saveFileDialog1.FileName;
+                                xlWorkBook.SaveAs(filePath, Excel.XlFileFormat.xlWorkbookNormal,
+                                    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                                    Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing,
+                                    Type.Missing, Type.Missing, Type.Missing);
+
+                                // Cerrar y liberar los recursos de Excel
+                                xlWorkBook.Close(true, Type.Missing, Type.Missing);
+                                xlApp.Quit();
+
+                                ReleaseObject(xlWorkSheet);
+                                ReleaseObject(xlWorkBook);
+                                ReleaseObject(xlApp);
+
+                                // Verificar si el archivo Excel se creó correctamente
+                                if (System.IO.File.Exists(filePath))
                                 {
-                                    // Si ocurre un error, mostrar un mensaje
-                                    MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("El archivo Excel se creó exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
-                                break;
+                                else
+                                {
+                                    MessageBox.Show("Hubo un error al guardar el archivo Excel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                // Si ocurre un error, mostrar un mensaje
+                                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            break;
 
                         }
 
-                        case 2: // Text File
-                                // Implementar lógica para guardar como archivo de texto.
-                            break;
+                    case 2: // Text File
+                            // Implementar lógica para guardar como archivo de texto.
+                        break;
 
-                        case 3: // PDF File
-                                // Implementar lógica para guardar como archivo PDF.
-                            break;
-                    }
+                    case 3: // PDF File
+                            // Implementar lógica para guardar como archivo PDF.
+                        break;
                 }
-            
+            }
+
 
 
 
@@ -304,7 +298,7 @@ namespace Pesaje
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                Log.Error(ex,ex.Message.ToString());
+                Log.Error(ex, ex.Message.ToString());
             }
             finally
             {

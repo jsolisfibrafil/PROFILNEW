@@ -1,14 +1,8 @@
 ﻿using Serilog;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Pesaje
@@ -38,10 +32,11 @@ namespace Pesaje
             this.obtenerListaArticulo();
         }
 
-        
-        private void obtenerListaArticulo() {
 
-            
+        private void obtenerListaArticulo()
+        {
+
+
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -63,7 +58,7 @@ namespace Pesaje
                         // Crear un adaptador para llenar el DataTable
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-                        
+
 
                         // Llenar el DataTable con los resultados
                         DataTable dt = new DataTable();
@@ -178,7 +173,7 @@ namespace Pesaje
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
 
-           
+
 
         }
 
@@ -217,11 +212,11 @@ namespace Pesaje
             }
             catch (Exception ex)
             {
-                Log.Information(ex,"[DEVFIL] Error de Seleccion " + ex.Message.ToString());
+                Log.Information(ex, "[DEVFIL] Error de Seleccion " + ex.Message.ToString());
                 throw;
             }
 
-           
+
 
         }
 
