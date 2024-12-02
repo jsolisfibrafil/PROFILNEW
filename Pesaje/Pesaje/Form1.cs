@@ -1318,7 +1318,8 @@ namespace Pesaje
                 else
                 {
                     MessageBox.Show("OK");
-                    //CargaDatos();
+                    CargoDatos();//* CargaDatos();
+
                 }
             }
             catch (Exception ex)
