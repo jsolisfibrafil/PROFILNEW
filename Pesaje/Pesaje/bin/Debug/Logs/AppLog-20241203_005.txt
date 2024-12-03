@@ -1,0 +1,23 @@
+2024-12-03 09:45:10.779 -05:00 [ERR] Error en Inicio de pesaje : El puerto está cerrado. - ST,GS    38.8,kg
+ST,GS    38.8,kg
+
+System.InvalidOperationException: El puerto está cerrado.
+   en System.IO.Ports.SerialPort.ReadExisting()
+   en Pesaje.Form1.ListenToBalance() en C:\CF\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 105
+2024-12-03 09:45:10.784 -05:00 [INF] ini load
+2024-12-03 09:45:10.816 -05:00 [INF] Iniciar pesaje
+2024-12-03 09:45:10.820 -05:00 [ERR] Error en Inicio de pesaje : Se ha denegado el acceso al puerto 'COM1'. - 
+System.UnauthorizedAccessException: Se ha denegado el acceso al puerto 'COM1'.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\CF\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 95
+2024-12-03 09:53:04.524 -05:00 [INF] ini load
+2024-12-03 09:53:04.615 -05:00 [INF] Iniciar pesaje
+2024-12-03 09:53:04.643 -05:00 [ERR] Error en Inicio de pesaje : El nombre de puerto proporcionado no empieza por COM o com, o no se resuelve en un puerto serie válido.
+Nombre del parámetro: portName - 
+System.ArgumentException: El nombre de puerto proporcionado no empieza por COM o com, o no se resuelve en un puerto serie válido.
+Nombre del parámetro: portName
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\CF\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 95

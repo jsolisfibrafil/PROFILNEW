@@ -1,0 +1,108 @@
+2024-12-03 09:53:29.462 -05:00 [INF] ini load
+2024-12-03 09:53:29.494 -05:00 [INF] Iniciar pesaje
+2024-12-03 09:53:29.497 -05:00 [ERR] Error en Inicio de pesaje : El nombre de puerto proporcionado no empieza por COM o com, o no se resuelve en un puerto serie válido.
+Nombre del parámetro: portName - 
+System.ArgumentException: El nombre de puerto proporcionado no empieza por COM o com, o no se resuelve en un puerto serie válido.
+Nombre del parámetro: portName
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\CF\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 95
+2024-12-03 09:55:45.836 -05:00 [INF] ini load
+2024-12-03 09:55:46.133 -05:00 [INF] Iniciar pesaje
+2024-12-03 09:55:46.261 -05:00 [INF] Puerto COM abierto. 
+2024-12-03 09:55:46.261 -05:00 [INF] Iniciar a escuchar datos desde la balanza. 
+2024-12-03 09:55:46.263 -05:00 [INF] ST,GS    ?.0,kg
+
+2024-12-03 09:55:46.363 -05:00 [INF] ST,GS    39.0,kg
+ST,GS    39.0,kg
+
+2024-12-03 09:55:46.471 -05:00 [INF] ST,GS    39.0,kg
+ST,GS    39.0,kg
+US,GS    38.4
+2024-12-03 09:55:46.579 -05:00 [INF] ,kg
+US,GS    38.4,kg
+US,GS    38.4,kg
+US
+2024-12-03 09:55:46.688 -05:00 [INF] ,GS    38.4,kg
+US,GS    38.4,kg
+US,GS    38.4,kg
+
+2024-12-03 09:55:46.797 -05:00 [INF] US,GS    38.4,kg
+US,GS    38.4,kg
+US,G
+2024-12-03 09:55:46.906 -05:00 [INF] S    38.4,kg
+US,GS    39.4,kg
+US,GS    39.4,kg
+
+2024-12-03 09:55:47.015 -05:00 [INF] US,GS    39.4,kg
+US,GS    39.4,kg
+
+2024-12-03 09:55:47.125 -05:00 [INF] US,GS    39.4,kg
+US,GS    39.4,kg
+US,GS    39
+2024-12-03 09:55:47.234 -05:00 [INF] .4,kg
+US,GS    39.4,kg
+US,GS    39.4,kg
+
+2024-12-03 09:55:47.343 -05:00 [INF] US,GS    39.6,kg
+US,GS    39.6,kg
+US,GS    39
+2024-12-03 09:55:47.452 -05:00 [INF] .6,kg
+US,GS    39.6,kg
+US,GS    39.6,kg
+
+2024-12-03 09:55:47.561 -05:00 [INF] US,GS    39.6,kg
+US,GS    39.6,kg
+US,
+2024-12-03 09:55:47.671 -05:00 [INF] GS    39.6,kg
+US,GS    39.6,kg
+ST,GS    39.4,kg
+2024-12-03 09:55:47.781 -05:00 [INF] 
+ST,GS    39.4,kg
+ST,GS    39.4,kg
+
+2024-12-03 09:55:47.889 -05:00 [INF] ST,GS    39.4,kg
+ST,GS    39.4,kg
+ST,GS    39.4,kg
+
+2024-12-03 09:55:47.998 -05:00 [INF] ST,GS    39.4,kg
+ST,GS    39.4,kg
+
+2024-12-03 09:55:48.106 -05:00 [INF] ST,GS    39.4,kg
+US,GS    39.2,kg
+US,GS   
+2024-12-03 09:55:48.215 -05:00 [INF]  39.2,kg
+US,GS    39.2,kg
+US,GS    39.2,kg
+
+2024-12-03 09:55:48.323 -05:00 [INF] US,GS    39.2,kg
+US,GS    39.2,kg
+US,GS    39.
+2024-12-03 09:55:48.432 -05:00 [INF] 2,kg
+US,GS    39.2,kg
+US,GS    39.2,kg
+
+2024-12-03 09:55:48.542 -05:00 [INF] US,GS    38.8,kg
+US,GS    38.8,kg
+US,GS    38.8
+2024-12-03 09:55:48.650 -05:00 [INF] ,kg
+US,GS    38.8,kg
+US,GS    38.8,kg
+
+2024-12-03 09:55:48.759 -05:00 [INF] US,GS    38.8,kg
+US,GS    38.8,kg
+US,G
+2024-12-03 09:55:48.868 -05:00 [INF] S    38.8,kg
+US,GS    38.8,kg
+ST,GS    38.8,kg
+2024-12-03 09:55:48.976 -05:00 [INF] 
+ST,GS    38.8,kg
+ST,GS    38.8,kg
+
+2024-12-03 09:55:49.087 -05:00 [INF] ST,GS    38.8,kg
+ST,GS    38.8,kg
+ST,GS    38.8,kg
+
+2024-12-03 09:55:49.194 -05:00 [INF] ST,GS    38.8,kg
+ST,GS    38.8,kg
+
