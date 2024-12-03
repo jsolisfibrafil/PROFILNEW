@@ -1161,7 +1161,7 @@ namespace Pesaje
 
         private void btnBorrarPesos_Click(object sender, EventArgs e)
         {
-
+            
 
             //string cnc3 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
             SqlConnection sqt = new SqlConnection(connection_String);
@@ -1200,6 +1200,9 @@ namespace Pesaje
                         cmd.Connection = sqt;
                         cmd.ExecuteNonQuery();
 
+
+                        Log.Information("Borrar los pesos");
+
                         string temp = cmd.Parameters["@msg"].Value.ToString();
                         // Verifica si el parámetro de salida @msg tiene contenido
                         if (!string.IsNullOrEmpty(cmd.Parameters["@msg"].Value.ToString()))
@@ -1214,32 +1217,7 @@ namespace Pesaje
                         MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
 
-                    // Llamar a la función para recargar los datos
-                    //CargaDatos();
                     CargoDatos();
-
-
-                    //DatosInsUpd("U_SP_FIB_INS_OPROM0", 0, false);
-                    //if (sqt3.State == ConnectionState.Closed) sqt3.Open();
-                    //try
-                    //{
-                    //    cmd.Connection = sqt3;
-                    //    cmd.ExecuteNonQuery();
-
-                    //    if (cmd.Parameters["@msg"].Value.ToString() != "")
-                    //    {
-                    //        MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //        Log.Error(cmd.Parameters["@msg"].Value.ToString());
-                    //    }
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    Log.Error(ex, ex.Message);
-                    //    MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                    //}
-
-
 
                 }
             }
@@ -1316,6 +1294,7 @@ namespace Pesaje
                 else
                 {
                     MessageBox.Show("OK");
+                    Log.Information("Evento confirmar");
                     CargoDatos();//* CargaDatos();
 
                 }
