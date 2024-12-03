@@ -105,7 +105,7 @@ namespace Pesaje
                     data2 = serialport2.ReadExisting();
                     //string data2 = serialport2.by ;
 
-                    Log.Information(data2);
+                    //Log.Information(data2);
                     dataIn = data2;
 
                     //if (!string.IsNullOrEmpty(data2))
@@ -144,6 +144,8 @@ namespace Pesaje
 
                                     if (Convert.ToDouble(datosrespo) > 1)
                                     {
+                                        Log.Information("Data leida por ultima vez " + data2);
+                                        Log.Information(data2);
                                         Log.Information("UpdateUI(" + datosrespo.ToString() + ")");
                                         UpdateUI(datosrespo);
                                         contador1 = 0;
@@ -154,17 +156,7 @@ namespace Pesaje
 
                             }
 
-                            //if (lines1[0] == "S" && contador1 == 0)
-                            //{
-                            //    contador1 = contador1 + 1;
-                            //    lastvalue = "S";
-                            //}
-                            //else
-                            //{
-                            //    contador1 = 0;
-                            //    lastvalue = string.Empty;
-                            //}
-
+                          
                             if (lines1 != null && lines1.Length > 0 && !string.IsNullOrEmpty(lines1[0]) && lines1[0] == "S" && contador1 == 0)
                             {
                                 contador1++;
@@ -457,6 +449,8 @@ namespace Pesaje
                             }
                             else
                             {
+
+
                                 DatosInsUpd("U_SP_FIB_INS_OPROM0", 0, false);
                                 if (sqt3.State == ConnectionState.Closed) sqt3.Open();
                                 try
@@ -471,6 +465,8 @@ namespace Pesaje
                                         MessageBox.Show(cmd.Parameters["@msg"].Value.ToString(), "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         Log.Error(cmd.Parameters["@msg"].Value.ToString());
                                     }
+
+                                    Log.Information("Se agrego item con exito");
                                 }
                                 catch (Exception ex)
                                 {
@@ -507,9 +503,11 @@ namespace Pesaje
         {
             //U_FIB_PROD_MAS
 
+
             if (NameProced == "U_SP_FIB_INS_OPROM0")
             {
                 Log.Information("usando SP U_SP_FIB_INS_OPROM0");
+
 
                 string cnc3 = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
                 SqlConnection sqt3 = new SqlConnection(cnc3);

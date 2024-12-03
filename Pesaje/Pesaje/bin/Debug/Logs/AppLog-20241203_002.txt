@@ -1,8 +1,0 @@
-2024-12-03 09:39:52.473 -05:00 [INF] ini load
-2024-12-03 09:39:52.504 -05:00 [INF] Iniciar pesaje
-2024-12-03 09:39:52.508 -05:00 [ERR] Error en Inicio de pesaje : Se ha denegado el acceso al puerto 'COM1'. - 
-System.UnauthorizedAccessException: Se ha denegado el acceso al puerto 'COM1'.
-   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
-   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
-   en System.IO.Ports.SerialPort.Open()
-   en Pesaje.Form1.ListenToBalance() en C:\CF\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 95

@@ -82,7 +82,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(343, 3);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 23);
             this.button1.TabIndex = 0;
@@ -104,7 +104,7 @@
             // tb_codigoarticulo
             // 
             this.tb_codigoarticulo.Location = new System.Drawing.Point(126, 54);
-            this.tb_codigoarticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_codigoarticulo.Margin = new System.Windows.Forms.Padding(2);
             this.tb_codigoarticulo.Name = "tb_codigoarticulo";
             this.tb_codigoarticulo.Size = new System.Drawing.Size(256, 20);
             this.tb_codigoarticulo.TabIndex = 2;
@@ -112,7 +112,7 @@
             // tb_descArticulo
             // 
             this.tb_descArticulo.Location = new System.Drawing.Point(126, 74);
-            this.tb_descArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_descArticulo.Margin = new System.Windows.Forms.Padding(2);
             this.tb_descArticulo.Name = "tb_descArticulo";
             this.tb_descArticulo.Size = new System.Drawing.Size(256, 20);
             this.tb_descArticulo.TabIndex = 4;
@@ -130,7 +130,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(592, 29);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(127, 20);
             this.textBox3.TabIndex = 5;
@@ -150,7 +150,7 @@
             this.cbMaquinaria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaquinaria.FormattingEnabled = true;
             this.cbMaquinaria.Location = new System.Drawing.Point(592, 5);
-            this.cbMaquinaria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMaquinaria.Margin = new System.Windows.Forms.Padding(2);
             this.cbMaquinaria.Name = "cbMaquinaria";
             this.cbMaquinaria.Size = new System.Drawing.Size(164, 21);
             this.cbMaquinaria.TabIndex = 7;
@@ -159,7 +159,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(386, 55);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(50, 19);
             this.button2.TabIndex = 8;
@@ -170,7 +170,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(11, 422);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(227, 36);
             this.button3.TabIndex = 11;
@@ -181,7 +181,7 @@
             // bt_anadir
             // 
             this.bt_anadir.Location = new System.Drawing.Point(8, 108);
-            this.bt_anadir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bt_anadir.Margin = new System.Windows.Forms.Padding(2);
             this.bt_anadir.Name = "bt_anadir";
             this.bt_anadir.Size = new System.Drawing.Size(81, 19);
             this.bt_anadir.TabIndex = 12;
@@ -192,7 +192,7 @@
             // tb_sede
             // 
             this.tb_sede.Location = new System.Drawing.Point(44, 5);
-            this.tb_sede.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_sede.Margin = new System.Windows.Forms.Padding(2);
             this.tb_sede.Name = "tb_sede";
             this.tb_sede.ReadOnly = true;
             this.tb_sede.Size = new System.Drawing.Size(23, 20);
@@ -213,7 +213,7 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(8, 130);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(428, 160);
             this.listBox1.TabIndex = 15;
@@ -243,7 +243,7 @@
             // tb_area
             // 
             this.tb_area.Location = new System.Drawing.Point(110, 5);
-            this.tb_area.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_area.Margin = new System.Windows.Forms.Padding(2);
             this.tb_area.Name = "tb_area";
             this.tb_area.ReadOnly = true;
             this.tb_area.Size = new System.Drawing.Size(23, 20);
@@ -263,7 +263,7 @@
             // tb_nameOperario
             // 
             this.tb_nameOperario.Location = new System.Drawing.Point(194, 5);
-            this.tb_nameOperario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_nameOperario.Margin = new System.Windows.Forms.Padding(2);
             this.tb_nameOperario.Name = "tb_nameOperario";
             this.tb_nameOperario.ReadOnly = true;
             this.tb_nameOperario.Size = new System.Drawing.Size(145, 20);
@@ -283,7 +283,7 @@
             // tb_codeOperario
             // 
             this.tb_codeOperario.Location = new System.Drawing.Point(194, 31);
-            this.tb_codeOperario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_codeOperario.Margin = new System.Windows.Forms.Padding(2);
             this.tb_codeOperario.Name = "tb_codeOperario";
             this.tb_codeOperario.ReadOnly = true;
             this.tb_codeOperario.Size = new System.Drawing.Size(38, 20);
@@ -304,7 +304,7 @@
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.Location = new System.Drawing.Point(509, 130);
-            this.listBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(2);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(325, 160);
             this.listBox2.TabIndex = 24;
@@ -314,7 +314,7 @@
             // 
             this.listBox3.FormattingEnabled = true;
             this.listBox3.Location = new System.Drawing.Point(509, 330);
-            this.listBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox3.Margin = new System.Windows.Forms.Padding(2);
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(325, 82);
             this.listBox3.TabIndex = 25;
@@ -432,7 +432,7 @@
             // imprimirticket
             // 
             this.imprimirticket.Location = new System.Drawing.Point(364, 422);
-            this.imprimirticket.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.imprimirticket.Margin = new System.Windows.Forms.Padding(2);
             this.imprimirticket.Name = "imprimirticket";
             this.imprimirticket.Size = new System.Drawing.Size(70, 36);
             this.imprimirticket.TabIndex = 38;
@@ -445,7 +445,7 @@
             // 
             this.tb_pesoobtenido.Enabled = false;
             this.tb_pesoobtenido.Location = new System.Drawing.Point(343, 30);
-            this.tb_pesoobtenido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_pesoobtenido.Margin = new System.Windows.Forms.Padding(2);
             this.tb_pesoobtenido.Name = "tb_pesoobtenido";
             this.tb_pesoobtenido.ReadOnly = true;
             this.tb_pesoobtenido.Size = new System.Drawing.Size(119, 20);
@@ -455,7 +455,7 @@
             // btnBorrarPesos
             // 
             this.btnBorrarPesos.Location = new System.Drawing.Point(734, 427);
-            this.btnBorrarPesos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBorrarPesos.Margin = new System.Windows.Forms.Padding(2);
             this.btnBorrarPesos.Name = "btnBorrarPesos";
             this.btnBorrarPesos.Size = new System.Drawing.Size(100, 28);
             this.btnBorrarPesos.TabIndex = 40;
@@ -473,9 +473,9 @@
             this.grp_combos.Controls.Add(this.label15);
             this.grp_combos.Controls.Add(this.label10);
             this.grp_combos.Location = new System.Drawing.Point(234, 172);
-            this.grp_combos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grp_combos.Margin = new System.Windows.Forms.Padding(2);
             this.grp_combos.Name = "grp_combos";
-            this.grp_combos.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grp_combos.Padding = new System.Windows.Forms.Padding(2);
             this.grp_combos.Size = new System.Drawing.Size(525, 136);
             this.grp_combos.TabIndex = 41;
             this.grp_combos.TabStop = false;
@@ -485,7 +485,7 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(341, 50);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(152, 21);
             this.comboBox2.TabIndex = 6;
@@ -494,7 +494,7 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(71, 52);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(175, 21);
             this.comboBox1.TabIndex = 5;
@@ -502,7 +502,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(14, 95);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(82, 19);
             this.button4.TabIndex = 4;
@@ -590,7 +590,7 @@
             this.Controls.Add(this.tb_codigoarticulo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Pesaje";
             this.Load += new System.EventHandler(this.Form1_Load);

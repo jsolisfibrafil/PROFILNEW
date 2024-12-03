@@ -49,6 +49,8 @@ namespace Pesaje
 
         private void btnexport_Click(object sender, EventArgs e)
         {
+            Log.Information("Se Exporta excel");
+
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "Archivo de Excel|*.xls|Archivo de Texto|*.txt|Archivo PDF|*.pdf";
@@ -169,7 +171,7 @@ namespace Pesaje
         {
             //int var = i_ninforme;
 
-
+            Log.Information("Se ObtenerData");
             ObtenerData();
 
         }
