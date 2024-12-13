@@ -35,5 +35,10 @@ namespace Pesaje
             frmEmpl.Show();
 
         }
+
+        private void mainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

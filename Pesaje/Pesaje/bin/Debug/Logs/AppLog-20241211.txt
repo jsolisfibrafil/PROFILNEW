@@ -1,0 +1,9 @@
+2024-12-11 16:15:18.753 -05:00 [INF] ini load
+2024-12-11 16:15:22.328 -05:00 [INF] Iniciar pesaje
+2024-12-11 16:15:22.354 -05:00 [ERR] Error en Inicio de pesaje : El nombre de puerto proporcionado no empieza por COM o com, o no se resuelve en un puerto serie válido.
+Nombre del parámetro: portName - 
+System.ArgumentException: El nombre de puerto proporcionado no empieza por COM o com, o no se resuelve en un puerto serie válido.
+Nombre del parámetro: portName
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\CF\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 95
