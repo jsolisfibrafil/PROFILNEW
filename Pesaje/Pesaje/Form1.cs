@@ -40,6 +40,28 @@ namespace Pesaje
 
         public event EventHandler MiEvento;
 
+        public string Sede { get; set; }
+        public string Area { get; set; }
+        //public string Operario { get; set; }
+
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //
+
+            tb_sede.Text = Sede;
+            tb_area.Text = Area;
+
+
+            Log.Information("ini load");
+
+            CargarDatosEnComboBox();
+            CargoDatos();
+
+            iniciar_pesaje_click(this, EventArgs.Empty);
+        }
 
 
         public Form1()
@@ -239,7 +261,7 @@ namespace Pesaje
             idarea = tb_area.Text;
 
             //CHILCA 2
-            tb_sede.Text = "03";
+            tb_sede.Text = Sede;
 
             try
             {
@@ -346,18 +368,6 @@ namespace Pesaje
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //
-
-            Log.Information("ini load");
-
-            CargarDatosEnComboBox();
-            CargoDatos();
-
-            iniciar_pesaje_click(this, EventArgs.Empty);
-        }
-
 
         private void conectarPuertoCom()
         {
@@ -406,6 +416,31 @@ namespace Pesaje
             cbMaquinaria.DisplayMember = "Maquina";
             cbMaquinaria.ValueMember = "Code";
 
+            //INI _ nuevo 17122024
+
+            SqlDataAdapter dap_ope = new SqlDataAdapter(
+            "SELECT T0.Code, T0.Name FROM OFIBEMPL T0 " +
+            "INNER JOIN OFIBAREA T1 ON T0.U_FIB_AREA = T1.CODE " +
+            "WHERE T0.u_FIB_CARGO = 'O' AND T1.PP = 'Y' AND ISNULL(T0.INACTIVO, 'N') <> 'Y'",connectionString);
+
+            dap_ope.Fill(ds, "Operario");
+            cmb_ope.DataSource = ds.Tables["Operario"];
+            cmb_ope.DisplayMember = "Name";
+            cmb_ope.ValueMember = "Code";
+
+            // COMBOBOX AYUDANTE
+            SqlDataAdapter dap_ayud = new SqlDataAdapter(
+                "SELECT T0.Code, T0.Name FROM OFIBEMPL T0 " +
+                "INNER JOIN OFIBAREA T1 ON T0.U_FIB_AREA = T1.CODE " +
+                "WHERE T0.u_FIB_CARGO = 'A' AND T1.PP = 'Y' AND ISNULL(T0.INACTIVO, 'N') <> 'Y'",connectionString);
+
+
+            dap_ayud.Fill(ds, "Ayudante");
+            cmb_ayud.DataSource = ds.Tables["Ayudante"];
+            cmb_ayud.DisplayMember = "Name";
+            cmb_ayud.ValueMember = "Code";
+
+            //FIN _ nuevo 17122024
 
         }
 
@@ -522,9 +557,17 @@ namespace Pesaje
                     cmd.Parameters.Add(new SqlParameter("@ProducQuantity", SqlDbType.Decimal)).Value = 0; // Cant producida, se manda 0
                     cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = 0; // Peso producido, se manda 0
                     cmd.Parameters.Add(new SqlParameter("@COMMENT", SqlDbType.Text)).Value = string.Empty; // Comentario no implementado
-                    cmd.Parameters.Add(new SqlParameter("@U_FIB_OPERARIO", SqlDbType.Text)).Value = tb_codeOperario.Text;  // ComboBox5.SelectedValue() //codigo de operario    // hardcode                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ", SqlDbType.Text)).Value = cmb_ope.SelectedValue;
-                    cmd.Parameters.Add(new SqlParameter("@U_FIB_AYUDANTE", SqlDbType.Text)).Value = "647";
+
+                    //cmd.Parameters.Add(new SqlParameter("@U_FIB_OPERARIO", SqlDbType.Text)).Value = tb_codeOperario.Text;  // ComboBox5.SelectedValue() //codigo de operario    // hardcode
+                    //cmd.Parameters.Add(new SqlParameter("@U_FIB_AYUDANTE", SqlDbType.Text)).Value = "647";          
+                    // ", SqlDbType.Text)).Value = cmb_ope.SelectedValue;
+                    cmd.Parameters.Add(new SqlParameter("@U_FIB_OPERARIO", SqlDbType.Text)).Value = cmb_ope.SelectedValue;
+                    cmd.Parameters.Add(new SqlParameter("@U_FIB_AYUDANTE", SqlDbType.Text)).Value = cmb_ayud.SelectedValue;
+
+
+
                     cmd.Parameters.Add(new SqlParameter("@U_FIB_TELAR", SqlDbType.Text)).Value = cbMaquinaria.SelectedValue;
+                    //quizas caiga
                     cmd.Parameters.Add(new SqlParameter("@U_FIB_AREA", SqlDbType.Text)).Value = tb_area.Text;
                     cmd.Parameters.Add(new SqlParameter("@U_FIB_SEDE", SqlDbType.Text)).Value = tb_sede.Text;
                     cmd.Parameters.Add(new SqlParameter("@HOST", SqlDbType.Text)).Value = Environment.MachineName;
@@ -651,9 +694,18 @@ namespace Pesaje
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = NameProced;
 
+
+                    cmd.Parameters.Add(new SqlParameter("@U_FIB_OPERARIO", SqlDbType.Text)).Value = cmb_ope.SelectedValue;
+                    cmd.Parameters.Add(new SqlParameter("@U_FIB_AYUDANTE", SqlDbType.Text)).Value = cmb_ayud.SelectedValue;
+
                     cmd.Parameters.Add(new SqlParameter("@Item", SqlDbType.Text)).Value = listBox1.SelectedValue.ToString(); // Código de ítem
-                    cmd.Parameters.Add(new SqlParameter("@Operario", SqlDbType.VarChar)).Value = tb_codeOperario.Text; // Operario seleccionado
-                    cmd.Parameters.Add(new SqlParameter("@Ayudante", SqlDbType.VarChar)).Value = "647";//cmb_ayud.SelectedValue; // Ayudante seleccionado
+
+
+                    //cmd.Parameters.Add(new SqlParameter("@Operario", SqlDbType.VarChar)).Value = tb_codeOperario.Text; // Operario seleccionado
+                    //cmd.Parameters.Add(new SqlParameter("@Ayudante", SqlDbType.VarChar)).Value = "647";//cmb_ayud.SelectedValue; // Ayudante seleccionado
+                    
+
+
                     cmd.Parameters.Add(new SqlParameter("@Maquina", SqlDbType.VarChar)).Value = cbMaquinaria.SelectedValue; // Máquina seleccionada
                     cmd.Parameters.Add(new SqlParameter("@sede", SqlDbType.VarChar)).Value = tb_sede.Text; // Sede
                     cmd.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output; // Mensaje de salida

@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +23,19 @@ namespace Pesaje.Formulario
 
         DataSet dts = new DataSet();
         public static string vs_User, vs_Area, vs_Mac, vs_idUser, vs_idArea, vs_idMac, vs_isADM, vs_iArea, vs_Host, vs_MacAddres, vs_sede;
+
+        private void cmbArea_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            vs_idArea = cmbArea.SelectedValue.ToString();
+            vs_Area = cmbArea.GetItemText(cmbArea.SelectedItem).Trim();
+        }
+
+        private void btnOUT_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         //public SqlConnection OCN = new SqlConnection();
         string connection_String = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
         private SqlConnection OCN = new SqlConnection(ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString); // Reemplaza con tu cadena de conexión
@@ -66,16 +82,42 @@ namespace Pesaje.Formulario
                         CMD99.Parameters.Add(new SqlParameter("@option", SqlDbType.VarChar)).Value = 1;
                         CMD99.ExecuteNonQuery();
 
-                        //MDIPROFIL mdi = new MDIPROFIL();
-                        mainForm mdi = new mainForm();
-                        //mainForm
+                        //////MDIPROFIL mdi = new MDIPROFIL();
+                        ////mainForm mdi = new mainForm();
+                        //////mainForm
 
-                        //mdi.ToolStripStatusLabel1.Text = "Area : " + vs_idArea;
+                        mainForm formPrincipal = new mainForm();
+
+
+                        ////Heredar
+                        //Area
+                        //Maquina
+                        //Usuario
+
+                        // Pasar valores a las propiedades
+                        formPrincipal.Area    = vs_Area;
+                        //formPrincipal.Maquina = "Maquina";
+                        formPrincipal.Usuario = vs_User;
+                        formPrincipal.Sede = vs_sede;
+
+                        // Mostrar el formulario principal
+                        formPrincipal.Show();
+
+                        // Ocultar o cerrar el formulario de autenticación
+                        this.Hide();
+
+
+                        //mainForm.Show();// Show();
+                        //mainForm.
+
+
+                        //mdi.too . too .ToolStripStatusLabel1.Text = "Area : " + vs_idArea;
                         //mdi.ToolStripStatusLabel2.Text = " Maquina : " + vs_Mac;
                         //mdi.ToolStripStatusLabel3.Text = " Usuario : " + vs_User + " [" + vs_isADM + "]";
-                        mdi.ShowDialog();// Show();
 
-                        this.Close();
+
+                        //this.Close();
+
                         break;
 
                     case 0:
@@ -125,7 +167,7 @@ namespace Pesaje.Formulario
                     // Agregar parámetros al comando
                     cmd.Parameters.Add(new SqlParameter("@namehost", SqlDbType.Text)).Value = Environment.MachineName;
                     cmd.Parameters.Add(new SqlParameter("@iphost", SqlDbType.Text)).Value = RetIPAddress(GetHostName());
-                    cmd.Parameters.Add(new SqlParameter("@MAcAddres", SqlDbType.Text)).Value = getMacAddress();
+                    cmd.Parameters.Add(new SqlParameter("@MAcAddres", SqlDbType.Text)).Value = GetMacAddress();
                     cmd.Parameters.Add(new SqlParameter("@SOName", SqlDbType.Text)).Value = Environment.OSVersion.VersionString;
                     cmd.Parameters.Add(new SqlParameter("@Winver", SqlDbType.Text)).Value = Environment.OSVersion.Version.ToString();
                     cmd.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output;
@@ -181,7 +223,7 @@ namespace Pesaje.Formulario
             
 
             vs_Host = System.Environment.MachineName;
-            vs_MacAddres = getMacAddress();
+            vs_MacAddres = GetMacAddress();
 
             //SqlCommand CMD = new SqlCommand("U_SP_LISVFHOST", OCN);
             SqlCommand CMD = new SqlCommand("U_SP_LISVFHOST", sqt1);
@@ -190,7 +232,7 @@ namespace Pesaje.Formulario
 
             CMD.CommandType = CommandType.StoredProcedure;
             CMD.Parameters.Add(new SqlParameter("@namehost", SqlDbType.Text)).Value = System.Environment.MachineName;
-            CMD.Parameters.Add(new SqlParameter("@MAcAddres", SqlDbType.Text)).Value = getMacAddress();
+            CMD.Parameters.Add(new SqlParameter("@MAcAddres", SqlDbType.Text)).Value = GetMacAddress();
             CMD.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output;
             CMD.Parameters.Add(new SqlParameter("@NERROR", SqlDbType.Int)).Direction = ParameterDirection.Output;
 
@@ -219,6 +261,11 @@ namespace Pesaje.Formulario
                         Panel1.Visible = true;
                         break;
                     default:
+
+                        string hostname1 = Environment.MachineName;
+
+                        string a1 = string.Empty;
+                        a1 = "SELECT IDsede FROM ofibhost WHERE [MacAddres] = '" + vs_MacAddres + "' AND [NameHost] = '" + vs_Host + "'";
                         SqlDataAdapter dap0 = new SqlDataAdapter("SELECT IDsede FROM ofibhost WHERE [MacAddres] = '" + vs_MacAddres + "' AND [NameHost] = '" + vs_Host + "'", sqt1);
                         dap0.SelectCommand.CommandType = CommandType.Text;
                         dap0.Fill(dts, "vIDSEDE");
@@ -269,26 +316,37 @@ namespace Pesaje.Formulario
         }
 
         // Métodos auxiliares (si los tienes definidos)
-        private string getMacAddress()
+        public string GetMacAddress()
         {
-            // Implementación del método para obtener la dirección MAC
-            return "00:00:00:00:00"; // Este es solo un ejemplo
+            NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+            return nics[0].GetPhysicalAddress().ToString();
         }
 
-        private string RetIPAddress(string hostName)
+        public string RetIPAddress(string mStrHost)
         {
-            // Implementación para obtener la IP (si es necesario)
-            return "127.0.0.1"; // Este es solo un ejemplo
+            try
+            {
+                IPHostEntry mIpHostEntry = Dns.GetHostEntry(mStrHost);
+                IPAddress[] mIpAddLst = mIpHostEntry.AddressList;
+
+                // Devuelve la primera IP
+                return mIpAddLst[0].ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return string.Empty; // Devuelve cadena vacía si hay error
+            }
         }
 
-        private string GetHostName()
+        public static string GetHostName()
         {
-            // Implementación para obtener el nombre del host
-            return "localhost"; // Este es solo un ejemplo
+            return Dns.GetHostName();
+            
         }
 
 
 
-    
+
     }
 }
