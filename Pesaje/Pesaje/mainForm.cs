@@ -60,5 +60,41 @@ namespace Pesaje
             toolStripStatusLabel4.Text =    $" Sede :    {Sede}";
 
         }
+
+        private void ExportacionOrdenProduccionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_OP_to_SAP f_toSAP1 = new frm_OP_to_SAP();
+
+            // Mostrar el formulario
+            f_toSAP1.Show();
+
+            // Configurar el formulario como hijo MDI
+            f_toSAP1.MdiParent = this;
+        }
+
+        private void MDIPROFIL_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MDIPROFIL_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult i_cierre = MessageBox.Show(
+              "Está procediendo a cerrar la aplicación. ¿Está seguro de esta acción?",
+              "FIBRAFIL",
+              MessageBoxButtons.YesNo,
+              MessageBoxIcon.Exclamation,
+              MessageBoxDefaultButton.Button2);
+
+            e.Cancel = CierraForm(i_cierre);
+
+        }
+
+        private bool CierraForm(DialogResult resultado)
+        {
+            return resultado == DialogResult.No; // Devuelve true si se cancela el cierre
+        }
+
+
     }
 }

@@ -499,6 +499,7 @@ C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.frmArticu
 C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.Form1.resources
 C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.Formulario.Login.resources
 C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.frmInformes.resources
+C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.frm_OP_to_SAP.resources
 C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.mainForm.resources
 C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.Properties.Resources.resources
 C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.csproj.GenerateResource.cache
