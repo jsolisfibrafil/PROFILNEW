@@ -144,6 +144,20 @@ namespace Pesaje
         {
 
         }
+
+        private void cmb_sede_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Obtener_DATA(1, "", 0, new DateTime(2000, 1, 1), "");
+            }
+            catch (Exception ex)
+            {
+                // Opcional: Loguear o manejar el error
+                // MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 
 

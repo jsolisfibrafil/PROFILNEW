@@ -35,8 +35,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmb_normr = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.cmb_normr = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_cant = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView2)).BeginInit();
             this.GroupBox1.SuspendLayout();
@@ -44,6 +46,8 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(737, 13);
             this.label1.Name = "label1";
@@ -53,15 +57,20 @@
             // 
             // cmb_sede
             // 
+            this.cmb_sede.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmb_sede.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_sede.FormattingEnabled = true;
             this.cmb_sede.Location = new System.Drawing.Point(788, 10);
             this.cmb_sede.Name = "cmb_sede";
             this.cmb_sede.Size = new System.Drawing.Size(121, 21);
             this.cmb_sede.TabIndex = 1;
+            this.cmb_sede.SelectedIndexChanged += new System.EventHandler(this.cmb_sede_SelectedIndexChanged);
             // 
             // DataGridView1
             // 
+            this.DataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView1.Location = new System.Drawing.Point(12, 37);
             this.DataGridView1.Name = "DataGridView1";
@@ -70,6 +79,8 @@
             // 
             // DataGridView2
             // 
+            this.DataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView2.Location = new System.Drawing.Point(12, 309);
             this.DataGridView2.Name = "DataGridView2";
@@ -105,14 +116,6 @@
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
             // 
-            // cmb_normr
-            // 
-            this.cmb_normr.FormattingEnabled = true;
-            this.cmb_normr.Location = new System.Drawing.Point(551, 19);
-            this.cmb_normr.Name = "cmb_normr";
-            this.cmb_normr.Size = new System.Drawing.Size(121, 21);
-            this.cmb_normr.TabIndex = 0;
-            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(30, 93);
@@ -122,11 +125,43 @@
             this.button3.Text = "A SAP";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // cmb_normr
+            // 
+            this.cmb_normr.FormattingEnabled = true;
+            this.cmb_normr.Location = new System.Drawing.Point(551, 19);
+            this.cmb_normr.Name = "cmb_normr";
+            this.cmb_normr.Size = new System.Drawing.Size(121, 21);
+            this.cmb_normr.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(553, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "CANTIDAD : ";
+            // 
+            // lbl_cant
+            // 
+            this.lbl_cant.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_cant.AutoSize = true;
+            this.lbl_cant.Location = new System.Drawing.Point(641, 13);
+            this.lbl_cant.Name = "lbl_cant";
+            this.lbl_cant.Size = new System.Drawing.Size(10, 13);
+            this.lbl_cant.TabIndex = 8;
+            this.lbl_cant.Text = "-";
+            // 
             // frm_OP_to_SAP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(921, 540);
+            this.Controls.Add(this.lbl_cant);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -156,5 +191,7 @@
         private System.Windows.Forms.GroupBox GroupBox1;
         private System.Windows.Forms.ComboBox cmb_normr;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_cant;
     }
 }
