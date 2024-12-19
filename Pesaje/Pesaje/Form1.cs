@@ -8,6 +8,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Threading;
 using System.Windows.Forms;
+using static Pesaje.AreaCodeResolver;
 
 
 namespace Pesaje
@@ -266,10 +267,20 @@ namespace Pesaje
             try
             {
 
+                AreaCodeResolver resolver = new AreaCodeResolver();
+
                 string sentencia = "Select ItemNo, ItemName from OPROM0 " +
                             "inner join SBO_Fibrafil..OITM on Itemcode collate SQL_Latin1_General_CP850_CI_AS = ItemNo collate SQL_Latin1_General_CP850_CI_AS " +
-                            "where U_FIB_AREA = '" + idarea + "' and U_FIB_SEDE = '" + tb_sede.Text + "' and U_fib_telar = '" + cbMaquinaria.SelectedValue + "' " +
+                            "where U_FIB_AREA = '" + resolver.GetCodeByDescripcion(tb_area.Text) + "' and U_FIB_SEDE = '" + tb_sede.Text + "' and U_fib_telar = '" + cbMaquinaria.SelectedValue + "' " +
                             "order by RECORDKEY";
+
+
+                //string sentencia = "Select ItemNo, ItemName from OPROM0 " +
+                //            "inner join SBO_Fibrafil..OITM on Itemcode collate SQL_Latin1_General_CP850_CI_AS = ItemNo collate SQL_Latin1_General_CP850_CI_AS " +
+                //            "where U_FIB_AREA = '" + idarea + "' and U_FIB_SEDE = '" + tb_sede.Text + "' and U_fib_telar = '" + cbMaquinaria.SelectedValue + "' " +
+                //            "order by RECORDKEY";
+
+
 
                 SqlDataAdapter dap1 = new SqlDataAdapter(sentencia, connectionString);
 
@@ -549,6 +560,13 @@ namespace Pesaje
 
                 try
                 {
+
+                    AreaCodeResolver resolver = new AreaCodeResolver();
+
+
+                    //string code = resolver.GetCodeByDescripcion(descripcion);
+
+
                     cmd.Parameters.Clear();
                     cmd.Connection = sqt3;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -558,9 +576,12 @@ namespace Pesaje
                     cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = 0; // Peso producido, se manda 0
                     cmd.Parameters.Add(new SqlParameter("@COMMENT", SqlDbType.Text)).Value = string.Empty; // Comentario no implementado
 
-                    //cmd.Parameters.Add(new SqlParameter("@U_FIB_OPERARIO", SqlDbType.Text)).Value = tb_codeOperario.Text;  // ComboBox5.SelectedValue() //codigo de operario    // hardcode
-                    //cmd.Parameters.Add(new SqlParameter("@U_FIB_AYUDANTE", SqlDbType.Text)).Value = "647";          
+                    ////cmd.Parameters.Add(new SqlParameter("@U_FIB_OPERARIO", SqlDbType.Text)).Value = tb_codeOperario.Text;  // ComboBox5.SelectedValue() //codigo de operario    // hardcode
+                    ////cmd.Parameters.Add(new SqlParameter("@U_FIB_AYUDANTE", SqlDbType.Text)).Value = "647";
+
                     // ", SqlDbType.Text)).Value = cmb_ope.SelectedValue;
+
+
                     cmd.Parameters.Add(new SqlParameter("@U_FIB_OPERARIO", SqlDbType.Text)).Value = cmb_ope.SelectedValue;
                     cmd.Parameters.Add(new SqlParameter("@U_FIB_AYUDANTE", SqlDbType.Text)).Value = cmb_ayud.SelectedValue;
 
@@ -568,7 +589,7 @@ namespace Pesaje
 
                     cmd.Parameters.Add(new SqlParameter("@U_FIB_TELAR", SqlDbType.Text)).Value = cbMaquinaria.SelectedValue;
                     //quizas caiga
-                    cmd.Parameters.Add(new SqlParameter("@U_FIB_AREA", SqlDbType.Text)).Value = tb_area.Text;
+                    cmd.Parameters.Add(new SqlParameter("@U_FIB_AREA", SqlDbType.Text)).Value = resolver.GetCodeByDescripcion(tb_area.Text);
                     cmd.Parameters.Add(new SqlParameter("@U_FIB_SEDE", SqlDbType.Text)).Value = tb_sede.Text;
                     cmd.Parameters.Add(new SqlParameter("@HOST", SqlDbType.Text)).Value = Environment.MachineName;
                     cmd.Parameters.Add(new SqlParameter("@Createfor", SqlDbType.Text)).Value = "152";

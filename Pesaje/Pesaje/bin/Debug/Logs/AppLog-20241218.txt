@@ -1,0 +1,16 @@
+2024-12-18 16:34:51.644 -05:00 [INF] ini load
+2024-12-18 16:34:53.866 -05:00 [INF] Iniciar pesaje
+2024-12-18 16:34:53.878 -05:00 [ERR] Error en Inicio de pesaje : Se ha denegado el acceso al puerto 'COM1'. - 
+System.UnauthorizedAccessException: Se ha denegado el acceso al puerto 'COM1'.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 117
+2024-12-18 16:35:07.397 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2024-12-18 16:35:11.988 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = Cabos BD: Codigo de area inválido, reinicie la aplicación.
+2024-12-18 16:35:15.471 -05:00 [ERR] Cabos BD: Codigo de area inválido, reinicie la aplicación.
+2024-12-18 16:35:15.471 -05:00 [INF] Se agrego item con exito
+2024-12-18 16:35:28.716 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2024-12-18 16:35:30.262 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = BD: Esta máquina se encuentra ocupada en otra producción.
+2024-12-18 16:35:36.080 -05:00 [ERR] BD: Esta máquina se encuentra ocupada en otra producción.
+2024-12-18 16:35:36.080 -05:00 [INF] Se agrego item con exito

@@ -1,0 +1,19 @@
+2024-12-19 10:10:38.065 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2024-12-19 10:10:39.323 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = 
+2024-12-19 10:10:39.324 -05:00 [INF] Se agrego item con exito
+2024-12-19 10:12:17.734 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2024-12-19 10:12:19.277 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = 
+2024-12-19 10:12:19.277 -05:00 [INF] Se agrego item con exito
+2024-12-19 10:13:32.048 -05:00 [INF] ini load
+2024-12-19 10:13:32.107 -05:00 [INF] Iniciar pesaje
+2024-12-19 10:13:32.120 -05:00 [ERR] Error en Inicio de pesaje : El nombre de puerto proporcionado no empieza por COM o com, o no se resuelve en un puerto serie válido.
+Nombre del parámetro: portName - 
+System.ArgumentException: El nombre de puerto proporcionado no empieza por COM o com, o no se resuelve en un puerto serie válido.
+Nombre del parámetro: portName
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 118
+2024-12-19 10:13:57.244 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2024-12-19 10:13:59.074 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = BD: Esta máquina se encuentra ocupada en otra producción.
+2024-12-19 10:14:02.484 -05:00 [ERR] BD: Esta máquina se encuentra ocupada en otra producción.
+2024-12-19 10:14:02.484 -05:00 [INF] Se agrego item con exito
