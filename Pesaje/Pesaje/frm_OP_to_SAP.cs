@@ -107,25 +107,38 @@ namespace Pesaje
 
                 var dts = new DataSet();
 
+                DataView Dvlista;
+                DataView Dvlista1;
+
                 if (opcion != 2)
                 {
-                    DataView Dvlista;
+                    
                     dap.Fill(dts, "vLIST");
 
                     Dvlista = dts.Tables["vLIST"].DefaultView;
                     DataGridView1.DataSource = Dvlista;
                     Dvlista.AllowEdit = false;
                     Dvlista.AllowNew = false;
+
+                    //
+                    lbl_cant.Text = Convert.ToString( Dvlista.Count);
+                    //Dvlista1.Table.Clear();
+
+
                 }
                 else
                 {
-                    DataView Dvlista1;
+                    
                     dap.Fill(dts, "vLIST");
 
                     Dvlista1 = dts.Tables["vLIST"].DefaultView;
                     DataGridView2.DataSource = Dvlista1;
                     Dvlista1.AllowEdit = false;
                     Dvlista1.AllowNew = false;
+
+                    //
+                    lbl_cantdetalle.Text = Convert.ToString(Dvlista1.Count);
+
                 }
             }
             catch (Exception ex)
@@ -149,13 +162,37 @@ namespace Pesaje
         {
             try
             {
+                Log.Information("Obtener_DATA");
                 Obtener_DATA(1, "", 0, new DateTime(2000, 1, 1), "");
             }
             catch (Exception ex)
             {
+                Log.Error (ex,ex.Message.ToString());   
                 // Opcional: Loguear o manejar el error
                 // MessageBox.Show(ex.Message);
             }
+
+        }
+
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Asegura que no se haga clic en el encabezado
+            {
+                try
+                {
+                    string codigo = DataGridView1.Rows[e.RowIndex].Cells["CODIGO"].Value.ToString();
+                    decimal cant = Convert.ToDecimal( DataGridView1.Rows[e.RowIndex].Cells["CANT"].Value);
+                    DateTime date1 = Convert.ToDateTime( DataGridView1.Rows[e.RowIndex].Cells["Fecha"].Value);
+                    string telar = DataGridView1.Rows[e.RowIndex].Cells["Telar"].Value.ToString();
+
+                    Obtener_DATA(2, codigo, cant, date1, telar);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+
 
         }
     }

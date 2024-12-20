@@ -229,8 +229,6 @@ namespace Pesaje
         private static void UpdateUI(string data)
         {
 
-
-
             if (Application.OpenForms["Form1"] != null && Application.OpenForms["Form1"].InvokeRequired)
             {
                 Application.OpenForms["Form1"].Invoke(new Action<string>(UpdateUI), data);
