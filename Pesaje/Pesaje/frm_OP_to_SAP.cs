@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,10 @@ namespace Pesaje
         DateTime fecha = new DateTime(2000, 1, 1);
         DataSet dts_NR = new DataSet();
         DataSet dts_SD = new DataSet();
+
+
+        DataView Dvlista = null;
+        DataView Dvlista1 = null;
 
         private void frm_OP_to_SAP_Load(object sender, EventArgs e)
         {
@@ -107,12 +113,18 @@ namespace Pesaje
 
                 var dts = new DataSet();
 
-                DataView Dvlista;
-                DataView Dvlista1;
 
                 if (opcion != 2)
                 {
-                    
+                    //ini
+                    if (DataGridView2.RowCount > 0 |  (Dvlista1 != null && Dvlista1.Table != null)  )
+                    {
+                        //DataGridView2.Rows.Clear();
+                        Dvlista1.Table.Clear();
+                    }
+
+                    //fin
+
                     dap.Fill(dts, "vLIST");
 
                     Dvlista = dts.Tables["vLIST"].DefaultView;
@@ -140,6 +152,7 @@ namespace Pesaje
                     lbl_cantdetalle.Text = Convert.ToString(Dvlista1.Count);
 
                 }
+
             }
             catch (Exception ex)
             {
@@ -191,6 +204,205 @@ namespace Pesaje
                 {
                     MessageBox.Show("Error: " + ex.Message);
                 }
+            }
+
+
+        }
+
+        private void Button2_Click_1(object sender, EventArgs e)
+        {
+
+            lbl_prod.Text = DataGridView1.Rows[DataGridView1.CurrentRow.Index].Cells["descripcion"].Value.ToString();
+            lbl_peso.Text = DataGridView1.Rows[DataGridView1.CurrentRow.Index].Cells["peso"].Value.ToString();
+            lbl_cant.Text = DataGridView1.Rows[DataGridView1.CurrentRow.Index].Cells["cant"].Value.ToString();
+
+            rb_kilos.Checked = false;
+            rb_unid.Checked = false;
+            btn_SAP.Enabled = false;
+
+            GroupBox1.Visible = true;
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            int X;
+            int PP = 0;
+            decimal peso = 0;
+
+            // Iterar a través de las filas del DataGridView2
+            for (X = 0; X < DataGridView2.RowCount; X++)
+            {
+                if (DataGridView2.Rows[X].Cells["WareHouse"].Value.ToString() == "PP")
+                {
+                    PP = PP + 1;
+                }
+            }
+
+            // Si PP no es mayor a 1, calcular el peso
+            if (PP <= 1)
+            {
+                decimal pesoActual = Convert.ToDecimal(DataGridView1.Rows[DataGridView1.CurrentRow.Index].Cells["Peso"].Value);
+                decimal cantidad = Convert.ToDecimal(DataGridView1.Rows[DataGridView1.CurrentRow.Index].Cells["Cant"].Value);
+
+                peso = pesoActual - (cantidad * 0.75m);
+            }
+
+            // Mostrar el resultado en un MessageBox
+            MessageBox.Show(peso.ToString(), "fib", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
+            var result = MessageBox.Show("Seguro de procesar esta elección.", "PROFIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
+            {
+                // Creación de archivos de texto para exportación de datos
+                var filePath = Path.Combine(Application.StartupPath, "Temp", "OP0.txt");
+                var filePath2 = Path.Combine(Application.StartupPath, "Temp", "OP1.txt");
+
+                using (var file = new StreamWriter(filePath, false, Encoding.Unicode))
+                using (var file2 = new StreamWriter(filePath2, false, Encoding.Unicode))
+                {
+                    try
+                    {
+                        string sLine0, sLine = "";
+
+                        // Exportación del DataGridView1
+                        for (int r = -2; r < DataGridView1.Rows.Count; r++)
+                        {
+                            if (r <= -1)
+                            {
+                                sLine0 = "AbsoluteEntry\tProductionOrderStatus\tProductionOrderType\tItemNo\tPlannedQuantity\tPostingDate\tDuedate\tDistributionRule\tU_FIB_PProfil\tU_FIB_Telar\tWarehouse";
+                                file.WriteLine(sLine0);
+                            }
+                            else
+                            {
+                                int itemSelec = DataGridView1.CurrentRow.Index;
+                                string dc_unidxpros;
+                                string dc_pesoFDU = "0";
+
+                                if (r == itemSelec)
+                                {
+                                    if (rb_kilos.Checked)
+                                    {
+                                        if (rb_AddSi.Checked)
+                                        {
+                                            dc_unidxpros = (Convert.ToDecimal(DataGridView1.Rows[r].Cells["peso"].Value) + Convert.ToDecimal(DataGridView1.Rows[r].Cells["scrap"].Value)).ToString();
+                                        }
+                                        else
+                                        {
+                                            dc_unidxpros = DataGridView1.Rows[r].Cells["peso"].Value.ToString();
+                                        }
+                                        dc_pesoFDU = dc_unidxpros;
+                                    }
+                                    else
+                                    {
+                                        dc_unidxpros = DataGridView1.Rows[r].Cells["cant"].Value.ToString();
+
+                                        if (rb_AddSi.Checked)
+                                        {
+                                            dc_pesoFDU = (Convert.ToDecimal(DataGridView1.Rows[r].Cells["peso"].Value) + Convert.ToDecimal(DataGridView1.Rows[r].Cells["scrap"].Value)).ToString();
+                                        }
+                                        else
+                                        {
+                                            dc_pesoFDU = DataGridView1.Rows[r].Cells["peso"].Value.ToString();
+                                        }
+                                    }
+
+                                    sLine = "1\tP\tP\t" +
+                                            DataGridView1.Rows[r].Cells["codigo"].Value.ToString() + "\t" +
+                                            dc_unidxpros + "\t" +
+                                            Convert.ToDateTime(DataGridView1.Rows[r].Cells["fecha"].Value).ToString("yyyyMMdd") + "\t" +
+                                            DateTime.Today.ToString("yyyyMMdd") + "\t" +
+                                            cmb_normr.SelectedValue + "\t" +
+                                            dc_pesoFDU + "\t" +
+                                            DataGridView1.Rows[r].Cells["TELAR"].Value.ToString() + "\t" +
+                                            DataGridView1.Rows[r].Cells["WHS"].Value.ToString();
+
+                                    file.WriteLine(sLine);
+                                }
+                            }
+                        }
+
+                        string sLine01, sLine02;
+
+                        // Exportación del DataGridView2
+                        for (int r = -2; r < DataGridView2.Rows.Count; r++)
+                        {
+                            if (r <= -1)
+                            {
+                                sLine01 = "ParentKey\tLinenum\tItemNo\tBaseQuantity\tProductionOrderIssueType\tWarehouse";
+                                file2.WriteLine(sLine01);
+                            }
+                            else
+                            {
+                                sLine02 = "1\t" +
+                                          DataGridView2.Rows[r].Cells["linenum"].Value.ToString() + "\t" +
+                                          DataGridView2.Rows[r].Cells["ItemNo"].Value.ToString() + "\t" +
+                                          DataGridView2.Rows[r].Cells["BaseQuantity"].Value.ToString() + "\t" +
+                                          DataGridView2.Rows[r].Cells["ProductionOrderIssueType"].Value.ToString() + "\t" +
+                                          DataGridView2.Rows[r].Cells["Warehouse"].Value.ToString();
+
+                                file2.WriteLine(sLine02);
+                            }
+                        }
+
+                        MessageBox.Show("Export Complete.", "Program Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                // Proceso de migración mediante DTW
+                try
+                {
+                    var process = new Process();
+                    process.StartInfo.FileName = "cmd.exe";
+                    process.StartInfo.Arguments = "/c " + Path.Combine(Application.StartupPath, "DTW", "DTW.exe") + " -s" +
+                                                  Path.Combine(Application.StartupPath, "Temp", "Transfer_OP.xml");
+
+                    process.StartInfo.RedirectStandardError = true;
+                    process.StartInfo.RedirectStandardOutput = true;
+                    process.StartInfo.UseShellExecute = false;
+                    process.StartInfo.CreateNoWindow = false;
+
+                    process.Start();
+                    string output = process.StandardOutput.ReadToEnd() + Environment.NewLine + process.StandardError.ReadToEnd();
+
+                    DateTime date1 = Convert.ToDateTime(DataGridView1.CurrentRow.Cells["Fecha"].Value);
+
+
+                    // Actualizar datos
+                    GroupBox1.Visible = false;
+                    Obtener_DATA(3,
+                                DataGridView1.CurrentRow.Cells["CODIGO"].Value.ToString(),
+                                0,
+                                date1,
+                                DataGridView1.CurrentRow.Cells["Telar"].Value.ToString()
+                                );
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                GroupBox1.Visible = false;
+                return;
             }
 
 
