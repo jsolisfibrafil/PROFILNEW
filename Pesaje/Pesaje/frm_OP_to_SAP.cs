@@ -407,6 +407,36 @@ namespace Pesaje
 
 
         }
+
+        private void rb_AddNO_CheckedChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void frm_OP_to_SAP_Resize(object sender, EventArgs e)
+        {
+
+            Control c = GroupBox1;
+
+            // Establece la posición superior (Top) y la izquierda (Left) dentro del control contenedor (Parent)
+            c.Top = (c.Parent.ClientSize.Height - c.Height) / 2;
+            c.Left = (c.Parent.ClientSize.Width - c.Width) / 2;
+
+        }
+
+        private void rb_unid_CheckedChanged(object sender, EventArgs e)
+        {
+
+            btn_SAP.Enabled = true;
+
+        }
+
+
+
+
+
+
     }
 
 

@@ -35,6 +35,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_peso = new System.Windows.Forms.Label();
+            this.lbl_canti = new System.Windows.Forms.Label();
+            this.lbl_prod = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rb_AddNO = new System.Windows.Forms.RadioButton();
             this.rb_AddSi = new System.Windows.Forms.RadioButton();
@@ -50,10 +54,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.lbl_cantdetalle = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.lbl_prod = new System.Windows.Forms.Label();
-            this.lbl_canti = new System.Windows.Forms.Label();
-            this.lbl_peso = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView2)).BeginInit();
             this.GroupBox1.SuspendLayout();
@@ -79,7 +79,7 @@
             this.cmb_sede.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_sede.FormattingEnabled = true;
             this.cmb_sede.Location = new System.Drawing.Point(1051, 12);
-            this.cmb_sede.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_sede.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_sede.Name = "cmb_sede";
             this.cmb_sede.Size = new System.Drawing.Size(184, 24);
             this.cmb_sede.TabIndex = 1;
@@ -91,7 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView1.Location = new System.Drawing.Point(16, 46);
-            this.DataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.DataGridView1.Name = "DataGridView1";
             this.DataGridView1.RowHeadersWidth = 51;
             this.DataGridView1.Size = new System.Drawing.Size(1220, 314);
@@ -104,7 +104,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView2.Location = new System.Drawing.Point(16, 399);
-            this.DataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.DataGridView2.Name = "DataGridView2";
             this.DataGridView2.RowHeadersWidth = 51;
             this.DataGridView2.Size = new System.Drawing.Size(1220, 202);
@@ -113,7 +113,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(16, 624);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 4;
@@ -124,7 +124,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(147, 624);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 5;
@@ -147,23 +147,60 @@
             this.GroupBox1.Controls.Add(this.btn_SAP);
             this.GroupBox1.Controls.Add(this.cmb_normr);
             this.GroupBox1.Location = new System.Drawing.Point(33, 412);
-            this.GroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GroupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.GroupBox1.Size = new System.Drawing.Size(916, 170);
             this.GroupBox1.TabIndex = 6;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Visible = false;
             this.GroupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(603, 27);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(109, 16);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Norma Reparto : ";
+            // 
+            // lbl_peso
+            // 
+            this.lbl_peso.AutoSize = true;
+            this.lbl_peso.Location = new System.Drawing.Point(303, 63);
+            this.lbl_peso.Name = "lbl_peso";
+            this.lbl_peso.Size = new System.Drawing.Size(22, 16);
+            this.lbl_peso.TabIndex = 10;
+            this.lbl_peso.Text = "***";
+            // 
+            // lbl_canti
+            // 
+            this.lbl_canti.AutoSize = true;
+            this.lbl_canti.Location = new System.Drawing.Point(131, 63);
+            this.lbl_canti.Name = "lbl_canti";
+            this.lbl_canti.Size = new System.Drawing.Size(22, 16);
+            this.lbl_canti.TabIndex = 9;
+            this.lbl_canti.Text = "***";
+            // 
+            // lbl_prod
+            // 
+            this.lbl_prod.AutoSize = true;
+            this.lbl_prod.Location = new System.Drawing.Point(131, 27);
+            this.lbl_prod.Name = "lbl_prod";
+            this.lbl_prod.Size = new System.Drawing.Size(22, 16);
+            this.lbl_prod.TabIndex = 8;
+            this.lbl_prod.Text = "***";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.rb_AddNO);
             this.groupBox2.Controls.Add(this.rb_AddSi);
             this.groupBox2.Location = new System.Drawing.Point(673, 63);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(223, 94);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
@@ -172,50 +209,54 @@
             // rb_AddNO
             // 
             this.rb_AddNO.AutoSize = true;
+            this.rb_AddNO.Checked = true;
             this.rb_AddNO.Location = new System.Drawing.Point(128, 52);
-            this.rb_AddNO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_AddNO.Margin = new System.Windows.Forms.Padding(4);
             this.rb_AddNO.Name = "rb_AddNO";
             this.rb_AddNO.Size = new System.Drawing.Size(48, 20);
             this.rb_AddNO.TabIndex = 1;
             this.rb_AddNO.TabStop = true;
             this.rb_AddNO.Text = "NO";
             this.rb_AddNO.UseVisualStyleBackColor = true;
+            this.rb_AddNO.CheckedChanged += new System.EventHandler(this.rb_AddNO_CheckedChanged);
             // 
             // rb_AddSi
             // 
             this.rb_AddSi.AutoSize = true;
             this.rb_AddSi.Location = new System.Drawing.Point(39, 52);
-            this.rb_AddSi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_AddSi.Margin = new System.Windows.Forms.Padding(4);
             this.rb_AddSi.Name = "rb_AddSi";
             this.rb_AddSi.Size = new System.Drawing.Size(40, 20);
             this.rb_AddSi.TabIndex = 0;
-            this.rb_AddSi.TabStop = true;
             this.rb_AddSi.Text = "SI";
+            this.rb_AddSi.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.rb_AddSi.UseVisualStyleBackColor = true;
             // 
             // rb_kilos
             // 
             this.rb_kilos.AutoSize = true;
             this.rb_kilos.Location = new System.Drawing.Point(344, 118);
-            this.rb_kilos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_kilos.Margin = new System.Windows.Forms.Padding(4);
             this.rb_kilos.Name = "rb_kilos";
             this.rb_kilos.Size = new System.Drawing.Size(57, 20);
             this.rb_kilos.TabIndex = 6;
             this.rb_kilos.TabStop = true;
             this.rb_kilos.Text = "Kilos";
             this.rb_kilos.UseVisualStyleBackColor = true;
+            this.rb_kilos.CheckedChanged += new System.EventHandler(this.rb_unid_CheckedChanged);
             // 
             // rb_unid
             // 
             this.rb_unid.AutoSize = true;
             this.rb_unid.Location = new System.Drawing.Point(195, 118);
-            this.rb_unid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_unid.Margin = new System.Windows.Forms.Padding(4);
             this.rb_unid.Name = "rb_unid";
             this.rb_unid.Size = new System.Drawing.Size(87, 20);
             this.rb_unid.TabIndex = 5;
             this.rb_unid.TabStop = true;
             this.rb_unid.Text = "Unidades";
             this.rb_unid.UseVisualStyleBackColor = true;
+            this.rb_unid.CheckedChanged += new System.EventHandler(this.rb_unid_CheckedChanged);
             // 
             // label5
             // 
@@ -250,7 +291,7 @@
             // btn_SAP
             // 
             this.btn_SAP.Location = new System.Drawing.Point(40, 114);
-            this.btn_SAP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_SAP.Margin = new System.Windows.Forms.Padding(4);
             this.btn_SAP.Name = "btn_SAP";
             this.btn_SAP.Size = new System.Drawing.Size(100, 28);
             this.btn_SAP.TabIndex = 1;
@@ -262,7 +303,7 @@
             // 
             this.cmb_normr.FormattingEnabled = true;
             this.cmb_normr.Location = new System.Drawing.Point(736, 24);
-            this.cmb_normr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_normr.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_normr.Name = "cmb_normr";
             this.cmb_normr.Size = new System.Drawing.Size(160, 24);
             this.cmb_normr.TabIndex = 0;
@@ -294,7 +335,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(1112, 608);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 44);
             this.button4.TabIndex = 9;
@@ -326,50 +367,11 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "CANTIDAD : ";
             // 
-            // lbl_prod
-            // 
-            this.lbl_prod.AutoSize = true;
-            this.lbl_prod.Location = new System.Drawing.Point(131, 27);
-            this.lbl_prod.Name = "lbl_prod";
-            this.lbl_prod.Size = new System.Drawing.Size(28, 20);
-            this.lbl_prod.TabIndex = 8;
-            this.lbl_prod.Text = "***";
-            // 
-            // lbl_canti
-            // 
-            this.lbl_canti.AutoSize = true;
-            this.lbl_canti.Location = new System.Drawing.Point(131, 63);
-            this.lbl_canti.Name = "lbl_canti";
-            this.lbl_canti.Size = new System.Drawing.Size(28, 20);
-            this.lbl_canti.TabIndex = 9;
-            this.lbl_canti.Text = "***";
-            // 
-            // lbl_peso
-            // 
-            this.lbl_peso.AutoSize = true;
-            this.lbl_peso.Location = new System.Drawing.Point(303, 63);
-            this.lbl_peso.Name = "lbl_peso";
-            this.lbl_peso.Size = new System.Drawing.Size(22, 16);
-            this.lbl_peso.TabIndex = 10;
-            this.lbl_peso.Text = "***";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(603, 27);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(109, 16);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Norma Reparto : ";
-            // 
             // frm_OP_to_SAP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1252, 663);
-            this.Controls.Add(this.lbl_cantdetalle);
-            this.Controls.Add(this.label7);
+            this.ClientSize = new System.Drawing.Size(1252, 829);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.lbl_cant);
             this.Controls.Add(this.label2);
@@ -380,10 +382,13 @@
             this.Controls.Add(this.DataGridView1);
             this.Controls.Add(this.cmb_sede);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.lbl_cantdetalle);
+            this.Controls.Add(this.label7);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_OP_to_SAP";
             this.Text = "Exportacion de O/P a SAP";
             this.Load += new System.EventHandler(this.frm_OP_to_SAP_Load);
+            this.Resize += new System.EventHandler(this.frm_OP_to_SAP_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView2)).EndInit();
             this.GroupBox1.ResumeLayout(false);
