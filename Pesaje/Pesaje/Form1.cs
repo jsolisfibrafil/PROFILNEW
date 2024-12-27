@@ -267,8 +267,13 @@ namespace Pesaje
 
                 AreaCodeResolver resolver = new AreaCodeResolver();
 
+                //string sentencia = "Select ItemNo, ItemName from OPROM0 " +
+                //            "inner join SBO_Fibrafil..OITM on Itemcode collate SQL_Latin1_General_CP850_CI_AS = ItemNo collate SQL_Latin1_General_CP850_CI_AS " +
+                //            "where U_FIB_AREA = '" + resolver.GetCodeByDescripcion(tb_area.Text) + "' and U_FIB_SEDE = '" + tb_sede.Text + "' and U_fib_telar = '" + cbMaquinaria.SelectedValue + "' " +
+                //            "order by RECORDKEY";
+
                 string sentencia = "Select ItemNo, ItemName from OPROM0 " +
-                            "inner join SBO_Fibrafil..OITM on Itemcode collate SQL_Latin1_General_CP850_CI_AS = ItemNo collate SQL_Latin1_General_CP850_CI_AS " +
+                            "inner join SBO_FIBRAFIL_TEST_23_12_24..OITM on Itemcode collate SQL_Latin1_General_CP850_CI_AS = ItemNo collate SQL_Latin1_General_CP850_CI_AS " +
                             "where U_FIB_AREA = '" + resolver.GetCodeByDescripcion(tb_area.Text) + "' and U_FIB_SEDE = '" + tb_sede.Text + "' and U_fib_telar = '" + cbMaquinaria.SelectedValue + "' " +
                             "order by RECORDKEY";
 

@@ -507,11 +507,11 @@ C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.csproj.Co
 C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.csproj.Up2Date
 C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.exe
 C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.pdb
+C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\x64\libSkiaSharp.dll
+C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\x64\libSkiaSharp.so
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\libSkiaSharp.dylib
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\x86\libSkiaSharp.dll
-C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\x64\libSkiaSharp.dll
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\arm64\libSkiaSharp.dll
-C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\x64\libSkiaSharp.so
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\arm\libSkiaSharp.so
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\arm64\libSkiaSharp.so
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\musl-x64\libSkiaSharp.so
@@ -553,6 +553,8 @@ C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\System.ValueTuple.
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.csproj.AssemblyReference.cache
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.csproj.SuggestedBindingRedirects.cache
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.exe.config
+C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Interop.SAPbobsCOM.dll
+C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Interop.SAPbouiCOM.dll
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.csproj.ResolveComReference.cache
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.frmArticuloBusqueda.resources
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.Form1.resources

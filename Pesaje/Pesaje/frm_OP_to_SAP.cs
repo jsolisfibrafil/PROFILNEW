@@ -1,7 +1,9 @@
-﻿using Serilog;
+﻿using SAPbobsCOM;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -29,6 +31,12 @@ namespace Pesaje
         DataView Dvlista = null;
         DataView Dvlista1 = null;
 
+        public static SAPbouiCOM.Application SBO_Application = null;
+        public static SAPbobsCOM.Company oCompany = null;
+        public static SAPbouiCOM.Application oApplication = null;
+        public static SAPbobsCOM.Company myCompany = null;
+
+
         private void frm_OP_to_SAP_Load(object sender, EventArgs e)
         {
             Log.Information("Iniciar_frm_OP_to_SAP_Load");
@@ -50,8 +58,9 @@ namespace Pesaje
             {
                 if (!dts_NR.Tables.Contains("tNormR"))
                 {
-                    var obj_NORMR = new SqlDataAdapter(
-                        "select OcrCode As 'ID', OcrName As 'NAME' from SBO_FIBRAFIL..OOCR order by OcrName", OCN);
+                    //var obj_NORMR = new SqlDataAdapter("select OcrCode As 'ID', OcrName As 'NAME' from SBO_FIBRAFIL..OOCR order by OcrName", OCN);
+                    var obj_NORMR = new SqlDataAdapter("select OcrCode As 'ID', OcrName As 'NAME' from SBO_FIBRAFIL_TEST_23_12_24..OOCR order by OcrName", OCN);
+
 
                     obj_NORMR.Fill(dts_NR, "ID");
                     obj_NORMR.Fill(dts_NR, "NAME");
@@ -366,38 +375,114 @@ namespace Pesaje
                     }
                 }
 
-                // Proceso de migración mediante DTW
-                try
+
+                if (ConexionUIAPI())
                 {
-                    var process = new Process();
-                    process.StartInfo.FileName = "cmd.exe";
-                    process.StartInfo.Arguments = "/c " + Path.Combine(Application.StartupPath, "DTW", "DTW.exe") + " -s" +
-                                                  Path.Combine(Application.StartupPath, "Temp", "Transfer_OP.xml");
+                    //cabecera 
+                    // Crear la Orden de Fabricación
+                    ProductionOrders oProductionOrder = (ProductionOrders)myCompany.GetBusinessObject(BoObjectTypes.oProductionOrders);
 
-                    process.StartInfo.RedirectStandardError = true;
-                    process.StartInfo.RedirectStandardOutput = true;
-                    process.StartInfo.UseShellExecute = false;
-                    process.StartInfo.CreateNoWindow = false;
+                    oProductionOrder.ProductionOrderType = BoProductionOrderTypeEnum.bopotStandard; // Tipo de orden: Estándar
+                    oProductionOrder.ProductionOrderStatus = BoProductionOrderStatusEnum.boposPlanned; // Estado: Planeada
+                    oProductionOrder.ItemNo = "PTCABAZ1/43P"; // Código del artículo final
+                    oProductionOrder.PlannedQuantity = 34.20; // Cantidad planeada
+                    oProductionOrder.PostingDate = DateTime.Now; // Fecha de vencimiento
+                    oProductionOrder.DueDate = DateTime.Now.AddDays(7); // Fecha de vencimiento
+                    oProductionOrder.DistributionRule  = "ALM"; // Fecha de vencimiento
+                    oProductionOrder.Warehouse = "PT";
 
-                    process.Start();
-                    string output = process.StandardOutput.ReadToEnd() + Environment.NewLine + process.StandardError.ReadToEnd();
-
-                    DateTime date1 = Convert.ToDateTime(DataGridView1.CurrentRow.Cells["Fecha"].Value);
+                    oProductionOrder.UserFields.Fields.Item("U_FIB_PProfil").Value = 34.2;
+                    oProductionOrder.UserFields.Fields.Item("U_FIB_TELAR").Value = "37";
 
 
-                    // Actualizar datos
-                    GroupBox1.Visible = false;
-                    Obtener_DATA(3,
-                                DataGridView1.CurrentRow.Cells["CODIGO"].Value.ToString(),
-                                0,
-                                date1,
-                                DataGridView1.CurrentRow.Cells["Telar"].Value.ToString()
-                                );
+                    //oProductionOrder.ProductionOrderStatus = BoProductionOrderStatusEnum.boposPlanned; // Estado: Planeada
+                    //oProductionOrder.Warehouse = "ALMACEN"; // Código de almacén
+
+
+                    //detalle 
+
+                    // Agregar líneas (materiales necesarios)
+                    oProductionOrder.Lines.SetCurrentLine(0);
+                    oProductionOrder.Lines.ItemNo = "HHC"; // Código del componente
+                    oProductionOrder.Lines.BaseQuantity = 1.2;
+                    oProductionOrder.Lines.ProductionOrderIssueType = BoIssueMethod.im_Backflush;
+                    oProductionOrder.Lines.Warehouse = "PT";
+
+
+
+
+                    oProductionOrder.Lines.Add(); // Agregar otra línea
+                    oProductionOrder.Lines.SetCurrentLine(1);
+                    oProductionOrder.Lines.ItemNo = "ANET00-017";
+                    oProductionOrder.Lines.BaseQuantity = 0.061;
+                    oProductionOrder.Lines.ProductionOrderIssueType = BoIssueMethod.im_Manual;
+                    oProductionOrder.Lines.Warehouse = "SELLTE"; 
+
+
+
+                    //oProductionOrder.Lines.PlannedQuantity = 30;
+                    //oProductionOrder.Lines.Warehouse = "ALMACEN";
+                    //oProductionOrder.Lines.ProductionOrderIssueType = BoIssueMethod.im_Manual; // Emisión manual
+
+
+
+                    //oProductionOrder.Lines.PlannedQuantity = 50; // Cantidad planeada del componente
+                    //oProductionOrder.Lines.Warehouse = "ALMACEN";
+
+                    //oProductionOrder.Lines.Add(); // Agregar otra línea
+                    //oProductionOrder.Lines.SetCurrentLine(1);
+                    //oProductionOrder.Lines.ItemNo = "COMPONENTE_2";
+                    //oProductionOrder.Lines.PlannedQuantity = 30;
+                    //oProductionOrder.Lines.Warehouse = "ALMACEN";
+
+                    // Intentar agregar la Orden de Fabricación
+                    if (oProductionOrder.Add() != 0)
+                    {
+                        myCompany.GetLastError(out int errCode, out string errMsg);
+                        Console.WriteLine($"Error al crear la Orden de Fabricación: {errCode} - {errMsg}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Orden de Fabricación creada exitosamente. ID: {myCompany.GetNewObjectKey()}");
+                    }
+
+
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                ////// Proceso de migración mediante DTW
+                ////try
+                ////{
+                ////    var process = new Process();
+                ////    process.StartInfo.FileName = "cmd.exe";
+                ////    process.StartInfo.Arguments = "/c " + Path.Combine(Application.StartupPath, "DTW", "DTW.exe") + " -s " +
+                ////                                  Path.Combine(Application.StartupPath, "Temp", "Transfer_OP.xml");
+
+                ////    process.StartInfo.RedirectStandardError = true;
+                ////    process.StartInfo.RedirectStandardOutput = true;
+                ////    process.StartInfo.UseShellExecute = false;
+                ////    process.StartInfo.CreateNoWindow = false;
+
+                ////    process.Start();
+                ////    string output = process.StandardOutput.ReadToEnd() + Environment.NewLine + process.StandardError.ReadToEnd();
+
+                ////    DateTime date1 = Convert.ToDateTime(DataGridView1.CurrentRow.Cells["Fecha"].Value);
+
+
+                ////    // Actualizar datos
+                ////    GroupBox1.Visible = false;
+                ////    Obtener_DATA(3,
+                ////                DataGridView1.CurrentRow.Cells["CODIGO"].Value.ToString(),
+                ////                0,
+                ////                date1,
+                ////                DataGridView1.CurrentRow.Cells["Telar"].Value.ToString()
+                ////                );
+                ////}
+                ////catch (Exception ex)
+                ////{
+                ////    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ////}
+
+
             }
             else
             {
@@ -406,6 +491,54 @@ namespace Pesaje
             }
 
 
+        }
+
+        public static bool ConexionUIAPI()
+        {
+            bool val = false;
+
+            myCompany = new SAPbobsCOM.Company();
+            myCompany.Server = "SRVBDLUR1"; //"192.168.150.4";SERVERSAP // ADDON_JESUS_BD
+            myCompany.DbServerType = SAPbobsCOM.BoDataServerTypes.dst_MSSQL2012; //.BoDataServerTypes.dst_MSSQL2008; //.dst_MSSQL2014; //dst_MSSQL2012;
+            myCompany.CompanyDB = "SBO_FIBRAFIL_TEST_23_12_24"; //"SBO_DAMOQUI_FE_AN";
+
+            myCompany.DbUserName = "sa";
+            myCompany.DbPassword = "cuerda$12";
+
+            myCompany.UserName = "manager";   //"manager";
+            myCompany.Password = "2521";   //"m1r1";
+            myCompany.language = SAPbobsCOM.BoSuppLangs.ln_Spanish_La;// .BoSuppLangs.ln_Spanish_La;
+
+
+
+
+            int error = myCompany.Connect();
+
+
+            if (error == 0)
+            {
+                ////Respuesta = true;
+                ////MessageBox.Show(“Mensaje solo informativo con botón Aceptar”,”Titulo Ventana”);
+                //MessageBox.Show("Conexión exitosa ", "Mensaje Conexion");
+                ////SBO_Application.StatusBar.SetText("EXITO - Conexion API API Exitosa", BoMessageTime.bmt_Medium, BoStatusBarMessageType.smt_Success);
+                Console.WriteLine("EXITO - Conexion SAP DI-API  Exitosa");
+                Log.Information("EXITO - Conexion API  Exitosa ");
+                val = true;
+                //log_1(DateTime.Now + " EXITO - Conexion API  Exitosa  ");
+            }
+            else
+            {
+                ////Javascript.Alert("Error - " + myCompany.GetLastErrorDescription().ToString());
+                //MessageBox.Show("error ", "Error Conexion");
+                string outresponse = myCompany.GetLastErrorDescription().ToString();
+                oCompany.GetLastError(out int errCode, out string errMsg);
+                Console.WriteLine($"Error conectando a SAP: {errCode} - {errMsg}");
+                //Log.Error(" error - Conexion API  -  " + outresponse);
+                val = false;
+
+            }
+
+            return val;
         }
 
         private void rb_AddNO_CheckedChanged(object sender, EventArgs e)
