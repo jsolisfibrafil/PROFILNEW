@@ -1,13 +1,16 @@
 ﻿using Serilog;
 using System;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Ports;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml;
 using static Pesaje.AreaCodeResolver;
 
 
@@ -99,117 +102,144 @@ namespace Pesaje
             DateTime lastDataTime = DateTime.Now;
             string lastValidData = string.Empty;
 
-
-
-
             string data2 = string.Empty;
             string datosrespo = string.Empty;
 
-            try
+            // INI
+
+            var balanzasConfig = ConfigurationManager.GetSection("BalanzasConfig") as NameValueCollection;
+
+            if (balanzasConfig != null)
             {
-
-
-                //serialport2.Open();
-
-                //validacion de puerto
-
-                if (!serialport2.IsOpen)
+                foreach (string key in balanzasConfig.AllKeys)
                 {
-                    serialport2.Open();
-                    Log.Information("Puerto COM abierto. ");
-                    //Console.WriteLine("Puerto COM cerrado.");
-                }
+                    string value = balanzasConfig[key];
+                    var attributes = value.Split(';')
+                                          .Select(attr => attr.Split('='))
+                                          .ToDictionary(parts => parts[0], parts => parts[1]);
 
-                Log.Information("Iniciar a escuchar datos desde la balanza. ");
+                    //Console.WriteLine($"Balanza: {key}, Habilitado: {attributes["habilitado"]}, Ubicación: {attributes["ubicacion"]}, Modelo: {attributes["modelo"]}, Función: {attributes["funcion"]}");
 
-                while (true)
-                {
-
-                    data2 = serialport2.ReadExisting();
-                    //string data2 = serialport2.by ;
-
-                    //Log.Information(data2);
-                    dataIn = data2;
-
-                    //if (!string.IsNullOrEmpty(data2))
-                    //if (true)
-                    if (!string.IsNullOrEmpty(data2))
+                    // Si "habilitado" es igual a 'Y', ejecuta un método
+                    if (attributes["habilitado"].ToUpper() == "Y")
                     {
-                        ////// Llamar al hilo principal para actualizar la interfaz de usuario
-
-                        //if (dataIn != string.Empty)
-                        //if (true)
-                        if (dataIn != string.Empty)
-                        {
-
-                            string[] lines1 = dataIn.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-                            //
-                            //if (true)
-                            if (contador1 == 1 && lastvalue == "S")
-                            {
-                                //if (contador1 == 1 && lastvalue == "S")
-
-                                //eliminar
-
-
-                                //codigo si va
-                                string[] lines2 = dataIn.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-
-                                //lines2
-
-
-                                if (lines2 != null && lines2.Length > 1)
-                                {
-                                    datosrespo = lines2[1].Replace(" ", ""); // Reemplaza los espacios
-                                    datosrespo = datosrespo.Replace("GS", "");
-                                    datosrespo = datosrespo.Replace("NT", "");
-
-                                    if (Convert.ToDouble(datosrespo) > 1)
-                                    {
-                                        Log.Information("Data leida por ultima vez " + data2);
-                                        Log.Information(data2);
-                                        Log.Information("UpdateUI(" + datosrespo.ToString() + ")");
-                                        UpdateUI(datosrespo);
-                                        contador1 = 0;
-                                    }
-
-                                }
-
-
-                            }
-
-                          
-                            if (lines1 != null && lines1.Length > 0 && !string.IsNullOrEmpty(lines1[0]) && lines1[0] == "S" && contador1 == 0)
-                            {
-                                contador1++;
-                                lastvalue = "S";
-                            }
-                            else
-                            {
-                                contador1 = 0;
-                                lastvalue = string.Empty;
-                            }
-
-
-
-                        }
-
-                        datosrespo = dataIn;
-
-
-                        string[] lines = datosrespo.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-
-
-                        Thread.Sleep(100);
-
-
+                        //EjecutarAccionBalanza(key, attributes["ubicacion"], attributes["modelo"], attributes["funcion"]);
 
                     }
 
 
                 }
+            }
+
+            //FIN
+
+
+                        if (!serialport2.IsOpen)
+                        {
+                            serialport2.Open();
+                            Log.Information("Puerto COM abierto. ");
+                        }
+
+                        Log.Information("Iniciar a escuchar datos desde la balanza. ");
+
+                        while (true)
+                        {
+
+                            data2 = serialport2.ReadExisting();
+                            //string data2 = serialport2.by ;
+
+                            //Log.Information(data2);
+                            dataIn = data2;
+
+                            //if (!string.IsNullOrEmpty(data2))
+                            //if (true)
+                            if (!string.IsNullOrEmpty(data2))
+                            {
+                                ////// Llamar al hilo principal para actualizar la interfaz de usuario
+
+                                //if (dataIn != string.Empty)
+                                //if (true)
+                                if (dataIn != string.Empty)
+                                {
+
+                                    string[] lines1 = dataIn.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                                    //
+                                    //if (true)
+                                    if (contador1 == 1 && lastvalue == "S")
+                                    {
+                                        //if (contador1 == 1 && lastvalue == "S")
+
+                                        //eliminar
+
+
+                                        //codigo si va
+                                        string[] lines2 = dataIn.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+
+                                        //lines2
+
+
+                                        if (lines2 != null && lines2.Length > 1)
+                                        {
+                                            datosrespo = lines2[1].Replace(" ", ""); // Reemplaza los espacios
+                                            datosrespo = datosrespo.Replace("GS", "");
+                                            datosrespo = datosrespo.Replace("NT", "");
+
+                                            if (Convert.ToDouble(datosrespo) > 1)
+                                            {
+                                                Log.Information("Data leida por ultima vez " + data2);
+                                                Log.Information(data2);
+                                                Log.Information("UpdateUI(" + datosrespo.ToString() + ")");
+                                                UpdateUI(datosrespo);
+                                                contador1 = 0;
+                                            }
+
+                                        }
+
+
+                                    }
+
+
+                                    if (lines1 != null && lines1.Length > 0 && !string.IsNullOrEmpty(lines1[0]) && lines1[0] == "S" && contador1 == 0)
+                                    {
+                                        contador1++;
+                                        lastvalue = "S";
+                                    }
+                                    else
+                                    {
+                                        contador1 = 0;
+                                        lastvalue = string.Empty;
+                                    }
+
+
+
+                                }
+
+                                datosrespo = dataIn;
+
+
+                                string[] lines = datosrespo.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                                Thread.Sleep(100);
+
+                            }
+
+
+                        }
+
+
+
+                  
+           
+
+
+
+
+            try
+            {
+
+
+                
 
 
             }

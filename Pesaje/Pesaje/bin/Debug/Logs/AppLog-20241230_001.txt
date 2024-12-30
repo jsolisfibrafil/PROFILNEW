@@ -1,0 +1,45 @@
+2024-12-30 08:36:38.238 -05:00 [INF] ini load
+2024-12-30 08:36:38.275 -05:00 [INF] Iniciar pesaje
+2024-12-30 08:36:38.285 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 118
+2024-12-30 08:36:52.752 -05:00 [INF] Iniciar_frm_OP_to_SAP_Load
+2024-12-30 08:36:52.760 -05:00 [INF] Obtener_DATA
+2024-12-30 08:36:52.811 -05:00 [INF] Obtener_DATA
+2024-12-30 09:59:58.242 -05:00 [INF] ini load
+2024-12-30 09:59:58.314 -05:00 [INF] Iniciar pesaje
+2024-12-30 09:59:58.381 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 118
+2024-12-30 11:49:17.539 -05:00 [INF] ini load
+2024-12-30 11:49:17.658 -05:00 [INF] Iniciar pesaje
+2024-12-30 11:51:19.385 -05:00 [INF] ini load
+2024-12-30 11:51:19.456 -05:00 [INF] Iniciar pesaje
+2024-12-30 11:54:04.228 -05:00 [INF] ini load
+2024-12-30 11:54:04.313 -05:00 [INF] Iniciar pesaje
+2024-12-30 11:59:28.492 -05:00 [INF] ini load
+2024-12-30 11:59:28.624 -05:00 [INF] Iniciar pesaje
+2024-12-30 12:05:03.543 -05:00 [INF] ini load
+2024-12-30 12:05:03.608 -05:00 [INF] Iniciar pesaje
+2024-12-30 12:05:07.527 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 144
+2024-12-30 12:05:38.893 -05:00 [INF] ini load
+2024-12-30 12:05:38.985 -05:00 [INF] Iniciar pesaje
+2024-12-30 12:11:15.628 -05:00 [INF] ini load
+2024-12-30 12:11:15.711 -05:00 [INF] Iniciar pesaje
+2024-12-30 12:11:15.760 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 144

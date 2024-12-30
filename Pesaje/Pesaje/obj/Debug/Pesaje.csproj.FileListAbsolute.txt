@@ -507,11 +507,11 @@ C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.csproj.Co
 C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.csproj.Up2Date
 C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.exe
 C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\obj\Debug\Pesaje.pdb
-C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\x64\libSkiaSharp.dll
-C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\x64\libSkiaSharp.so
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\libSkiaSharp.dylib
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\x86\libSkiaSharp.dll
+C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\x64\libSkiaSharp.dll
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\arm64\libSkiaSharp.dll
+C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\x64\libSkiaSharp.so
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\arm\libSkiaSharp.so
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\arm64\libSkiaSharp.so
 C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\bin\Debug\musl-x64\libSkiaSharp.so

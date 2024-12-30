@@ -276,6 +276,7 @@ namespace Pesaje
 
             if (result == DialogResult.Yes)
             {
+                Log.Information("Se va generar OF desde Profil, en SAP");
                 // Creación de archivos de texto para exportación de datos
                 var filePath = Path.Combine(Application.StartupPath, "Temp", "OP0.txt");
                 var filePath2 = Path.Combine(Application.StartupPath, "Temp", "OP1.txt");
@@ -420,20 +421,6 @@ namespace Pesaje
 
 
 
-                    //oProductionOrder.Lines.PlannedQuantity = 30;
-                    //oProductionOrder.Lines.Warehouse = "ALMACEN";
-                    //oProductionOrder.Lines.ProductionOrderIssueType = BoIssueMethod.im_Manual; // Emisión manual
-
-
-
-                    //oProductionOrder.Lines.PlannedQuantity = 50; // Cantidad planeada del componente
-                    //oProductionOrder.Lines.Warehouse = "ALMACEN";
-
-                    //oProductionOrder.Lines.Add(); // Agregar otra línea
-                    //oProductionOrder.Lines.SetCurrentLine(1);
-                    //oProductionOrder.Lines.ItemNo = "COMPONENTE_2";
-                    //oProductionOrder.Lines.PlannedQuantity = 30;
-                    //oProductionOrder.Lines.Warehouse = "ALMACEN";
 
                     // Intentar agregar la Orden de Fabricación
                     if (oProductionOrder.Add() != 0)
