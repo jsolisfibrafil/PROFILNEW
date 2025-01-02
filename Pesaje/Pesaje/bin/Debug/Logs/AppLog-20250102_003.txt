@@ -1,0 +1,13 @@
+2025-01-02 13:52:30.523 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2025-01-02 13:52:33.551 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = 
+2025-01-02 13:52:33.551 -05:00 [INF] Se agrego item con exito
+2025-01-02 13:52:51.021 -05:00 [INF] Data leida por ultima vez T,GS    89.8,kg
+ST,GS    89.8,kg
+ST,GS    89.8,kg
+
+2025-01-02 13:52:51.021 -05:00 [INF] T,GS    89.8,kg
+ST,GS    89.8,kg
+ST,GS    89.8,kg
+
+2025-01-02 13:52:51.021 -05:00 [INF] UpdateUI(89.8)
+2025-01-02 13:52:51.025 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1

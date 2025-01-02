@@ -25,3 +25,34 @@ System.IO.IOException: El puerto 'COM1' no existe.
    en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
    en System.IO.Ports.SerialPort.Open()
    en Pesaje.Form1.ListenToBalance() en C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 154
+2025-01-02 12:19:31.382 -05:00 [INF] ini load
+2025-01-02 12:19:31.822 -05:00 [INF] Iniciar pesaje
+2025-01-02 12:19:59.475 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza1, Habilitado: Y, Ubicación: CHILCA02, Modelo: SUMICO_PRECIX_WEIGHT_MODELO_8513, Función: INGRESO_PROD
+2025-01-02 12:20:03.004 -05:00 [ERR] Error en Inicio de pesaje : El nombre de puerto proporcionado no empieza por COM o com, o no se resuelve en un puerto serie válido.
+Nombre del parámetro: portName - 
+System.ArgumentException: El nombre de puerto proporcionado no empieza por COM o com, o no se resuelve en un puerto serie válido.
+Nombre del parámetro: portName
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\Users\SISTEMAS\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 154
+2025-01-02 13:07:04.448 -05:00 [INF] ini load
+2025-01-02 13:07:04.642 -05:00 [INF] Iniciar pesaje
+2025-01-02 13:07:25.965 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza1, Habilitado: Y, Ubicación: CHILCA02, Modelo: SUMICO_PRECIX_WEIGHT_MODELO_8513, Función: INGRESO_PROD
+2025-01-02 13:07:40.586 -05:00 [INF] Puerto COM abierto. 
+2025-01-02 13:07:40.586 -05:00 [INF] Iniciar a escuchar datos desde la balanza. 
+2025-01-02 13:11:16.819 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2025-01-02 13:11:28.200 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = 
+2025-01-02 13:11:28.200 -05:00 [INF] Se agrego item con exito
+2025-01-02 13:33:57.547 -05:00 [INF] ini load
+2025-01-02 13:33:57.626 -05:00 [INF] Iniciar pesaje
+2025-01-02 13:34:06.244 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza1, Habilitado: Y, Ubicación: CHILCA02, Modelo: SUMICO_PRECIX_WEIGHT_MODELO_8513, Función: INGRESO_PROD
+2025-01-02 13:34:11.062 -05:00 [INF] Puerto COM abierto. 
+2025-01-02 13:34:11.062 -05:00 [INF] Iniciar a escuchar datos desde la balanza. 
+2025-01-02 13:34:35.227 -05:00 [INF] Iniciar_frm_OP_to_SAP_Load
+2025-01-02 13:34:35.697 -05:00 [INF] Obtener_DATA
+2025-01-02 13:34:35.879 -05:00 [INF] Obtener_DATA
+2025-01-02 13:37:07.509 -05:00 [INF] ini load
+2025-01-02 13:37:07.589 -05:00 [INF] Iniciar pesaje
+2025-01-02 13:37:36.185 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza1, Habilitado: Y, Ubicación: CHILCA02, Modelo: SUMICO_PRECIX_WEIGHT_MODELO_8513, Función: INGRESO_PROD
+2025-01-02 13:38:32.090 -05:00 [INF] Puerto COM abierto. 
+2025-01-02 13:38:32.091 -05:00 [INF] Iniciar a escuchar datos desde la balanza. 

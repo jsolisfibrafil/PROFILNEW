@@ -31,9 +31,9 @@ namespace Pesaje
         DataView Dvlista = null;
         DataView Dvlista1 = null;
 
-        public static SAPbouiCOM.Application SBO_Application = null;
+        //public static SAPbouiCOM.Application SBO_Application = null;
         public static SAPbobsCOM.Company oCompany = null;
-        public static SAPbouiCOM.Application oApplication = null;
+        //public static SAPbouiCOM.Application oApplication = null;
         public static SAPbobsCOM.Company myCompany = null;
 
 
