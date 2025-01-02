@@ -1,0 +1,13 @@
+2025-01-02 08:26:30.978 -05:00 [INF] ini load
+2025-01-02 08:26:31.124 -05:00 [INF] Iniciar pesaje
+2025-01-02 08:27:22.139 -05:00 [INF] ini load
+2025-01-02 08:27:22.189 -05:00 [INF] Iniciar pesaje
+2025-01-02 08:59:15.349 -05:00 [INF] ini load
+2025-01-02 08:59:15.404 -05:00 [INF] Iniciar pesaje
+2025-01-02 08:59:21.087 -05:00 [INF] Balanza: Balanza3, Habilitado: Y, Ubicación: CHILCA01, Modelo: METTLER-PRO, Función: DESPACHO
+2025-01-02 08:59:30.152 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\Users\jsolis\Desktop\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 154

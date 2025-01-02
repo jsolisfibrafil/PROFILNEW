@@ -105,6 +105,12 @@ namespace Pesaje
             string data2 = string.Empty;
             string datosrespo = string.Empty;
 
+            string appConfigKey         = string.Empty;
+            string appConfigHabilitado  = string.Empty;
+            string appConfigUbicacion   = string.Empty;
+            string appConfigModelo      = string.Empty;
+            string appConfigFuncion     = string.Empty;
+
             // INI
 
             var balanzasConfig = ConfigurationManager.GetSection("BalanzasConfig") as NameValueCollection;
@@ -124,6 +130,13 @@ namespace Pesaje
                     if (attributes["habilitado"].ToUpper() == "Y")
                     {
                         //EjecutarAccionBalanza(key, attributes["ubicacion"], attributes["modelo"], attributes["funcion"]);
+                         appConfigKey           = key;
+                         appConfigHabilitado    = attributes["habilitado"];
+                         appConfigUbicacion     = attributes["ubicacion"];
+                         appConfigModelo        = attributes["modelo"];
+                         appConfigFuncion       = attributes["funcion"];
+
+                        Log.Information($"Balanza configurado en APPCONFIG : {key}, Habilitado: {attributes["habilitado"]}, Ubicación: {attributes["ubicacion"]}, Modelo: {attributes["modelo"]}, Función: {attributes["funcion"]}");
 
                     }
 
@@ -132,114 +145,241 @@ namespace Pesaje
             }
 
             //FIN
-
-
-                        if (!serialport2.IsOpen)
-                        {
-                            serialport2.Open();
-                            Log.Information("Puerto COM abierto. ");
-                        }
-
-                        Log.Information("Iniciar a escuchar datos desde la balanza. ");
-
-                        while (true)
-                        {
-
-                            data2 = serialport2.ReadExisting();
-                            //string data2 = serialport2.by ;
-
-                            //Log.Information(data2);
-                            dataIn = data2;
-
-                            //if (!string.IsNullOrEmpty(data2))
-                            //if (true)
-                            if (!string.IsNullOrEmpty(data2))
-                            {
-                                ////// Llamar al hilo principal para actualizar la interfaz de usuario
-
-                                //if (dataIn != string.Empty)
-                                //if (true)
-                                if (dataIn != string.Empty)
-                                {
-
-                                    string[] lines1 = dataIn.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-                                    //
-                                    //if (true)
-                                    if (contador1 == 1 && lastvalue == "S")
-                                    {
-                                        //if (contador1 == 1 && lastvalue == "S")
-
-                                        //eliminar
-
-
-                                        //codigo si va
-                                        string[] lines2 = dataIn.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-
-                                        //lines2
-
-
-                                        if (lines2 != null && lines2.Length > 1)
-                                        {
-                                            datosrespo = lines2[1].Replace(" ", ""); // Reemplaza los espacios
-                                            datosrespo = datosrespo.Replace("GS", "");
-                                            datosrespo = datosrespo.Replace("NT", "");
-
-                                            if (Convert.ToDouble(datosrespo) > 1)
-                                            {
-                                                Log.Information("Data leida por ultima vez " + data2);
-                                                Log.Information(data2);
-                                                Log.Information("UpdateUI(" + datosrespo.ToString() + ")");
-                                                UpdateUI(datosrespo);
-                                                contador1 = 0;
-                                            }
-
-                                        }
-
-
-                                    }
-
-
-                                    if (lines1 != null && lines1.Length > 0 && !string.IsNullOrEmpty(lines1[0]) && lines1[0] == "S" && contador1 == 0)
-                                    {
-                                        contador1++;
-                                        lastvalue = "S";
-                                    }
-                                    else
-                                    {
-                                        contador1 = 0;
-                                        lastvalue = string.Empty;
-                                    }
-
-
-
-                                }
-
-                                datosrespo = dataIn;
-
-
-                                string[] lines = datosrespo.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-                                Thread.Sleep(100);
-
-                            }
-
-
-                        }
-
-
-
-                  
-           
-
-
-
-
             try
             {
 
 
-                
+                if (!serialport2.IsOpen)
+                {
+                      serialport2.Open();
+                      Log.Information("Puerto COM abierto. ");
+                }
+
+                Log.Information("Iniciar a escuchar datos desde la balanza. ");
+
+                //AL 02/01/2025 esta balanza se usa en CABOS, LURIN.
+                if (appConfigHabilitado =="Y" && appConfigUbicacion == "LURIN" && appConfigModelo == "METTLER_TOLEDO_BBA231")
+                {
+                    while (true)
+                    {
+
+                        data2 = serialport2.ReadExisting();
+                        //string data2 = serialport2.by ;
+
+                        //Log.Information(data2);
+                        dataIn = data2;
+
+                        //if (!string.IsNullOrEmpty(data2))
+                        //if (true)
+                        if (!string.IsNullOrEmpty(data2))
+                        {
+                            ////// Llamar al hilo principal para actualizar la interfaz de usuario
+
+                            //if (dataIn != string.Empty)
+                            //if (true)
+                            if (dataIn != string.Empty)
+                            {
+
+                                string[] lines1 = dataIn.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                                //
+
+                                ////
+                                ///ini
+
+                                bool balanzaLurinToledo = true;
+
+                                foreach (var linea in lines1)
+                                {
+                                    if (linea.StartsWith("Net"))
+                                    {
+                                        // Extraer el valor numérico de la línea "Net"
+                                        string[] partes = linea.Split(' '); // Dividir la línea por espacio
+                                        string pesoNet = partes[5].Replace("kg", "").Trim(); // Obtener el valor numérico y eliminar "kg"
+
+
+                                        if (Convert.ToDouble(pesoNet) > 1)
+                                        {
+                                            Log.Information("Data leida por ultima vez " + data2);
+                                            Log.Information(data2);
+                                            Log.Information("UpdateUI(" + pesoNet.ToString() + ")");
+                                            UpdateUI(pesoNet);
+                                            contador1 = 0;
+                                        }
+
+                                        //// Mostrar el resultado
+                                        //Console.WriteLine("Peso neto: " + pesoNet + " kg");
+
+                                        //// Si deseas usar el valor como un número decimal (por ejemplo, para hacer cálculos)
+                                        //decimal pesoNetoDecimal = decimal.Parse(pesoNet);
+                                        //Console.WriteLine("Peso neto como número: " + pesoNetoDecimal);
+                                    }
+                                }
+
+                                ///fin
+
+
+
+                                //if (true)
+                                if (contador1 == 1 && lastvalue == "S")
+                                {
+                                    //if (contador1 == 1 && lastvalue == "S")
+
+                                    //eliminar
+
+
+                                    //codigo si va
+                                    string[] lines2 = dataIn.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+
+                                    //lines2
+
+
+                                    if (lines2 != null && lines2.Length > 1)
+                                    {
+                                        datosrespo = lines2[1].Replace(" ", ""); // Reemplaza los espacios
+                                        datosrespo = datosrespo.Replace("GS", "");
+                                        datosrespo = datosrespo.Replace("NT", "");
+
+                                        if (Convert.ToDouble(datosrespo) > 1)
+                                        {
+                                            Log.Information("Data leida por ultima vez " + data2);
+                                            Log.Information(data2);
+                                            Log.Information("UpdateUI(" + datosrespo.ToString() + ")");
+                                            UpdateUI(datosrespo);
+                                            contador1 = 0;
+                                        }
+
+                                    }
+
+
+                                }
+
+
+                                if (lines1 != null && lines1.Length > 0 && !string.IsNullOrEmpty(lines1[0]) && lines1[0] == "S" && contador1 == 0)
+                                {
+                                    contador1++;
+                                    lastvalue = "S";
+                                }
+                                else
+                                {
+                                    contador1 = 0;
+                                    lastvalue = string.Empty;
+                                }
+
+
+
+                            }
+
+                            datosrespo = dataIn;
+
+
+                            string[] lines = datosrespo.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+
+
+                            Thread.Sleep(100);
+
+
+
+                        }
+
+
+                    }
+
+                }
+
+                if (appConfigHabilitado == "Y" && appConfigUbicacion == "CHILCA02" && appConfigModelo == "SUMICO_PRECIX_WEIGHT_MODELO_8513")
+                {
+                    while (true)
+                    {
+
+                        data2 = serialport2.ReadExisting();
+                        //string data2 = serialport2.by ;
+
+                        //Log.Information(data2);
+                        dataIn = data2;
+
+                        //if (!string.IsNullOrEmpty(data2))
+                        //if (true)
+                        if (!string.IsNullOrEmpty(data2))
+                        {
+                            ////// Llamar al hilo principal para actualizar la interfaz de usuario
+
+                            //if (dataIn != string.Empty)
+                            //if (true)
+                            if (dataIn != string.Empty)
+                            {
+
+                                string[] lines1 = dataIn.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                                //
+                                //if (true)
+                                if (contador1 == 1 && lastvalue == "S")
+                                {
+                                    //if (contador1 == 1 && lastvalue == "S")
+
+                                    //eliminar
+
+
+                                    //codigo si va
+                                    string[] lines2 = dataIn.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+
+                                    //lines2
+
+
+                                    if (lines2 != null && lines2.Length > 1)
+                                    {
+                                        datosrespo = lines2[1].Replace(" ", ""); // Reemplaza los espacios
+                                        datosrespo = datosrespo.Replace("GS", "");
+                                        datosrespo = datosrespo.Replace("NT", "");
+
+                                        if (Convert.ToDouble(datosrespo) > 1)
+                                        {
+                                            Log.Information("Data leida por ultima vez " + data2);
+                                            Log.Information(data2);
+                                            Log.Information("UpdateUI(" + datosrespo.ToString() + ")");
+                                            UpdateUI(datosrespo);
+                                            contador1 = 0;
+                                        }
+
+                                    }
+
+
+                                }
+
+
+                                if (lines1 != null && lines1.Length > 0 && !string.IsNullOrEmpty(lines1[0]) && lines1[0] == "S" && contador1 == 0)
+                                {
+                                    contador1++;
+                                    lastvalue = "S";
+                                }
+                                else
+                                {
+                                    contador1 = 0;
+                                    lastvalue = string.Empty;
+                                }
+
+
+
+                            }
+
+                            datosrespo = dataIn;
+
+
+                            string[] lines = datosrespo.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                            Thread.Sleep(100);
+
+                        }
+
+
+                    }
+
+                }
+
+
+
+
 
 
             }
