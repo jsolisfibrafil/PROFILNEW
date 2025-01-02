@@ -1,0 +1,71 @@
+2025-01-02 15:14:34.783 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2025-01-02 15:14:34.863 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = 
+2025-01-02 15:14:34.863 -05:00 [INF] Se agrego item con exito
+2025-01-02 15:25:11.848 -05:00 [INF] ini load
+2025-01-02 15:25:11.968 -05:00 [INF] Iniciar pesaje
+2025-01-02 15:25:15.037 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza2, Habilitado: Y, Ubicación: LURIN, Modelo: METTLER_TOLEDO_BBA231, Función: CABOS
+2025-01-02 15:25:16.251 -05:00 [INF] Puerto COM abierto. 
+2025-01-02 15:25:16.251 -05:00 [INF] Iniciar a escuchar datos desde la balanza. 
+2025-01-02 15:25:21.710 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2025-01-02 15:25:21.780 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = 
+2025-01-02 15:25:21.780 -05:00 [INF] Se agrego item con exito
+2025-01-02 15:26:52.537 -05:00 [INF] Data leida por ultima vez 02
+Time    15:24:22
+Gross  106.10 kg
+Tare     0.00 kg
+Net    106.10 kg
+
+
+
+
+2025-01-02 15:26:53.419 -05:00 [INF] 02
+Time    15:24:22
+Gross  106.10 kg
+Tare     0.00 kg
+Net    106.10 kg
+
+
+
+
+2025-01-02 15:28:53.590 -05:00 [INF] UpdateUI(106.1)
+2025-01-02 15:28:53.600 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-02 15:40:37.610 -05:00 [INF] Data leida por ultima vez 02
+Time    15:39:12
+Gross  106.30 kg
+Tare     0.00 kg
+Net    106.30 kg
+
+
+
+
+2025-01-02 15:40:37.610 -05:00 [INF] 02
+Time    15:39:12
+Gross  106.30 kg
+Tare     0.00 kg
+Net    106.30 kg
+
+
+
+
+2025-01-02 15:40:37.610 -05:00 [INF] UpdateUI(106.3)
+2025-01-02 15:40:37.610 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-02 16:16:13.714 -05:00 [INF] Data leida por ultima vez 02
+Time    16:14:48
+Gross    4.40 kg
+Tare     0.00 kg
+Net      4.40 kg
+
+
+
+
+2025-01-02 16:16:13.714 -05:00 [INF] 02
+Time    16:14:48
+Gross    4.40 kg
+Tare     0.00 kg
+Net      4.40 kg
+
+
+
+
+2025-01-02 16:16:13.714 -05:00 [INF] UpdateUI(4.4)
+2025-01-02 16:16:13.714 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1

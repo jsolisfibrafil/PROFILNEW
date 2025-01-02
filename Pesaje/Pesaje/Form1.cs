@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
+using System.Text.RegularExpressions;
 using static Pesaje.AreaCodeResolver;
 
 
@@ -188,22 +189,33 @@ namespace Pesaje
                                 ///ini
 
                                 bool balanzaLurinToledo = true;
+                                double temp1 = 0;
 
                                 foreach (var linea in lines1)
                                 {
                                     if (linea.StartsWith("Net"))
                                     {
+
+                                        Regex regex = new Regex(@"[-+]?\d*\.\d+|\d+");
+                                        Match match = regex.Match(linea);  // Buscamos el patrón en la cadena
+
+                                        if (match.Success)
+                                        {
+                                            // Convertimos la cadena del número a un double y la devolvemos
+                                            temp1 = Convert.ToDouble(match.Value);
+                                        }
+
+
+
                                         // Extraer el valor numérico de la línea "Net"
-                                        string[] partes = linea.Split(' '); // Dividir la línea por espacio
-                                        string pesoNet = partes[5].Replace("kg", "").Trim(); // Obtener el valor numérico y eliminar "kg"
+                                        
 
-
-                                        if (Convert.ToDouble(pesoNet) > 1)
+                                        if (temp1 > 1)
                                         {
                                             Log.Information("Data leida por ultima vez " + data2);
                                             Log.Information(data2);
-                                            Log.Information("UpdateUI(" + pesoNet.ToString() + ")");
-                                            UpdateUI(pesoNet);
+                                            Log.Information("UpdateUI(" + temp1.ToString() + ")");
+                                            UpdateUI(temp1.ToString());
                                             contador1 = 0;
                                         }
 
