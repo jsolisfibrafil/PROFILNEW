@@ -218,8 +218,8 @@ namespace Pesaje
                                             Log.Information(data2);
                                             Log.Information("UpdateUI(" + temp1.ToString() + ")");
 
-
-                                            SetText(temp1.ToString());
+                                            UpdateUI(temp1.ToString());
+                                            //SetText(temp1.ToString());
 
 
                                             // vlistBox1,string vlbl_item
@@ -1268,7 +1268,7 @@ namespace Pesaje
                                 CargaPesos();
 
                                 string retorno2 = cmd.Parameters["@MSG"].Value.ToString();
-
+                                Log.Information("retorno : " + retorno2);
 
                                 if (retorno2.ToString().Trim() == string.Empty)
                                 {
@@ -1303,6 +1303,8 @@ namespace Pesaje
                                     //LURIN CABOS
                                     if (appConfigHabilitado == "Y" && appConfigUbicacion == "LURIN" && appConfigModelo == "METTLER_TOLEDO_BBA231")
                                     {
+                                        Log.Information("ImprimeCodebar1 : " + retorno2);
+
                                         ImprimeCodebar1(retorno2, Convert.ToDecimal(text), listBox1.SelectedValue.ToString(), lbl_item.Text);//listBox1.SelectedValue.ToString() , lbl_item.Text) ;
 
                                     }
@@ -1361,7 +1363,183 @@ namespace Pesaje
 
 
                     }
+
+
+
                 }));
+            }
+            else
+            {
+                if (listBox1.SelectedIndex >= 0)
+                {
+                    // Lógica para manejar el índice seleccionado
+
+                    if (listBox1.SelectedIndex >= 0)
+                    //if (GetSelectedIndex() >= 0)
+                    {
+                        try
+                        {
+
+                            if (tb_sede.Text == "01")
+                            {
+                                text = text.Replace("kg", "");
+                            }
+                            else
+                            {
+                                if (text.Length > 0) //&& te|xt.Contains("kg") && text.Contains("Net"))
+                                {
+                                    text = text.Replace("Net", "");
+                                    text = text.Replace("kg", "");
+
+                                }
+
+                            }
+
+                            //DatosInsUpd("U_SP_FIB_INS_OPROM1", Convert.ToDouble(text), false);
+                            DatosInsUpd("U_SP_FIB_INS_OPROM1", Convert.ToDouble(text), false);
+
+                            cmd.Parameters.Clear();
+                            cmd.Connection = sqt7;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            //cmd.CommandText = "U_SP_FIB_INS_OPROM1";
+                            cmd.CommandText = "U_SP_FIB_INS_OPROM1";
+
+
+                            ////GetSelectedValue()?.ToString()
+                            cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.VarChar)).Value = listBox1.SelectedValue.ToString(); // Código de item
+                                                                                                                                          //cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = GetSelectedValue()?.ToString(); // Código de item
+
+                            // por el momento no va scrap
+                            // false = scrap
+                            // 
+                            //if (rb_pofic.Checked == true)
+                            if (true)
+                            {
+                                cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = Convert.ToDecimal(text.Trim());
+                            }
+                            else
+                            {
+                                cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = Convert.ToDecimal(text.Trim()) * -1;
+                            }
+
+                            cmd.Parameters.Add(new SqlParameter("@U_FIB_SEDE", SqlDbType.VarChar)).Value = tb_sede.Text;
+                            cmd.Parameters.Add(new SqlParameter("@U_FIB_TELAR", SqlDbType.VarChar)).Value = cbMaquinaria.SelectedValue;
+                            cmd.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output;
+
+                            string a = string.Empty;
+                            a = cmd.Parameters["@ItemNo"].Value + "-";
+                            a = cmd.Parameters["@ProducWeight"].Value + "-" + a;
+                            a = cmd.Parameters["@U_FIB_SEDE"].Value + "-" + a;
+                            a = cmd.Parameters["@U_FIB_TELAR"].Value + "-" + a;
+                            a = cmd.Parameters["@MSG"].Value + "-" + a;
+
+
+
+                            // Parámetros para el comando
+                            // Ejecutar comando
+                            if (sqt7.State == ConnectionState.Closed)
+                                sqt7.Open();
+                            cmd.ExecuteNonQuery();
+                            CargaPesos();
+
+                            string retorno2 = cmd.Parameters["@MSG"].Value.ToString();
+                            Log.Information("retorno : " + retorno2);
+
+                            if (retorno2.ToString().Trim() == string.Empty)
+                            {
+
+                                retorno2 = "BD : NO SE OBTUVO CODIGO";
+
+                                string mensajeLinea1 = "NPD : PM                                                                          FP : " + DateTime.Now.ToString();
+                                string mensajeLinea2 = retorno2;
+                                string mensajeLinea3 = retorno2;
+                                string mensajeLinea4 = text.ToString() + " KG";
+                                string mensajeLinea5 = "ID ITEM     : " + listBox1.SelectedValue.ToString();
+                                string mensajeLinea6 = "DSC ITEM  :  " + lbl_item.Text;
+
+                                // Crear la instancia de TicketPrinter y pasar las dos líneas de texto
+                                TicketPrinter ticketPrinter = new TicketPrinter(mensajeLinea1,
+                                                                                mensajeLinea2,
+                                                                                mensajeLinea3,
+                                                                                mensajeLinea4,
+                                                                                mensajeLinea5,
+                                                                                mensajeLinea6,
+                                                                                retorno2
+                                                                                );
+
+                                // Imprimir el ticket directamente sin mostrar la ventana
+                                ticketPrinter.PrintTicket2();
+
+                            }
+                            else
+                            {
+                                //if (rb_pofic.Checked)
+
+                                //LURIN CABOS
+                                if (appConfigHabilitado == "Y" && appConfigUbicacion == "LURIN" && appConfigModelo == "METTLER_TOLEDO_BBA231")
+                                {
+                                    Log.Information("ImprimeCodebar1 : " + retorno2);
+
+                                    ImprimeCodebar1(retorno2, Convert.ToDecimal(text), listBox1.SelectedValue.ToString(), lbl_item.Text);//listBox1.SelectedValue.ToString() , lbl_item.Text) ;
+
+                                }
+                                else
+                                {
+
+                                    if (true)
+                                    {
+                                        //Imprime_Codebar(cmd.Parameters["@MSG"].Value.ToString(), Convert.ToDecimal(text.Trim()));
+
+                                        string mensajeLinea1 = "NPD : PM                                                                          FP : " + DateTime.Now.ToString();
+                                        string mensajeLinea2 = retorno2;
+                                        string mensajeLinea3 = retorno2;
+                                        string mensajeLinea4 = text.ToString() + " KG";
+                                        string mensajeLinea5 = "ID ITEM     : " + listBox1.SelectedValue.ToString();
+                                        string mensajeLinea6 = "DSC ITEM  :  " + lbl_item.Text;
+
+                                        // Crear la instancia de TicketPrinter y pasar las dos líneas de texto
+                                        TicketPrinter ticketPrinter = new TicketPrinter(mensajeLinea1,
+                                                                                        mensajeLinea2,
+                                                                                        mensajeLinea3,
+                                                                                        mensajeLinea4,
+                                                                                        mensajeLinea5,
+                                                                                        mensajeLinea6
+                                                                                        );
+
+                                        // Imprimir el ticket directamente sin mostrar la ventana
+                                        ticketPrinter.PrintTicket();
+
+                                    }
+
+                                }
+
+
+
+
+
+                            }
+                            //retorno2 = "012410156806300";
+
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                            Log.Error(ex, " - " + ex.Message);
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Antes de pesar debe seleccionar un ítem.", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    }
+
+
+
+                }
+
+
             }
 
         }

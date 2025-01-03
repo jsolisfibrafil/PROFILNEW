@@ -7,3 +7,266 @@ System.IO.IOException: El puerto 'COM1' no existe.
    en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
    en System.IO.Ports.SerialPort.Open()
    en Pesaje.Form1.ListenToBalance() en C:\Users\jsolis\Desktop\CF2\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 157
+2025-01-03 15:57:43.403 -05:00 [INF] ini load
+2025-01-03 15:57:43.528 -05:00 [INF] Iniciar pesaje
+2025-01-03 15:57:43.559 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza2, Habilitado: Y, Ubicación: LURIN, Modelo: METTLER_TOLEDO_BBA231, Función: CABOS
+2025-01-03 15:57:43.559 -05:00 [INF] Puerto COM abierto. 
+2025-01-03 15:57:43.559 -05:00 [INF] Iniciar a escuchar datos desde la balanza. 
+2025-01-03 15:58:08.875 -05:00 [INF] Data leida por ultima vez 03
+Time    15:56:41
+Gross  111.75 kg
+Tare     0.00 kg
+Net    111.75 kg
+
+
+
+
+2025-01-03 15:58:18.546 -05:00 [INF] 03
+Time    15:56:41
+Gross  111.75 kg
+Tare     0.00 kg
+Net    111.75 kg
+
+
+
+
+2025-01-03 15:58:18.546 -05:00 [INF] UpdateUI(111.75)
+2025-01-03 15:59:37.157 -05:00 [INF] Data leida por ultima vez 03
+Time    15:58:10
+Gross  111.65 kg
+Tare     0.00 kg
+Net    111.65 kg
+
+
+
+
+2025-01-03 15:59:46.349 -05:00 [INF] 03
+Time    15:58:10
+Gross  111.65 kg
+Tare     0.00 kg
+Net    111.65 kg
+
+
+
+
+2025-01-03 15:59:46.349 -05:00 [INF] UpdateUI(111.65)
+2025-01-03 16:01:26.530 -05:00 [INF] Data leida por ultima vez 03
+Time    15:59:59
+Gross    5.70 kg
+Tare     0.00 kg
+Net      5.70 kg
+
+
+
+
+2025-01-03 16:01:32.163 -05:00 [INF] 03
+Time    15:59:59
+Gross    5.70 kg
+Tare     0.00 kg
+Net      5.70 kg
+
+
+
+
+2025-01-03 16:01:32.163 -05:00 [INF] UpdateUI(5.7)
+2025-01-03 16:03:22.036 -05:00 [INF] ini load
+2025-01-03 16:03:22.146 -05:00 [INF] Iniciar pesaje
+2025-01-03 16:03:22.177 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza2, Habilitado: Y, Ubicación: LURIN, Modelo: METTLER_TOLEDO_BBA231, Función: CABOS
+2025-01-03 16:03:22.193 -05:00 [INF] Puerto COM abierto. 
+2025-01-03 16:03:22.193 -05:00 [INF] Iniciar a escuchar datos desde la balanza. 
+2025-01-03 16:03:37.687 -05:00 [INF] Data leida por ultima vez 03
+Time    16:02:10
+Gross    4.40 kg
+Tare     0.00 kg
+Net      4.40 kg
+
+
+
+
+2025-01-03 16:03:43.608 -05:00 [INF] 03
+Time    16:02:10
+Gross    4.40 kg
+Tare     0.00 kg
+Net      4.40 kg
+
+
+
+
+2025-01-03 16:03:43.608 -05:00 [INF] UpdateUI(4.4)
+2025-01-03 16:03:54.503 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-03 16:03:54.566 -05:00 [ERR]  - Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+System.Data.SqlClient.SqlException (0x80131904): Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Pesaje.Form1.SetText(String text) en C:\Users\profile.cabos\Documents\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 1442
+ClientConnectionId:7e5cffcf-4350-457e-b10e-c1a52cfe98ba
+Error Number:512,State:1,Class:16
+2025-01-03 16:04:26.272 -05:00 [INF] Data leida por ultima vez 03
+Time    16:02:59
+Gross    4.40 kg
+Tare     0.00 kg
+Net      4.40 kg
+
+
+
+
+2025-01-03 16:04:32.335 -05:00 [INF] 03
+Time    16:02:59
+Gross    4.40 kg
+Tare     0.00 kg
+Net      4.40 kg
+
+
+
+
+2025-01-03 16:04:32.335 -05:00 [INF] UpdateUI(4.4)
+2025-01-03 16:05:12.558 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-03 16:05:41.239 -05:00 [ERR]  - Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+System.Data.SqlClient.SqlException (0x80131904): Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Pesaje.Form1.SetText(String text) en C:\Users\profile.cabos\Documents\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 1442
+ClientConnectionId:5146a1f1-d81d-49da-a53e-2c54a97136a1
+Error Number:512,State:1,Class:16
+2025-01-03 16:06:02.603 -05:00 [INF] Data leida por ultima vez 03
+Time    16:04:35
+Gross    4.40 kg
+Tare     0.00 kg
+Net      4.40 kg
+
+
+
+
+2025-01-03 16:06:11.310 -05:00 [INF] 03
+Time    16:04:35
+Gross    4.40 kg
+Tare     0.00 kg
+Net      4.40 kg
+
+
+
+
+2025-01-03 16:06:11.310 -05:00 [INF] UpdateUI(4.4)
+2025-01-03 16:06:22.221 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-03 16:06:42.731 -05:00 [ERR]  - Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+System.Data.SqlClient.SqlException (0x80131904): Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Pesaje.Form1.SetText(String text) en C:\Users\profile.cabos\Documents\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 1442
+ClientConnectionId:bfdcddb6-7da6-4804-9d03-1431a3d17ebb
+Error Number:512,State:1,Class:16
+2025-01-03 16:06:54.913 -05:00 [INF] Data leida por ultima vez 03
+Time    16:05:27
+Gross    4.40 kg
+Tare     0.00 kg
+Net      4.40 kg
+
+
+
+
+2025-01-03 16:06:54.913 -05:00 [INF] 03
+Time    16:05:27
+Gross    4.40 kg
+Tare     0.00 kg
+Net      4.40 kg
+
+
+
+
+2025-01-03 16:06:54.913 -05:00 [INF] UpdateUI(4.4)
+2025-01-03 16:06:54.913 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-03 16:08:20.697 -05:00 [ERR]  - Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+System.Data.SqlClient.SqlException (0x80131904): Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Pesaje.Form1.SetText(String text) en C:\Users\profile.cabos\Documents\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 1442
+ClientConnectionId:0d71241f-4e98-4727-9b35-72622038b746
+Error Number:512,State:1,Class:16
+2025-01-03 16:08:30.946 -05:00 [INF] Data leida por ultima vez 03
+Time    16:07:03
+Gross    4.40 kg
+Tare     0.00 kg
+Net      4.40 kg
+
+
+
+
+2025-01-03 16:08:30.946 -05:00 [INF] 03
+Time    16:07:03
+Gross    4.40 kg
+Tare     0.00 kg
+Net      4.40 kg
+
+
+
+
+2025-01-03 16:08:30.946 -05:00 [INF] UpdateUI(4.4)
+2025-01-03 16:08:38.867 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-03 16:11:39.147 -05:00 [ERR]  - Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+System.Data.SqlClient.SqlException (0x80131904): Subquery returned more than 1 value. This is not permitted when the subquery follows =, !=, <, <= , >, >= or when the subquery is used as an expression.
+   en System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   en System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   en System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   en System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   en System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   en System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   en Pesaje.Form1.SetText(String text) en C:\Users\profile.cabos\Documents\CF1\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 1442
+ClientConnectionId:bfdcddb6-7da6-4804-9d03-1431a3d17ebb
+Error Number:512,State:1,Class:16
+2025-01-03 16:11:47.374 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2025-01-03 16:11:48.124 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = 
+2025-01-03 16:11:48.124 -05:00 [INF] Se agrego item con exito
+2025-01-03 16:11:59.592 -05:00 [INF] Data leida por ultima vez 03
+Time    16:10:32
+Gross    4.55 kg
+Tare     0.00 kg
+Net      4.55 kg
+
+
+
+
+2025-01-03 16:11:59.592 -05:00 [INF] 03
+Time    16:10:32
+Gross    4.55 kg
+Tare     0.00 kg
+Net      4.55 kg
+
+
+
+
+2025-01-03 16:11:59.592 -05:00 [INF] UpdateUI(4.55)
+2025-01-03 16:12:05.857 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-03 16:12:18.359 -05:00 [INF] retorno : 01250103300455
+2025-01-03 16:12:23.007 -05:00 [INF] ImprimeCodebar1 : 01250103300455
+2025-01-03 16:12:26.313 -05:00 [INF] Inicio imprimir 
