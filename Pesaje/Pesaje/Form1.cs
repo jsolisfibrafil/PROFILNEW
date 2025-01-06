@@ -799,7 +799,7 @@ namespace Pesaje
                 cmd.CommandText = NameProced;
 
                 decimal d_peso = 0;
-                long i_nline;
+                long i_nline=0;
 
                 try
                 {
@@ -836,8 +836,8 @@ namespace Pesaje
                 }
 
 
-                //cmd.Parameters.Add(new SqlParameter("@IndexPeso", SqlDbType.Int)).Value = i_nline;
-                cmd.Parameters.Add(new SqlParameter("@IndexPeso", SqlDbType.Int)).Value = 0;
+                cmd.Parameters.Add(new SqlParameter("@IndexPeso", SqlDbType.Int)).Value = i_nline;
+                //cmd.Parameters.Add(new SqlParameter("@IndexPeso", SqlDbType.Int)).Value = 0;
                 cmd.Parameters.Add(new SqlParameter("@U_FIB_SEDE", SqlDbType.Text)).Value = tb_sede.Text;
                 cmd.Parameters.Add(new SqlParameter("@U_FIB_TELAR", SqlDbType.VarChar)).Value = cbMaquinaria.SelectedValue;
 
@@ -1624,6 +1624,7 @@ namespace Pesaje
             if (result == DialogResult.Yes)
             {
                 Log.Information("DatosInsUpd U_SP_FIB_DEL_OPROM");
+
                 DatosInsUpd("U_SP_FIB_DEL_OPROM", 2, is_Scrap);
 
                 if (sqt7.State == ConnectionState.Closed) sqt7.Open();

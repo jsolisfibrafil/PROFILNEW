@@ -141,7 +141,7 @@
             this.Panel1.Controls.Add(this.label7);
             this.Panel1.Controls.Add(this.label6);
             this.Panel1.Controls.Add(this.label50);
-            this.Panel1.Location = new System.Drawing.Point(184, 3);
+            this.Panel1.Location = new System.Drawing.Point(211, 12);
             this.Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.Panel1.Name = "Panel1";
             this.Panel1.Size = new System.Drawing.Size(584, 238);

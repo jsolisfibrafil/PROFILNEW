@@ -150,7 +150,6 @@ namespace Pesaje.Formulario
         }
 
        
-
         private void button3_Click(object sender, EventArgs e)
         {
             SqlConnection sqt1 = new SqlConnection(connection_String);

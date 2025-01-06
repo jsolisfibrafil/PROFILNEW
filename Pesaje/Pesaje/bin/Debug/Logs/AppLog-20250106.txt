@@ -1,0 +1,43 @@
+2025-01-06 08:22:36.215 -05:00 [INF] ini load
+2025-01-06 08:22:36.297 -05:00 [INF] Iniciar pesaje
+2025-01-06 08:22:36.312 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza2, Habilitado: Y, Ubicación: LURIN, Modelo: METTLER_TOLEDO_BBA231, Función: CABOS
+2025-01-06 08:22:36.351 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\CF3\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 157
+2025-01-06 08:43:18.409 -05:00 [INF] ini load
+2025-01-06 08:43:18.527 -05:00 [INF] Iniciar pesaje
+2025-01-06 08:43:18.541 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza2, Habilitado: Y, Ubicación: LURIN, Modelo: METTLER_TOLEDO_BBA231, Función: CABOS
+2025-01-06 08:43:18.560 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\CF3\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 157
+2025-01-06 09:25:08.970 -05:00 [INF] ini load
+2025-01-06 09:25:09.055 -05:00 [INF] Iniciar pesaje
+2025-01-06 09:25:09.076 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza2, Habilitado: Y, Ubicación: LURIN, Modelo: METTLER_TOLEDO_BBA231, Función: CABOS
+2025-01-06 09:25:09.105 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\CF3\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 157
+2025-01-06 09:25:25.647 -05:00 [INF] Eliminación de Peso... 
+2025-01-06 09:25:39.627 -05:00 [INF] DatosInsUpd U_SP_FIB_DEL_OPROM
+2025-01-06 09:25:49.837 -05:00 [INF] usando SP U_SP_FIB_DEL_OPROM
+2025-01-06 09:42:02.591 -05:00 [INF] DelPeso -  msg 
+2025-01-06 09:43:43.954 -05:00 [INF] Eliminación de Peso... 
+2025-01-06 09:43:47.999 -05:00 [INF] DatosInsUpd U_SP_FIB_DEL_OPROM
+2025-01-06 09:43:48.688 -05:00 [INF] usando SP U_SP_FIB_DEL_OPROM
+2025-01-06 10:16:50.151 -05:00 [INF] ini load
+2025-01-06 10:16:50.233 -05:00 [INF] Iniciar pesaje
+2025-01-06 10:16:50.247 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza2, Habilitado: Y, Ubicación: LURIN, Modelo: METTLER_TOLEDO_BBA231, Función: CABOS
+2025-01-06 10:16:50.256 -05:00 [ERR] Error en Inicio de pesaje : El puerto 'COM1' no existe. - 
+System.IO.IOException: El puerto 'COM1' no existe.
+   en System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   en System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   en System.IO.Ports.SerialPort.Open()
+   en Pesaje.Form1.ListenToBalance() en C:\FIBRAFIL\CF3\PROFILNEW\Pesaje\Pesaje\Form1.cs:línea 157
