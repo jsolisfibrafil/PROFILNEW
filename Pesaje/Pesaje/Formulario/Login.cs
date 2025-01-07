@@ -22,7 +22,7 @@ namespace Pesaje.Formulario
     {
 
         DataSet dts = new DataSet();
-        public static string vs_User, vs_Area, vs_Mac, vs_idUser, vs_idArea, vs_idMac, vs_isADM, vs_iArea, vs_Host, vs_MacAddres, vs_sede;
+        public static string vs_User, vs_Area, vs_Mac, vs_idUser, vs_idArea, vs_idMac, vs_isADM, vs_iArea, vs_Host, vs_MacAddres, vs_sede,vs_basedato;
 
         private void cmbArea_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -39,6 +39,7 @@ namespace Pesaje.Formulario
         //public SqlConnection OCN = new SqlConnection();
         string connection_String = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
         private SqlConnection OCN = new SqlConnection(ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString); // Reemplaza con tu cadena de conexión
+
 
 
 
@@ -99,6 +100,7 @@ namespace Pesaje.Formulario
                         //formPrincipal.Maquina = "Maquina";
                         formPrincipal.Usuario = vs_User;
                         formPrincipal.Sede = vs_sede;
+                        formPrincipal.BaseDatos = vs_basedato;
 
                         // Mostrar el formulario principal
                         formPrincipal.Show();
@@ -219,7 +221,14 @@ namespace Pesaje.Formulario
 
             SqlConnection sqt1 = new SqlConnection(connection_String);
 
-            
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connection_String);
+
+            string databaseName = builder.InitialCatalog;
+
+            // Mostrar el nombre de la base de datos
+            lb_nameBaseDatos.Text = databaseName;
+            vs_basedato = databaseName;
+
 
             vs_Host = System.Environment.MachineName;
             vs_MacAddres = GetMacAddress();

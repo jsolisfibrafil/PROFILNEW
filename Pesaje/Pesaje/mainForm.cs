@@ -10,7 +10,8 @@ namespace Pesaje
         public string Usuario { get; set; }
         public string Sede { get; set; }
 
-
+        public string BaseDatos { get; set; }
+        
 
         public mainForm()
         {
@@ -63,6 +64,8 @@ namespace Pesaje
             toolStripStatusLabel2.Text =    $" Maquina : {Maquina}";
             toolStripStatusLabel3.Text =    $" Usuario : {Usuario}";
             toolStripStatusLabel4.Text =    $" Sede :    {Sede}";
+
+            toolStripStatusLabel5.Text = $" BaseDato :    {BaseDatos}";
 
         }
 
