@@ -898,15 +898,15 @@ namespace Pesaje
                     cmd.CommandText = NameProced;
 
 
-                    cmd.Parameters.Add(new SqlParameter("@U_FIB_OPERARIO", SqlDbType.Text)).Value = cmb_ope.SelectedValue;
-                    cmd.Parameters.Add(new SqlParameter("@U_FIB_AYUDANTE", SqlDbType.Text)).Value = cmb_ayud.SelectedValue;
+                    //cmd.Parameters.Add(new SqlParameter("@U_FIB_OPERARIO", SqlDbType.Text)).Value = cmb_ope.SelectedValue;
+                    //cmd.Parameters.Add(new SqlParameter("@U_FIB_AYUDANTE", SqlDbType.Text)).Value = cmb_ayud.SelectedValue;
 
                     cmd.Parameters.Add(new SqlParameter("@Item", SqlDbType.Text)).Value = listBox1.SelectedValue.ToString(); // Código de ítem
 
 
-                    //cmd.Parameters.Add(new SqlParameter("@Operario", SqlDbType.VarChar)).Value = tb_codeOperario.Text; // Operario seleccionado
-                    //cmd.Parameters.Add(new SqlParameter("@Ayudante", SqlDbType.VarChar)).Value = "647";//cmb_ayud.SelectedValue; // Ayudante seleccionado
-                    
+                    cmd.Parameters.Add(new SqlParameter("@Operario", SqlDbType.VarChar)).Value = cmb_ope.SelectedValue; // Operario seleccionado
+                    cmd.Parameters.Add(new SqlParameter("@Ayudante", SqlDbType.VarChar)).Value = cmb_ayud.SelectedValue;//cmb_ayud.SelectedValue; // Ayudante seleccionado
+
 
 
                     cmd.Parameters.Add(new SqlParameter("@Maquina", SqlDbType.VarChar)).Value = cbMaquinaria.SelectedValue; // Máquina seleccionada
@@ -1828,6 +1828,7 @@ namespace Pesaje
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Log.Error(ex,ex.Message.ToString());
             }
             finally
             {

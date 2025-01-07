@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using static Pesaje.AreaCodeResolver;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Pesaje
@@ -24,6 +25,8 @@ namespace Pesaje
         DataView dtCodebar = new DataView();
         DataView dtProdMes = new DataView();
         DataView dtDetProd = new DataView();
+
+        public string Sede { get; set; }
 
 
         public frmInformes()
@@ -328,7 +331,15 @@ namespace Pesaje
             }
         }
 
+        private void frmInformes_Load(object sender, EventArgs e)
+        {
+            lb_sede.Text = Sede;
+            //tb_area.Text = Area;
 
+
+            Log.Information("ini load");
+
+        }
     }
 
 

@@ -10,6 +10,8 @@ namespace Pesaje
         public string Usuario { get; set; }
         public string Sede { get; set; }
 
+
+
         public mainForm()
         {
             InitializeComponent();
@@ -20,6 +22,9 @@ namespace Pesaje
 
 
             frmInformes finfo = new frmInformes();
+
+            finfo.Sede = Sede;
+
             finfo.MdiParent = this;
             finfo.Show();
 
@@ -95,6 +100,9 @@ namespace Pesaje
             return resultado == DialogResult.No; // Devuelve true si se cancela el cierre
         }
 
+        private void oPERACIONESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
