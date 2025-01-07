@@ -385,3 +385,174 @@ Net      6.15 kg
 2025-01-07 12:08:27.128 -05:00 [INF] Iniciar_frm_OP_to_SAP_Load
 2025-01-07 12:08:27.608 -05:00 [INF] Obtener_DATA
 2025-01-07 12:08:27.678 -05:00 [INF] Obtener_DATA
+2025-01-07 14:52:52.623 -05:00 [INF] ini load
+2025-01-07 14:52:52.743 -05:00 [INF] Iniciar pesaje
+2025-01-07 14:52:52.773 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza2, Habilitado: Y, Ubicación: LURIN, Modelo: METTLER_TOLEDO_BBA231, Función: CABOS
+2025-01-07 14:52:52.773 -05:00 [INF] Puerto COM abierto. 
+2025-01-07 14:52:52.773 -05:00 [INF] Iniciar a escuchar datos desde la balanza. 
+2025-01-07 14:53:05.263 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2025-01-07 14:53:05.283 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = 
+2025-01-07 14:53:05.283 -05:00 [INF] Se agrego item con exito
+2025-01-07 14:53:33.454 -05:00 [INF] Data leida por ultima vez 07
+Time    14:51:57
+Gross    4.55 kg
+Tare     0.00 kg
+Net      4.55 kg
+
+
+
+
+2025-01-07 14:53:33.454 -05:00 [INF] 07
+Time    14:51:57
+Gross    4.55 kg
+Tare     0.00 kg
+Net      4.55 kg
+
+
+
+
+2025-01-07 14:53:33.454 -05:00 [INF] UpdateUI(4.55)
+2025-01-07 14:53:33.464 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-07 14:53:41.289 -05:00 [INF] retorno : 01250107500455
+2025-01-07 14:53:41.289 -05:00 [INF] ImprimeCodebar1 : 01250107500455
+2025-01-07 14:54:06.651 -05:00 [INF] Inicio imprimir 
+2025-01-07 14:54:51.129 -05:00 [INF] Data leida por ultima vez 07
+Time    14:53:15
+Gross    1.55 kg
+Tare     0.00 kg
+Net      1.55 kg
+
+
+
+
+2025-01-07 14:54:51.129 -05:00 [INF] 07
+Time    14:53:15
+Gross    1.55 kg
+Tare     0.00 kg
+Net      1.55 kg
+
+
+
+
+2025-01-07 14:54:51.129 -05:00 [INF] UpdateUI(1.55)
+2025-01-07 14:54:51.129 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-07 14:54:51.189 -05:00 [INF] retorno : 02250107500155
+2025-01-07 14:54:51.189 -05:00 [INF] ImprimeCodebar1 : 02250107500155
+2025-01-07 14:55:05.939 -05:00 [INF] Inicio imprimir 
+2025-01-07 14:55:15.888 -05:00 [INF] Data leida por ultima vez 07
+Time    14:53:40
+Gross    1.55 kg
+Tare     0.00 kg
+Net      1.55 kg
+
+
+
+
+2025-01-07 14:55:15.888 -05:00 [INF] 07
+Time    14:53:40
+Gross    1.55 kg
+Tare     0.00 kg
+Net      1.55 kg
+
+
+
+
+2025-01-07 14:55:15.888 -05:00 [INF] UpdateUI(1.55)
+2025-01-07 14:55:15.889 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-07 14:55:16.001 -05:00 [INF] retorno : 03250107500155
+2025-01-07 14:55:16.001 -05:00 [INF] ImprimeCodebar1 : 03250107500155
+2025-01-07 14:55:23.362 -05:00 [INF] Inicio imprimir 
+2025-01-07 14:55:30.845 -05:00 [INF] Data leida por ultima vez 07
+Time    14:53:55
+Gross    1.50 kg
+Tare     0.00 kg
+Net      1.50 kg
+
+
+
+
+2025-01-07 14:55:30.845 -05:00 [INF] 07
+Time    14:53:55
+Gross    1.50 kg
+Tare     0.00 kg
+Net      1.50 kg
+
+
+
+
+2025-01-07 14:55:30.845 -05:00 [INF] UpdateUI(1.5)
+2025-01-07 14:55:30.847 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-07 14:55:30.958 -05:00 [INF] retorno : 04250107500150
+2025-01-07 14:55:30.958 -05:00 [INF] ImprimeCodebar1 : 04250107500150
+2025-01-07 14:55:39.179 -05:00 [INF] Inicio imprimir 
+2025-01-07 14:56:47.116 -05:00 [INF] Data leida por ultima vez 07
+Time    14:55:11
+Gross    5.90 kg
+Tare     0.00 kg
+Net      5.90 kg
+
+
+
+
+2025-01-07 14:56:47.116 -05:00 [INF] 07
+Time    14:55:11
+Gross    5.90 kg
+Tare     0.00 kg
+Net      5.90 kg
+
+
+
+
+2025-01-07 14:56:47.116 -05:00 [INF] UpdateUI(5.9)
+2025-01-07 14:56:47.116 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-07 14:56:47.166 -05:00 [INF] retorno : 05250107500590
+2025-01-07 14:56:47.176 -05:00 [INF] ImprimeCodebar1 : 05250107500590
+2025-01-07 14:56:55.598 -05:00 [INF] Inicio imprimir 
+2025-01-07 14:58:12.504 -05:00 [INF] Data leida por ultima vez 07
+Time    14:56:36
+Gross    5.00 kg
+Tare     0.00 kg
+Net      5.00 kg
+
+
+
+
+2025-01-07 14:58:12.504 -05:00 [INF] 07
+Time    14:56:36
+Gross    5.00 kg
+Tare     0.00 kg
+Net      5.00 kg
+
+
+
+
+2025-01-07 14:58:12.504 -05:00 [INF] UpdateUI(5)
+2025-01-07 14:58:12.504 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-07 14:58:12.564 -05:00 [INF] retorno : 06250107500500
+2025-01-07 14:58:12.564 -05:00 [INF] ImprimeCodebar1 : 06250107500500
+2025-01-07 14:58:12.564 -05:00 [INF] Inicio imprimir 
+2025-01-07 14:58:43.593 -05:00 [INF] Data leida por ultima vez 07
+Time    14:57:07
+Gross    5.00 kg
+Tare     0.00 kg
+Net      5.00 kg
+
+
+
+
+2025-01-07 14:58:43.593 -05:00 [INF] 07
+Time    14:57:07
+Gross    5.00 kg
+Tare     0.00 kg
+Net      5.00 kg
+
+
+
+
+2025-01-07 14:58:43.593 -05:00 [INF] UpdateUI(5)
+2025-01-07 14:58:43.593 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM1
+2025-01-07 14:58:43.643 -05:00 [INF] retorno : 07250107500500
+2025-01-07 14:58:43.643 -05:00 [INF] ImprimeCodebar1 : 07250107500500
+2025-01-07 14:58:43.643 -05:00 [INF] Inicio imprimir 
+2025-01-07 15:00:05.129 -05:00 [INF] ini load
+2025-01-07 15:00:12.549 -05:00 [INF] Se ObtenerData

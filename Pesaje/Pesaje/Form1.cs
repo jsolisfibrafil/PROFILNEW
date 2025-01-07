@@ -1771,7 +1771,7 @@ namespace Pesaje
                 //if (rdb_si.Checked)
                 if (true)
                 {
-                    etiqueta = etiqueta.Replace("[PESO]", peso.ToString());
+                    etiqueta = etiqueta.Replace("[PESO]", peso.ToString("F2"));
                 }
 
                 etiqueta = etiqueta.Replace("\\[\"\"]", "''");
