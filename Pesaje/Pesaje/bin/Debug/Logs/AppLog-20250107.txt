@@ -118,3 +118,18 @@ System.IO.IOException: El puerto 'COM1' no existe.
 2025-01-07 10:23:52.340 -05:00 [INF] Se ObtenerData
 2025-01-07 10:23:56.129 -05:00 [INF] Se ObtenerData
 2025-01-07 10:24:03.689 -05:00 [INF] Se Exporta excel
+2025-01-07 11:30:30.705 -05:00 [INF] ini load
+2025-01-07 11:30:30.835 -05:00 [INF] Iniciar pesaje
+2025-01-07 11:30:30.865 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza2, Habilitado: Y, Ubicación: LURIN, Modelo: METTLER_TOLEDO_BBA231, Función: CABOS
+2025-01-07 11:30:30.865 -05:00 [INF] Puerto COM abierto. 
+2025-01-07 11:30:30.865 -05:00 [INF] Iniciar a escuchar datos desde la balanza. 
+2025-01-07 11:30:42.396 -05:00 [INF] ini load
+2025-01-07 11:30:49.105 -05:00 [INF] Se ObtenerData
+2025-01-07 11:31:09.635 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2025-01-07 11:31:09.645 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = BD: Esta máquina se encuentra ocupada en otra producción.
+2025-01-07 11:31:10.835 -05:00 [ERR] BD: Esta máquina se encuentra ocupada en otra producción.
+2025-01-07 11:31:10.835 -05:00 [INF] Se agrego item con exito
+2025-01-07 11:31:25.121 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2025-01-07 11:31:25.131 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = BD: Esta máquina se encuentra ocupada en otra producción.
+2025-01-07 11:31:26.981 -05:00 [ERR] BD: Esta máquina se encuentra ocupada en otra producción.
+2025-01-07 11:31:26.981 -05:00 [INF] Se agrego item con exito
