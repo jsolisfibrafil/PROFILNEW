@@ -168,7 +168,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.SpringGreen;
-            this.button3.Location = new System.Drawing.Point(15, 519);
+            this.button3.Location = new System.Drawing.Point(11, 559);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(303, 44);
@@ -299,12 +299,14 @@
             // 
             // listBox2
             // 
+            this.listBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
+            this.listBox2.ItemHeight = 31;
             this.listBox2.Location = new System.Drawing.Point(679, 160);
             this.listBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBox2.MultiColumn = true;
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(432, 196);
+            this.listBox2.Size = new System.Drawing.Size(513, 252);
             this.listBox2.TabIndex = 24;
             this.listBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBox2_KeyDown);
             // 
@@ -312,16 +314,16 @@
             // 
             this.listBox3.FormattingEnabled = true;
             this.listBox3.ItemHeight = 16;
-            this.listBox3.Location = new System.Drawing.Point(679, 406);
+            this.listBox3.Location = new System.Drawing.Point(679, 463);
             this.listBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(432, 100);
+            this.listBox3.Size = new System.Drawing.Size(513, 100);
             this.listBox3.TabIndex = 25;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(679, 382);
+            this.label9.Location = new System.Drawing.Point(679, 435);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 16);
             this.label9.TabIndex = 26;
@@ -330,7 +332,7 @@
             // lbl_countbul_s
             // 
             this.lbl_countbul_s.AutoSize = true;
-            this.lbl_countbul_s.Location = new System.Drawing.Point(765, 382);
+            this.lbl_countbul_s.Location = new System.Drawing.Point(765, 435);
             this.lbl_countbul_s.Name = "lbl_countbul_s";
             this.lbl_countbul_s.Size = new System.Drawing.Size(12, 16);
             this.lbl_countbul_s.TabIndex = 27;
@@ -339,7 +341,7 @@
             // lbl_pesotot_s
             // 
             this.lbl_pesotot_s.AutoSize = true;
-            this.lbl_pesotot_s.Location = new System.Drawing.Point(924, 382);
+            this.lbl_pesotot_s.Location = new System.Drawing.Point(924, 435);
             this.lbl_pesotot_s.Name = "lbl_pesotot_s";
             this.lbl_pesotot_s.Size = new System.Drawing.Size(12, 16);
             this.lbl_pesotot_s.TabIndex = 29;
@@ -348,7 +350,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(837, 382);
+            this.label11.Location = new System.Drawing.Point(837, 435);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 16);
             this.label11.TabIndex = 28;
@@ -442,7 +444,7 @@
             // 
             // btnBorrarPesos
             // 
-            this.btnBorrarPesos.Location = new System.Drawing.Point(979, 526);
+            this.btnBorrarPesos.Location = new System.Drawing.Point(979, 569);
             this.btnBorrarPesos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBorrarPesos.Name = "btnBorrarPesos";
             this.btnBorrarPesos.Size = new System.Drawing.Size(133, 34);
@@ -461,7 +463,7 @@
             this.grp_combos.Controls.Add(this.label13);
             this.grp_combos.Controls.Add(this.label15);
             this.grp_combos.Controls.Add(this.label10);
-            this.grp_combos.Location = new System.Drawing.Point(312, 212);
+            this.grp_combos.Location = new System.Drawing.Point(204, 171);
             this.grp_combos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grp_combos.Name = "grp_combos";
             this.grp_combos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -546,7 +548,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 581);
+            this.ClientSize = new System.Drawing.Size(1204, 625);
             this.Controls.Add(this.grp_combos);
             this.Controls.Add(this.btnBorrarPesos);
             this.Controls.Add(this.tb_pesoobtenido);
