@@ -22,7 +22,7 @@ namespace Pesaje.Formulario
     {
 
         DataSet dts = new DataSet();
-        public static string vs_User, vs_Area, vs_Mac, vs_idUser, vs_idArea, vs_idMac, vs_isADM, vs_iArea, vs_Host, vs_MacAddres, vs_sede,vs_basedato;
+        public static string vs_User, vs_Area, vs_Mac, vs_idUser, vs_idArea, vs_idMac, vs_isADM, vs_iArea, vs_Host, vs_MacAddres, vs_sede,vs_basedato, vs_version;
 
         private void cmbArea_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -101,6 +101,11 @@ namespace Pesaje.Formulario
                         formPrincipal.Usuario = vs_User;
                         formPrincipal.Sede = vs_sede;
                         formPrincipal.BaseDatos = vs_basedato;
+
+                        formPrincipal.Version = vs_version;
+                        
+
+
 
                         // Mostrar el formulario principal
                         formPrincipal.Show();
@@ -226,8 +231,11 @@ namespace Pesaje.Formulario
             string databaseName = builder.InitialCatalog;
 
             // Mostrar el nombre de la base de datos
-            lb_nameBaseDatos.Text = databaseName;
-            vs_basedato = databaseName;
+            lb_nameBaseDatos.Text   = databaseName;
+            vs_basedato             = databaseName;
+
+            lb_version.Text         =   "1.0.0";
+            vs_version = lb_version.Text;
 
 
             vs_Host = System.Environment.MachineName;

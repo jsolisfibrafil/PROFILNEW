@@ -36,8 +36,8 @@
             this.cmbArea = new System.Windows.Forms.ComboBox();
             this.cmbUser = new System.Windows.Forms.ComboBox();
             this.Panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.TextBox5 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.TextBox4 = new System.Windows.Forms.TextBox();
             this.TextBox3 = new System.Windows.Forms.TextBox();
             this.TextBox2 = new System.Windows.Forms.TextBox();
@@ -53,6 +53,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lb_nameBaseDatos = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.lb_version = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,11 +138,18 @@
             this.Panel1.Controls.Add(this.label7);
             this.Panel1.Controls.Add(this.label6);
             this.Panel1.Controls.Add(this.label50);
-            this.Panel1.Location = new System.Drawing.Point(175, 12);
+            this.Panel1.Location = new System.Drawing.Point(136, 12);
             this.Panel1.Name = "Panel1";
             this.Panel1.Size = new System.Drawing.Size(438, 194);
             this.Panel1.TabIndex = 16;
             this.Panel1.Visible = false;
+            // 
+            // TextBox5
+            // 
+            this.TextBox5.Location = new System.Drawing.Point(111, 124);
+            this.TextBox5.Name = "TextBox5";
+            this.TextBox5.Size = new System.Drawing.Size(211, 20);
+            this.TextBox5.TabIndex = 9;
             // 
             // button3
             // 
@@ -151,13 +160,6 @@
             this.button3.Text = "Registar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // TextBox5
-            // 
-            this.TextBox5.Location = new System.Drawing.Point(111, 124);
-            this.TextBox5.Name = "TextBox5";
-            this.TextBox5.Size = new System.Drawing.Size(211, 20);
-            this.TextBox5.TabIndex = 9;
             // 
             // TextBox4
             // 
@@ -235,6 +237,7 @@
             // lbl_sede
             // 
             this.lbl_sede.AutoSize = true;
+            this.lbl_sede.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lbl_sede.Location = new System.Drawing.Point(350, 146);
             this.lbl_sede.Name = "lbl_sede";
             this.lbl_sede.Size = new System.Drawing.Size(11, 13);
@@ -271,6 +274,7 @@
             // lb_nameBaseDatos
             // 
             this.lb_nameBaseDatos.AutoSize = true;
+            this.lb_nameBaseDatos.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lb_nameBaseDatos.Location = new System.Drawing.Point(115, 173);
             this.lb_nameBaseDatos.Name = "lb_nameBaseDatos";
             this.lb_nameBaseDatos.Size = new System.Drawing.Size(15, 13);
@@ -286,11 +290,32 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "BaseDatos : ";
             // 
+            // lb_version
+            // 
+            this.lb_version.AutoSize = true;
+            this.lb_version.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lb_version.Location = new System.Drawing.Point(115, 195);
+            this.lb_version.Name = "lb_version";
+            this.lb_version.Size = new System.Drawing.Size(15, 13);
+            this.lb_version.TabIndex = 23;
+            this.lb_version.Text = "**";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(50, 195);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 13);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Versión : ";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(477, 236);
+            this.Controls.Add(this.lb_version);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.lb_nameBaseDatos);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.Panel1);
@@ -342,5 +367,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lb_nameBaseDatos;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lb_version;
+        private System.Windows.Forms.Label label12;
     }
 }

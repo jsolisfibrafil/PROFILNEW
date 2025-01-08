@@ -1,0 +1,5 @@
+2025-01-08 08:33:26.813 -05:00 [INF] ini load
+2025-01-08 08:33:26.911 -05:00 [INF] Iniciar pesaje
+2025-01-08 08:33:26.935 -05:00 [INF] Balanza configurado en APPCONFIG : Balanza2, Habilitado: Y, Ubicación: LURIN, Modelo: METTLER_TOLEDO_BBA231, Función: CABOS
+2025-01-08 08:33:26.941 -05:00 [INF] Puerto COM abierto. 
+2025-01-08 08:33:26.943 -05:00 [INF] Iniciar a escuchar datos desde la balanza. 
