@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Text.RegularExpressions;
 using static Pesaje.AreaCodeResolver;
+using System.Text;
 
 
 namespace Pesaje
@@ -41,6 +42,7 @@ namespace Pesaje
         string appConfigModelo = string.Empty;
         string appConfigFuncion = string.Empty;
 
+        StringBuilder dataBuffer = new StringBuilder();
 
         string logDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
 
@@ -307,6 +309,8 @@ namespace Pesaje
                     {
 
                         data2 = serialport2.ReadExisting();
+
+                        Log.Information("data2.. - " + data2.ToString());
                         //string data2 = serialport2.by ;
 
                         //Log.Information(data2);
@@ -390,6 +394,171 @@ namespace Pesaje
 
                 }
 
+                //AL 09/01/2025 esta balanza se usa en telares, LURIN.
+                if (appConfigHabilitado == "Y" && appConfigUbicacion == "LURIN" && appConfigModelo == "METTLER_TOLEDO_BBA231")
+                {
+                    while (true)
+                    {
+
+                        data2 = serialport2.ReadExisting();
+
+
+                        //Log.Information("data3x. - " + data2.ToString());
+                        //  09012025_1654
+                        //ini   09012025_1544
+
+                        string data3 = data2.Trim();
+
+                        if (!string.IsNullOrWhiteSpace(data3))
+                        {
+                            Log.Information("data3xx. - " + data3.ToString());
+                            dataBuffer.Append(data3); // Acumula los datos
+
+                            // Procesa los datos si están completos (por ejemplo, contienen un número y "kg")
+                            if (dataBuffer.ToString().Contains("kg"))
+                            {
+                                Log.Information("data3.xxx - " + dataBuffer.ToString());
+                                dataBuffer.Clear(); // Limpia el buffer para el próximo dato
+                            }
+                        }
+
+                        //fin   09012025_1544
+
+
+
+                        //string data2 = serialport2.by ;
+
+                        //Log.Information(data2);
+                        dataIn = data2;
+
+                        //if (!string.IsNullOrEmpty(data2))
+                        //if (true)
+                        if (!string.IsNullOrEmpty(data2))
+                        {
+                            ////// Llamar al hilo principal para actualizar la interfaz de usuario
+
+                            //if (dataIn != string.Empty)
+                            //if (true)
+                            if (dataIn != string.Empty)
+                            {
+
+                                string[] lines1 = dataIn.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                                //
+
+                                ////
+                                ///ini
+
+                                bool balanzaLurinToledo = true;
+                                double temp1 = 0;
+
+                                foreach (var linea in lines1)
+                                {
+                                    if (linea.StartsWith("Net"))
+                                    {
+
+                                        Regex regex = new Regex(@"[-+]?\d*\.\d+|\d+");
+                                        Match match = regex.Match(linea);  // Buscamos el patrón en la cadena
+
+                                        if (match.Success)
+                                        {
+                                            // Convertimos la cadena del número a un double y la devolvemos
+                                            temp1 = Convert.ToDouble(match.Value);
+                                        }
+
+
+
+                                        // Extraer el valor numérico de la línea "Net"
+
+
+                                        if (temp1 > 1)
+                                        {
+                                            Log.Information("Data leida por ultima vez " + data2);
+                                            Log.Information(data2);
+                                            Log.Information("UpdateUI(" + temp1.ToString() + ")");
+
+                                            UpdateUI(temp1.ToString());
+                                            //SetText(temp1.ToString());
+
+
+                                            // vlistBox1,string vlbl_item
+                                            contador1 = 0;
+                                        }
+
+                                        //// Mostrar el resultado
+                                        //Console.WriteLine("Peso neto: " + pesoNet + " kg");
+
+                                        //// Si deseas usar el valor como un número decimal (por ejemplo, para hacer cálculos)
+                                        //decimal pesoNetoDecimal = decimal.Parse(pesoNet);
+                                        //Console.WriteLine("Peso neto como número: " + pesoNetoDecimal);
+                                    }
+                                }
+
+                                ///fin
+
+
+
+                                ////if (true)
+                                //if (contador1 == 1 && lastvalue == "S")
+                                //{
+                                //    //if (contador1 == 1 && lastvalue == "S")
+
+                                //    //eliminar
+
+
+                                //    //codigo si va
+                                //    string[] lines2 = dataIn.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+
+                                //    //lines2
+
+
+                                //    if (lines2 != null && lines2.Length > 1)
+                                //    {
+                                //        datosrespo = lines2[1].Replace(" ", ""); // Reemplaza los espacios
+                                //        datosrespo = datosrespo.Replace("GS", "");
+                                //        datosrespo = datosrespo.Replace("NT", "");
+
+                                //        if (Convert.ToDouble(datosrespo) > 1)
+                                //        {
+                                //            Log.Information("Data leida por ultima vez " + data2);
+                                //            Log.Information(data2);
+                                //            Log.Information("UpdateUI(" + datosrespo.ToString() + ")");
+                                //            UpdateUI(datosrespo);
+                                //            contador1 = 0;
+                                //        }
+
+                                //    }
+
+
+                                //}
+
+
+                                //if (lines1 != null && lines1.Length > 0 && !string.IsNullOrEmpty(lines1[0]) && lines1[0] == "S" && contador1 == 0)
+                                //{
+                                //    contador1++;
+                                //    lastvalue = "S";
+                                //}
+                                //else
+                                //{
+                                //    contador1 = 0;
+                                //    lastvalue = string.Empty;
+                                //}
+
+
+
+                            }
+
+                            datosrespo = dataIn;
+                            string[] lines = datosrespo.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                            Thread.Sleep(100);
+
+                        }
+
+
+                    }
+
+                }
 
 
             }
