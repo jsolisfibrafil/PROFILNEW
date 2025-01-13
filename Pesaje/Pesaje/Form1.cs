@@ -14,6 +14,7 @@ using System.Xml;
 using System.Text.RegularExpressions;
 using static Pesaje.AreaCodeResolver;
 using System.Text;
+using System.Globalization;
 
 
 namespace Pesaje
@@ -65,7 +66,7 @@ namespace Pesaje
 
             tb_sede.Text = Sede;
             tb_area.Text = Area;
-
+            //string ba23= va1_("102.0kg");
 
             Log.Information("ini load");
 
@@ -165,6 +166,9 @@ namespace Pesaje
                 //AL 02/01/2025 esta balanza se usa en CABOS, LURIN.
                 if (appConfigHabilitado == "Y" && appConfigUbicacion == "LURIN" && appConfigModelo == "METTLER_TOLEDO_BBA231")
                 {
+
+                    Log.Information("en METTLER_TOLEDO_BBA231");
+
                     while (true)
                     {
 
@@ -241,52 +245,6 @@ namespace Pesaje
 
 
 
-                                ////if (true)
-                                //if (contador1 == 1 && lastvalue == "S")
-                                //{
-                                //    //if (contador1 == 1 && lastvalue == "S")
-
-                                //    //eliminar
-
-
-                                //    //codigo si va
-                                //    string[] lines2 = dataIn.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-
-                                //    //lines2
-
-
-                                //    if (lines2 != null && lines2.Length > 1)
-                                //    {
-                                //        datosrespo = lines2[1].Replace(" ", ""); // Reemplaza los espacios
-                                //        datosrespo = datosrespo.Replace("GS", "");
-                                //        datosrespo = datosrespo.Replace("NT", "");
-
-                                //        if (Convert.ToDouble(datosrespo) > 1)
-                                //        {
-                                //            Log.Information("Data leida por ultima vez " + data2);
-                                //            Log.Information(data2);
-                                //            Log.Information("UpdateUI(" + datosrespo.ToString() + ")");
-                                //            UpdateUI(datosrespo);
-                                //            contador1 = 0;
-                                //        }
-
-                                //    }
-
-
-                                //}
-
-
-                                //if (lines1 != null && lines1.Length > 0 && !string.IsNullOrEmpty(lines1[0]) && lines1[0] == "S" && contador1 == 0)
-                                //{
-                                //    contador1++;
-                                //    lastvalue = "S";
-                                //}
-                                //else
-                                //{
-                                //    contador1 = 0;
-                                //    lastvalue = string.Empty;
-                                //}
-
 
 
                             }
@@ -305,6 +263,8 @@ namespace Pesaje
 
                 if (appConfigHabilitado == "Y" && appConfigUbicacion == "CHILCA02" && appConfigModelo == "SUMICO_PRECIX_WEIGHT_MODELO_8513")
                 {
+                    Log.Information("en SUMICO_PRECIX_WEIGHT_MODELO_8513");
+
                     while (true)
                     {
 
@@ -394,9 +354,11 @@ namespace Pesaje
 
                 }
 
-                //AL 09/01/2025 esta balanza se usa en telares, LURIN.
-                if (appConfigHabilitado == "Y" && appConfigUbicacion == "LURIN" && appConfigModelo == "METTLER_TOLEDO_BBA231")
+                //AL 13/01/2025 esta balanza se usa en telares, LURIN.
+                if (appConfigHabilitado == "Y" && appConfigUbicacion == "LURIN" && appConfigModelo == "METTLER_TOLEDO_BBA221-3BB60C")
                 {
+                    Log.Information("en METTLER_TOLEDO_BBA221-3BB60C");
+
                     while (true)
                     {
 
@@ -411,148 +373,47 @@ namespace Pesaje
 
                         if (!string.IsNullOrWhiteSpace(data3))
                         {
-                            Log.Information("data3xx. - " + data3.ToString());
+                            //Log.Information("data3xx. - " + data3.ToString());
                             dataBuffer.Append(data3); // Acumula los datos
 
                             // Procesa los datos si están completos (por ejemplo, contienen un número y "kg")
                             if (dataBuffer.ToString().Contains("kg"))
                             {
                                 Log.Information("data3.xxx - " + dataBuffer.ToString());
+
+                                string input = dataBuffer.ToString();
                                 dataBuffer.Clear(); // Limpia el buffer para el próximo dato
-                            }
-                        }
-
-                        //fin   09012025_1544
 
 
+                                //ini
+                                Regex regex = new Regex(@"[-+]?\d*\.\d+|\d+");
+                                Match match = regex.Match(input);  // Buscamos el patrón en la cadena
 
-                        //string data2 = serialport2.by ;
 
-                        //Log.Information(data2);
-                        dataIn = data2;
 
-                        //if (!string.IsNullOrEmpty(data2))
-                        //if (true)
-                        if (!string.IsNullOrEmpty(data2))
-                        {
-                            ////// Llamar al hilo principal para actualizar la interfaz de usuario
-
-                            //if (dataIn != string.Empty)
-                            //if (true)
-                            if (dataIn != string.Empty)
-                            {
-
-                                string[] lines1 = dataIn.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-                                //
-
-                                ////
-                                ///ini
-
-                                bool balanzaLurinToledo = true;
-                                double temp1 = 0;
-
-                                foreach (var linea in lines1)
+                                if (match.Success)
                                 {
-                                    if (linea.StartsWith("Net"))
+                                    string value = match.Value;
+
+                                    if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out double result))
                                     {
 
-                                        Regex regex = new Regex(@"[-+]?\d*\.\d+|\d+");
-                                        Match match = regex.Match(linea);  // Buscamos el patrón en la cadena
-
-                                        if (match.Success)
-                                        {
-                                            // Convertimos la cadena del número a un double y la devolvemos
-                                            temp1 = Convert.ToDouble(match.Value);
-                                        }
-
-
-
-                                        // Extraer el valor numérico de la línea "Net"
-
-
-                                        if (temp1 > 1)
-                                        {
-                                            Log.Information("Data leida por ultima vez " + data2);
-                                            Log.Information(data2);
-                                            Log.Information("UpdateUI(" + temp1.ToString() + ")");
-
-                                            UpdateUI(temp1.ToString());
-                                            //SetText(temp1.ToString());
-
-
-                                            // vlistBox1,string vlbl_item
-                                            contador1 = 0;
-                                        }
-
-                                        //// Mostrar el resultado
-                                        //Console.WriteLine("Peso neto: " + pesoNet + " kg");
-
-                                        //// Si deseas usar el valor como un número decimal (por ejemplo, para hacer cálculos)
-                                        //decimal pesoNetoDecimal = decimal.Parse(pesoNet);
-                                        //Console.WriteLine("Peso neto como número: " + pesoNetoDecimal);
+                                        Log.Information("input.ToString() " + input.ToString());
+                                        UpdateUI(value.ToString());
+                                        //Console.WriteLine($"El valor convertido es: {result}");
+                                    }
+                                    else
+                                    {
+                                        Log.Error("error ehn lectura en telares");
                                     }
                                 }
 
-                                ///fin
 
 
-
-                                ////if (true)
-                                //if (contador1 == 1 && lastvalue == "S")
-                                //{
-                                //    //if (contador1 == 1 && lastvalue == "S")
-
-                                //    //eliminar
-
-
-                                //    //codigo si va
-                                //    string[] lines2 = dataIn.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-
-                                //    //lines2
-
-
-                                //    if (lines2 != null && lines2.Length > 1)
-                                //    {
-                                //        datosrespo = lines2[1].Replace(" ", ""); // Reemplaza los espacios
-                                //        datosrespo = datosrespo.Replace("GS", "");
-                                //        datosrespo = datosrespo.Replace("NT", "");
-
-                                //        if (Convert.ToDouble(datosrespo) > 1)
-                                //        {
-                                //            Log.Information("Data leida por ultima vez " + data2);
-                                //            Log.Information(data2);
-                                //            Log.Information("UpdateUI(" + datosrespo.ToString() + ")");
-                                //            UpdateUI(datosrespo);
-                                //            contador1 = 0;
-                                //        }
-
-                                //    }
-
-
-                                //}
-
-
-                                //if (lines1 != null && lines1.Length > 0 && !string.IsNullOrEmpty(lines1[0]) && lines1[0] == "S" && contador1 == 0)
-                                //{
-                                //    contador1++;
-                                //    lastvalue = "S";
-                                //}
-                                //else
-                                //{
-                                //    contador1 = 0;
-                                //    lastvalue = string.Empty;
-                                //}
-
+                                //fin
 
 
                             }
-
-                            datosrespo = dataIn;
-                            string[] lines = datosrespo.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-                            Thread.Sleep(100);
-
                         }
 
 
@@ -573,6 +434,45 @@ namespace Pesaje
                 serialport2.Close();
             }
         }
+
+        public string va1_ (string g1)
+        {
+
+            string vval1 = string.Empty;
+
+            //ini
+            Regex regex = new Regex(@"[-+]?\d*\.\d+|\d+");
+            Match match = regex.Match(g1);  // Buscamos el patrón en la cadena
+            
+
+
+            if (match.Success)
+            {
+                string value = match.Value;
+
+                if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out double result))
+                {
+
+
+                    UpdateUI(g1.ToString());
+                    //Console.WriteLine($"El valor convertido es: {result}");
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo convertir el valor a double.");
+                }
+            }
+
+
+
+
+            //fin
+
+            return vval1;
+
+        }
+
+
         // Método para actualizar la interfaz de usuario desde el subproceso
         private static void UpdateUI(string data)
         {
@@ -1359,358 +1259,6 @@ namespace Pesaje
             //GetSelectedIndex()
 
 
-            ////if (listBox1.InvokeRequired)
-            ////{
-            ////    // Si estamos en un hilo distinto, usamos Invoke para ejecutar el código en el hilo principal.
-            ////    listBox1.Invoke(new Action(() =>
-            ////    {
-            ////        if (listBox1.SelectedIndex >= 0)
-            ////        {
-            ////            // Lógica para manejar el índice seleccionado
-
-            ////            if (listBox1.SelectedIndex >= 0)
-            ////            //if (GetSelectedIndex() >= 0)
-            ////            {
-            ////                try
-            ////                {
-
-            ////                    if (tb_sede.Text == "01")
-            ////                    {
-            ////                        text = text.Replace("kg", "");
-            ////                    }
-            ////                    else
-            ////                    {
-            ////                        if (text.Length > 0) //&& te|xt.Contains("kg") && text.Contains("Net"))
-            ////                        {
-            ////                            text = text.Replace("Net", "");
-            ////                            text = text.Replace("kg", "");
-
-            ////                        }
-
-            ////                    }
-
-            ////                    //DatosInsUpd("U_SP_FIB_INS_OPROM1", Convert.ToDouble(text), false);
-            ////                    DatosInsUpd("U_SP_FIB_INS_OPROM1", Convert.ToDouble(text), false);
-
-            ////                    cmd.Parameters.Clear();
-            ////                    cmd.Connection = sqt7;
-            ////                    cmd.CommandType = CommandType.StoredProcedure;
-            ////                    //cmd.CommandText = "U_SP_FIB_INS_OPROM1";
-            ////                    cmd.CommandText = "U_SP_FIB_INS_OPROM1";
-
-
-            ////                    ////GetSelectedValue()?.ToString()
-            ////                    cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.VarChar)).Value = listBox1.SelectedValue.ToString(); // Código de item
-            ////                                                                                                                                  //cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = GetSelectedValue()?.ToString(); // Código de item
-
-            ////                    // por el momento no va scrap
-            ////                    // false = scrap
-            ////                    // 
-            ////                    //if (rb_pofic.Checked == true)
-            ////                    if (true)
-            ////                    {
-            ////                        cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = Convert.ToDecimal(text.Trim());
-            ////                    }
-            ////                    else
-            ////                    {
-            ////                        cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = Convert.ToDecimal(text.Trim()) * -1;
-            ////                    }
-
-            ////                    cmd.Parameters.Add(new SqlParameter("@U_FIB_SEDE", SqlDbType.VarChar)).Value = tb_sede.Text;
-            ////                    cmd.Parameters.Add(new SqlParameter("@U_FIB_TELAR", SqlDbType.VarChar)).Value = cbMaquinaria.SelectedValue;
-            ////                    cmd.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output;
-
-            ////                    string a = string.Empty;
-            ////                    a = cmd.Parameters["@ItemNo"].Value + "-";
-            ////                    a = cmd.Parameters["@ProducWeight"].Value + "-" + a;
-            ////                    a = cmd.Parameters["@U_FIB_SEDE"].Value + "-" + a;
-            ////                    a = cmd.Parameters["@U_FIB_TELAR"].Value + "-" + a;
-            ////                    a = cmd.Parameters["@MSG"].Value + "-" + a;
-
-
-
-            ////                    // Parámetros para el comando
-            ////                    // Ejecutar comando
-            ////                    if (sqt7.State == ConnectionState.Closed)
-            ////                        sqt7.Open();
-            ////                    cmd.ExecuteNonQuery();
-            ////                    CargaPesos();
-
-            ////                    string retorno2 = cmd.Parameters["@MSG"].Value.ToString();
-            ////                    Log.Information("retorno : " + retorno2);
-
-            ////                    if (retorno2.ToString().Trim() == string.Empty)
-            ////                    {
-
-            ////                        retorno2 = "BD : NO SE OBTUVO CODIGO";
-
-            ////                        string mensajeLinea1 = "NPD : PM                                                                          FP : " + DateTime.Now.ToString();
-            ////                        string mensajeLinea2 = retorno2;
-            ////                        string mensajeLinea3 = retorno2;
-            ////                        string mensajeLinea4 = text.ToString() + " KG";
-            ////                        string mensajeLinea5 = "ID ITEM     : " + listBox1.SelectedValue.ToString();
-            ////                        string mensajeLinea6 = "DSC ITEM  :  " + lbl_item.Text;
-
-            ////                        // Crear la instancia de TicketPrinter y pasar las dos líneas de texto
-            ////                        TicketPrinter ticketPrinter = new TicketPrinter(mensajeLinea1,
-            ////                                                                        mensajeLinea2,
-            ////                                                                        mensajeLinea3,
-            ////                                                                        mensajeLinea4,
-            ////                                                                        mensajeLinea5,
-            ////                                                                        mensajeLinea6,
-            ////                                                                        retorno2
-            ////                                                                        );
-
-            ////                        // Imprimir el ticket directamente sin mostrar la ventana
-            ////                        ticketPrinter.PrintTicket2();
-
-            ////                    }
-            ////                    else
-            ////                    {
-            ////                        //if (rb_pofic.Checked)
-
-            ////                        //LURIN CABOS
-            ////                        if (appConfigHabilitado == "Y" && appConfigUbicacion == "LURIN" && appConfigModelo == "METTLER_TOLEDO_BBA231")
-            ////                        {
-            ////                            Log.Information("ImprimeCodebar1 : " + retorno2);
-
-            ////                            ImprimeCodebar1(retorno2, Convert.ToDecimal(text), listBox1.SelectedValue.ToString(), lbl_item.Text);//listBox1.SelectedValue.ToString() , lbl_item.Text) ;
-
-            ////                        }
-            ////                        else
-            ////                        {
-
-            ////                            if (true)
-            ////                            {
-            ////                                //Imprime_Codebar(cmd.Parameters["@MSG"].Value.ToString(), Convert.ToDecimal(text.Trim()));
-
-            ////                                string mensajeLinea1 = "NPD : PM                                                                          FP : " + DateTime.Now.ToString();
-            ////                                string mensajeLinea2 = retorno2;
-            ////                                string mensajeLinea3 = retorno2;
-            ////                                string mensajeLinea4 = text.ToString() + " KG";
-            ////                                string mensajeLinea5 = "ID ITEM     : " + listBox1.SelectedValue.ToString();
-            ////                                string mensajeLinea6 = "DSC ITEM  :  " + lbl_item.Text;
-
-            ////                                // Crear la instancia de TicketPrinter y pasar las dos líneas de texto
-            ////                                TicketPrinter ticketPrinter = new TicketPrinter(mensajeLinea1,
-            ////                                                                                mensajeLinea2,
-            ////                                                                                mensajeLinea3,
-            ////                                                                                mensajeLinea4,
-            ////                                                                                mensajeLinea5,
-            ////                                                                                mensajeLinea6
-            ////                                                                                );
-
-            ////                                // Imprimir el ticket directamente sin mostrar la ventana
-            ////                                ticketPrinter.PrintTicket();
-
-            ////                            }
-
-            ////                        }
-
-
-
-
-
-            ////                    }
-            ////                    //retorno2 = "012410156806300";
-
-
-            ////                }
-            ////                catch (Exception ex)
-            ////                {
-
-            ////                    Log.Error(ex, " - " + ex.Message);
-            ////                }
-
-            ////            }
-            ////            else
-            ////            {
-            ////                MessageBox.Show("Antes de pesar debe seleccionar un ítem.", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            ////            }
-
-
-
-            ////        }
-
-
-
-            ////    }));
-            ////}
-            ////else
-            ////{
-            ////    if (listBox1.SelectedIndex >= 0)
-            ////    {
-            ////        // Lógica para manejar el índice seleccionado
-
-            ////        if (listBox1.SelectedIndex >= 0)
-            ////        //if (GetSelectedIndex() >= 0)
-            ////        {
-            ////            try
-            ////            {
-
-            ////                if (tb_sede.Text == "01")
-            ////                {
-            ////                    text = text.Replace("kg", "");
-            ////                }
-            ////                else
-            ////                {
-            ////                    if (text.Length > 0) //&& te|xt.Contains("kg") && text.Contains("Net"))
-            ////                    {
-            ////                        text = text.Replace("Net", "");
-            ////                        text = text.Replace("kg", "");
-
-            ////                    }
-
-            ////                }
-
-            ////                //DatosInsUpd("U_SP_FIB_INS_OPROM1", Convert.ToDouble(text), false);
-            ////                DatosInsUpd("U_SP_FIB_INS_OPROM1", Convert.ToDouble(text), false);
-
-            ////                cmd.Parameters.Clear();
-            ////                cmd.Connection = sqt7;
-            ////                cmd.CommandType = CommandType.StoredProcedure;
-            ////                //cmd.CommandText = "U_SP_FIB_INS_OPROM1";
-            ////                cmd.CommandText = "U_SP_FIB_INS_OPROM1";
-
-
-            ////                ////GetSelectedValue()?.ToString()
-            ////                cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.VarChar)).Value = listBox1.SelectedValue.ToString(); // Código de item
-            ////                                                                                                                              //cmd.Parameters.Add(new SqlParameter("@ItemNo", SqlDbType.Text)).Value = GetSelectedValue()?.ToString(); // Código de item
-
-            ////                // por el momento no va scrap
-            ////                // false = scrap
-            ////                // 
-            ////                //if (rb_pofic.Checked == true)
-            ////                if (true)
-            ////                {
-            ////                    cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = Convert.ToDecimal(text.Trim());
-            ////                }
-            ////                else
-            ////                {
-            ////                    cmd.Parameters.Add(new SqlParameter("@ProducWeight", SqlDbType.Decimal)).Value = Convert.ToDecimal(text.Trim()) * -1;
-            ////                }
-
-            ////                cmd.Parameters.Add(new SqlParameter("@U_FIB_SEDE", SqlDbType.VarChar)).Value = tb_sede.Text;
-            ////                cmd.Parameters.Add(new SqlParameter("@U_FIB_TELAR", SqlDbType.VarChar)).Value = cbMaquinaria.SelectedValue;
-            ////                cmd.Parameters.Add(new SqlParameter("@MSG", SqlDbType.VarChar, 250)).Direction = ParameterDirection.Output;
-
-            ////                string a = string.Empty;
-            ////                a = cmd.Parameters["@ItemNo"].Value + "-";
-            ////                a = cmd.Parameters["@ProducWeight"].Value + "-" + a;
-            ////                a = cmd.Parameters["@U_FIB_SEDE"].Value + "-" + a;
-            ////                a = cmd.Parameters["@U_FIB_TELAR"].Value + "-" + a;
-            ////                a = cmd.Parameters["@MSG"].Value + "-" + a;
-
-
-
-            ////                // Parámetros para el comando
-            ////                // Ejecutar comando
-            ////                if (sqt7.State == ConnectionState.Closed)
-            ////                    sqt7.Open();
-            ////                cmd.ExecuteNonQuery();
-            ////                CargaPesos();
-
-            ////                string retorno2 = cmd.Parameters["@MSG"].Value.ToString();
-            ////                Log.Information("retorno : " + retorno2);
-
-            ////                if (retorno2.ToString().Trim() == string.Empty)
-            ////                {
-
-            ////                    retorno2 = "BD : NO SE OBTUVO CODIGO";
-
-            ////                    string mensajeLinea1 = "NPD : PM                                                                          FP : " + DateTime.Now.ToString();
-            ////                    string mensajeLinea2 = retorno2;
-            ////                    string mensajeLinea3 = retorno2;
-            ////                    string mensajeLinea4 = text.ToString() + " KG";
-            ////                    string mensajeLinea5 = "ID ITEM     : " + listBox1.SelectedValue.ToString();
-            ////                    string mensajeLinea6 = "DSC ITEM  :  " + lbl_item.Text;
-
-            ////                    // Crear la instancia de TicketPrinter y pasar las dos líneas de texto
-            ////                    TicketPrinter ticketPrinter = new TicketPrinter(mensajeLinea1,
-            ////                                                                    mensajeLinea2,
-            ////                                                                    mensajeLinea3,
-            ////                                                                    mensajeLinea4,
-            ////                                                                    mensajeLinea5,
-            ////                                                                    mensajeLinea6,
-            ////                                                                    retorno2
-            ////                                                                    );
-
-            ////                    // Imprimir el ticket directamente sin mostrar la ventana
-            ////                    ticketPrinter.PrintTicket2();
-
-            ////                }
-            ////                else
-            ////                {
-            ////                    //if (rb_pofic.Checked)
-
-            ////                    //LURIN CABOS
-            ////                    if (appConfigHabilitado == "Y" && appConfigUbicacion == "LURIN" && appConfigModelo == "METTLER_TOLEDO_BBA231")
-            ////                    {
-            ////                        Log.Information("ImprimeCodebar1 : " + retorno2);
-
-            ////                        ImprimeCodebar1(retorno2, Convert.ToDecimal(text), listBox1.SelectedValue.ToString(), lbl_item.Text);//listBox1.SelectedValue.ToString() , lbl_item.Text) ;
-
-            ////                    }
-            ////                    else
-            ////                    {
-
-            ////                        if (true)
-            ////                        {
-            ////                            //Imprime_Codebar(cmd.Parameters["@MSG"].Value.ToString(), Convert.ToDecimal(text.Trim()));
-
-            ////                            string mensajeLinea1 = "NPD : PM                                                                          FP : " + DateTime.Now.ToString();
-            ////                            string mensajeLinea2 = retorno2;
-            ////                            string mensajeLinea3 = retorno2;
-            ////                            string mensajeLinea4 = text.ToString() + " KG";
-            ////                            string mensajeLinea5 = "ID ITEM     : " + listBox1.SelectedValue.ToString();
-            ////                            string mensajeLinea6 = "DSC ITEM  :  " + lbl_item.Text;
-
-            ////                            // Crear la instancia de TicketPrinter y pasar las dos líneas de texto
-            ////                            TicketPrinter ticketPrinter = new TicketPrinter(mensajeLinea1,
-            ////                                                                            mensajeLinea2,
-            ////                                                                            mensajeLinea3,
-            ////                                                                            mensajeLinea4,
-            ////                                                                            mensajeLinea5,
-            ////                                                                            mensajeLinea6
-            ////                                                                            );
-
-            ////                            // Imprimir el ticket directamente sin mostrar la ventana
-            ////                            ticketPrinter.PrintTicket();
-
-            ////                        }
-
-            ////                    }
-
-
-
-
-
-            ////                }
-            ////                //retorno2 = "012410156806300";
-
-
-            ////            }
-            ////            catch (Exception ex)
-            ////            {
-
-            ////                Log.Error(ex, " - " + ex.Message);
-            ////            }
-
-            ////        }
-            ////        else
-            ////        {
-            ////            MessageBox.Show("Antes de pesar debe seleccionar un ítem.", "PROFIL", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            ////        }
-
-
-
-            ////    }
-
-
-            ////}
-
             if (listBox1.SelectedIndex >= 0)
             {
                 // Lógica para manejar el índice seleccionado
@@ -1789,10 +1337,10 @@ namespace Pesaje
                         if (retorno2.ToString().Trim() == string.Empty)
                         {
 
-                            
 
-                            //LURIN CABOS
-                            if (appConfigHabilitado == "Y" && appConfigUbicacion == "LURIN" && appConfigModelo == "METTLER_TOLEDO_BBA231")
+
+                            //LURIN CABOS o TELARES -- impresora TSC MODEL : TE200
+                            if (appConfigHabilitado == "Y" && (appConfigUbicacion == "LURIN") && (appConfigModelo == "METTLER_TOLEDO_BBA231" || appConfigModelo == "METTLER_TOLEDO_BBA221-3BB60C"))
                             {
                                 Log.Information("ImprimeCodebar1 : " + retorno2);
 
@@ -1833,8 +1381,9 @@ namespace Pesaje
                         {
                             //if (rb_pofic.Checked)
 
-                            //LURIN CABOS
-                            if (appConfigHabilitado == "Y" && appConfigUbicacion == "LURIN" && appConfigModelo == "METTLER_TOLEDO_BBA231")
+                            //
+                            //LURIN CABOS o TELARES -- impresora TSC MODEL : TE200
+                            if (appConfigHabilitado == "Y" && appConfigUbicacion == "LURIN" && (appConfigModelo == "METTLER_TOLEDO_BBA231" || appConfigModelo == "METTLER_TOLEDO_BBA221-3BB60C"))
                             {
                                 Log.Information("ImprimeCodebar1 : " + retorno2);
 
@@ -1879,6 +1428,7 @@ namespace Pesaje
                         //retorno2 = "012410156806300";
 
 
+
                     }
                     catch (Exception ex)
                     {
@@ -1896,10 +1446,6 @@ namespace Pesaje
 
 
             }
-
-
-
-
 
         }
 

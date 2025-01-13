@@ -234,7 +234,7 @@ namespace Pesaje.Formulario
             lb_nameBaseDatos.Text   = databaseName;
             vs_basedato             = databaseName;
 
-            lb_version.Text         =   "1.2.2";
+            lb_version.Text = "1.1.0";
             vs_version = lb_version.Text;
 
 
