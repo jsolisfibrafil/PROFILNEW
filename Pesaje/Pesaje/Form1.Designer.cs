@@ -406,18 +406,18 @@
             this.lbl_idlin.AutoSize = true;
             this.lbl_idlin.Location = new System.Drawing.Point(12, 416);
             this.lbl_idlin.Name = "lbl_idlin";
-            this.lbl_idlin.Size = new System.Drawing.Size(52, 16);
+            this.lbl_idlin.Size = new System.Drawing.Size(14, 20);
             this.lbl_idlin.TabIndex = 35;
-            this.lbl_idlin.Text = "lbl_idlin";
+            this.lbl_idlin.Text = "-";
             // 
             // lbl_linS
             // 
             this.lbl_linS.AutoSize = true;
             this.lbl_linS.Location = new System.Drawing.Point(13, 442);
             this.lbl_linS.Name = "lbl_linS";
-            this.lbl_linS.Size = new System.Drawing.Size(50, 16);
+            this.lbl_linS.Size = new System.Drawing.Size(14, 20);
             this.lbl_linS.TabIndex = 36;
-            this.lbl_linS.Text = "lbl_linS";
+            this.lbl_linS.Text = "-";
             // 
             // imprimirticket
             // 

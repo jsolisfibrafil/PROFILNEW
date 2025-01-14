@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon_newprofil.ico</ApplicationIcon>
+    <ApplicationIcon>desk_icon-icons.com_54432.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BarcodeStandard, Version=3.1.4.0, Culture=neutral, PublicKeyToken=5f09bda868cc39e7, processorArchitecture=MSIL">
@@ -232,7 +232,8 @@
     <Folder Include="QUERY\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon_newprofil.ico" />
+    <Content Include="desk_icon-icons.com_54432.ico" />
+    <Content Include="ICONO\desk_icon-icons.com_54432.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SkiaSharp.NativeAssets.macOS.2.88.8\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.macOS.2.88.8\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />

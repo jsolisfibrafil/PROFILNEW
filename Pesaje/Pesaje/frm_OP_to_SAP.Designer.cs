@@ -107,12 +107,12 @@
             this.DataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.DataGridView2.Name = "DataGridView2";
             this.DataGridView2.RowHeadersWidth = 51;
-            this.DataGridView2.Size = new System.Drawing.Size(1220, 202);
+            this.DataGridView2.Size = new System.Drawing.Size(1220, 353);
             this.DataGridView2.TabIndex = 3;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(16, 624);
+            this.button1.Location = new System.Drawing.Point(23, 776);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
@@ -123,7 +123,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(147, 624);
+            this.button2.Location = new System.Drawing.Point(154, 776);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 28);
@@ -334,7 +334,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1112, 608);
+            this.button4.Location = new System.Drawing.Point(1119, 769);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 44);
