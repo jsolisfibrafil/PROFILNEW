@@ -408,8 +408,6 @@ namespace Pesaje
                                     }
                                 }
 
-
-
                                 //fin
 
 
@@ -1479,7 +1477,54 @@ namespace Pesaje
                 etiqueta = etiqueta.Replace("[NPD]", "PM");
                 etiqueta = etiqueta.Replace("[FP]", DateTime.Today.ToShortDateString());
                 etiqueta = etiqueta.Replace("[IDITEM]", vlistBox1);//"Item1");//listBox1.SelectedValue.ToString()); //.SelectedValue.ToString()); 
-                etiqueta = etiqueta.Replace("[DESPRO]", vlbl_item);// lbl_item.Text);
+
+                ////version inicial
+                //etiqueta = etiqueta.Replace("[DESPRO]", vlbl_item);// lbl_item.Text);
+
+                //ini
+
+                ////// Dividir [DESPRO] en múltiples líneas
+                ////string descripcionCompleta = vlbl_item.Trim(); // Elimina espacios y caracteres invisibles
+                ////Log.Information("descripcionCompleta: " + descripcionCompleta);
+                ////int maxCharsPerLine = 35; // Máximo de caracteres por línea (ajústalo según el ancho del papel)
+                ////var lineasDescripcion = Regex.Matches(descripcionCompleta, ".{1," + maxCharsPerLine + "}")
+                ////                             .Cast<Match>()
+                ////                             .Select(m => m.Value.Trim()) // Limpia cada línea
+                ////                             .ToList();
+
+                ////// Generar las líneas dinámicamente en el formato ZPL
+                ////string textoDividido = "";
+                ////int yPosition = 425; // Posición Y inicial en el ZPL
+                ////foreach (var linea in lineasDescripcion)
+                ////{
+                ////    Log.Information("Línea generada: " + linea);
+                ////    textoDividido += $"A140,{yPosition},0,2,1,1,N,\"{linea}\"\n"; // Genera una línea ZPL
+                ////    yPosition += 25; // Incrementa la posición Y para la siguiente línea
+                ////}
+
+                ////// Asegúrate de que el texto generado esté limpio antes de reemplazarlo
+                ////Log.Information("Texto dividido generado:\n" + textoDividido);
+                ////etiqueta = etiqueta.Replace("[DESPRO]", textoDividido.Trim());
+
+                // Dividir la descripción en líneas de hasta 35 caracteres
+                string descripcionCompleta = vlbl_item.Trim();
+                int maxCharsPerLine = 35;
+                var lineasDescripcion = Regex.Matches(descripcionCompleta, ".{1," + maxCharsPerLine + "}")
+                                             .Cast<Match>()
+                                             .Select(m => m.Value.Trim())
+                                             .ToList();
+
+                // Reemplazar dinámicamente las líneas en la etiqueta
+                etiqueta = etiqueta.Replace("[DESPRO1]", lineasDescripcion.ElementAtOrDefault(0) ?? "");
+                etiqueta = etiqueta.Replace("[DESPRO2]", lineasDescripcion.ElementAtOrDefault(1) ?? "");
+
+                Log.Information(etiqueta);
+
+
+                //fin
+
+
+
                 etiqueta = etiqueta.Replace("[codbar]", codebar);
 
                 // Para el área de cabos
@@ -1493,6 +1538,7 @@ namespace Pesaje
 
                 // Imprimir usando la DLL clsprinter y SendStringToPrinter
                 Log.Information("Inicio imprimir ");
+                Log.Information(etiqueta);
                 clsprinter.Class1.SendStringToPrinter("PROFIL", etiqueta);
 
                 // Mensaje opcional

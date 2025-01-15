@@ -264,14 +264,14 @@
             // 
             // toolStripStatusLabel5
             // 
-            this.toolStripStatusLabel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.toolStripStatusLabel5.BackColor = System.Drawing.Color.LawnGreen;
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
             this.toolStripStatusLabel5.Size = new System.Drawing.Size(151, 20);
             this.toolStripStatusLabel5.Text = "toolStripStatusLabel5";
             // 
             // toolStripStatusLabel6
             // 
-            this.toolStripStatusLabel6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.toolStripStatusLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
             this.toolStripStatusLabel6.Size = new System.Drawing.Size(151, 20);
             this.toolStripStatusLabel6.Text = "toolStripStatusLabel6";
