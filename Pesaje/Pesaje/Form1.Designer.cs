@@ -299,6 +299,8 @@
             // 
             // listBox2
             // 
+            this.listBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 31;
@@ -312,6 +314,8 @@
             // 
             // listBox3
             // 
+            this.listBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox3.FormattingEnabled = true;
             this.listBox3.ItemHeight = 16;
             this.listBox3.Location = new System.Drawing.Point(679, 463);
@@ -406,7 +410,7 @@
             this.lbl_idlin.AutoSize = true;
             this.lbl_idlin.Location = new System.Drawing.Point(12, 416);
             this.lbl_idlin.Name = "lbl_idlin";
-            this.lbl_idlin.Size = new System.Drawing.Size(14, 20);
+            this.lbl_idlin.Size = new System.Drawing.Size(11, 16);
             this.lbl_idlin.TabIndex = 35;
             this.lbl_idlin.Text = "-";
             // 
@@ -415,7 +419,7 @@
             this.lbl_linS.AutoSize = true;
             this.lbl_linS.Location = new System.Drawing.Point(13, 442);
             this.lbl_linS.Name = "lbl_linS";
-            this.lbl_linS.Size = new System.Drawing.Size(14, 20);
+            this.lbl_linS.Size = new System.Drawing.Size(11, 16);
             this.lbl_linS.TabIndex = 36;
             this.lbl_linS.Text = "-";
             // 
@@ -548,7 +552,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 625);
+            this.ClientSize = new System.Drawing.Size(1208, 625);
             this.Controls.Add(this.grp_combos);
             this.Controls.Add(this.btnBorrarPesos);
             this.Controls.Add(this.tb_pesoobtenido);

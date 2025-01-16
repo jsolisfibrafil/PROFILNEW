@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_033B0959855772C6AD6B4DCB4F951E02"
+        "OwnerKey" = "8:_455459177AD94D7386638CF849853EA7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1CA4E87EFBB8EF9626EE41C59390D970"
         "OwnerKey" = "8:_E946FF7DFF6E441F88360D3D21A44593"
         "MsmSig" = "8:_UNDEFINED"
@@ -243,6 +249,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_ADADF35A44594BB6804F418CB174C22B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B4DB67A4F83B4425976FDB5CCA8BE66F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -371,12 +383,6 @@
         {
         "MsmKey" = "8:_FD3EE0DFB5506DED809FA123305898D5"
         "OwnerKey" = "8:_E946FF7DFF6E441F88360D3D21A44593"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_924696181D2B1E5D1278F9392AFDD099"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -523,6 +529,12 @@
         "OwnerKey" = "8:_C8ADEEC255A78DDEF97E4C5C5D98BDC1"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_924696181D2B1E5D1278F9392AFDD099"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -595,7 +607,7 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_49EB4DD824CA4D4A88C7188245954DDC"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_153FE87186894B5DA9477745E173ECC1"
             {
             "Name" = "8:Resultado principal from Pesaje (Active)"
             "Condition" = "8:"
@@ -605,11 +617,11 @@
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_B6C9DF03_AEDE_48C4_9E2F_2F2A7A85BC13"
+            "Identifier" = "8:_E102E3F2_4D92_40E2_96A3_88FD1FE5AD6C"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_B9DD8AE352984D0AA99124694DCC2D21"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_43CFE02E14A1438BB7301CCA2FE5476E"
             {
             "Name" = "8:Resultado principal from Pesaje (Active)"
             "Condition" = "8:"
@@ -619,7 +631,7 @@
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_7F0498CE_47FB_4149_872E_30526AE2ACFA"
+            "Identifier" = "8:_2F3D6542_778A_44B3_868B_2894B27B9F2B"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
@@ -1182,6 +1194,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ADADF35A44594BB6804F418CB174C22B"
+            {
+            "SourcePath" = "8:..\\Pesaje\\desk_icon-icons.com_54432.ico"
+            "TargetName" = "8:desk_icon-icons.com_54432.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_77FE4CAB96D14EA4B2A435458143B857"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B4DB67A4F83B4425976FDB5CCA8BE66F"
             {
             "SourcePath" = "8:..\\Pesaje\\bin\\Debug\\ETI1.PRN"
@@ -1496,6 +1528,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_50DFEA2B01F74174A21ECF25869467B2"
+                    {
+                    "Name" = "8:Aplicaciones"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_3E72437987A34DB6A867F1DDD1EF0281"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_7300D8DCC03346CF934CC7CD86401E51"
@@ -1536,9 +1579,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Test_ProfilNew_v1.1.0"
+        "ProductName" = "8:ProfilNew_v1.1.0"
         "ProductCode" = "8:{55884BD1-2AC8-4B8B-A912-2EF59E273826}"
-        "PackageCode" = "8:{3FBD282D-09BF-4271-8A5C-7838A446EB3F}"
+        "PackageCode" = "8:{C8B85CEA-AF95-4A71-BB71-20CDB80CF3EC}"
         "UpgradeCode" = "8:{DFBDBF31-AA9C-4B1E-8BC9-6330B41A23DD}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -1549,9 +1592,9 @@
         "Manufacturer" = "8:DEV_FIBRAFIL"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Test_ProfilNew v1.1.0"
+        "Title" = "8:ProfilNew v1.1.0"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Test_DESARROLLO_FIBRAFIL"
+        "ARPCONTACT" = "8:DESARROLLO_FIBRAFIL"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -1658,6 +1701,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4021A11AF2204221BF79AECDF2DAA4CC"
+            {
+            "Name" = "8:NewProfil"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_E946FF7DFF6E441F88360D3D21A44593"
+            "Folder" = "8:_7300D8DCC03346CF934CC7CD86401E51"
+            "WorkingFolder" = "8:_77FE4CAB96D14EA4B2A435458143B857"
+            "Icon" = "8:_ADADF35A44594BB6804F418CB174C22B"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
