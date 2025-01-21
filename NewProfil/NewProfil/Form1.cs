@@ -37,6 +37,8 @@ namespace Pesaje
         public static SerialPort serialport2;
         public static Thread balanceThread;
         static Stopwatch stopwatch;
+        string miVariable = string.Empty;
+
         string appConfigKey = string.Empty;
         string appConfigHabilitado = string.Empty;
         string appConfigUbicacion = string.Empty;
@@ -66,12 +68,18 @@ namespace Pesaje
 
             tb_sede.Text = Sede;
             tb_area.Text = Area;
+            
+
             //string ba23= va1_("102.0kg");
 
             Log.Information("ini load");
 
             CargarDatosEnComboBox();
             CargoDatos();
+
+            miVariable = ConfigurationManager.AppSettings["cantidadCopia"];
+
+            lb_cantCopia.Text = miVariable;
 
             iniciar_pesaje_click(this, EventArgs.Empty);
         }
@@ -191,9 +199,6 @@ namespace Pesaje
 
                                 string[] lines1 = dataIn.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-                                //
-
-                                ////
                                 ///ini
 
                                 bool balanzaLurinToledo = true;
@@ -213,8 +218,6 @@ namespace Pesaje
                                             temp1 = Convert.ToDouble(match.Value);
                                         }
 
-
-
                                         // Extraer el valor numérico de la línea "Net"
 
 
@@ -232,20 +235,10 @@ namespace Pesaje
                                             contador1 = 0;
                                         }
 
-                                        //// Mostrar el resultado
-                                        //Console.WriteLine("Peso neto: " + pesoNet + " kg");
-
-                                        //// Si deseas usar el valor como un número decimal (por ejemplo, para hacer cálculos)
-                                        //decimal pesoNetoDecimal = decimal.Parse(pesoNet);
-                                        //Console.WriteLine("Peso neto como número: " + pesoNetoDecimal);
                                     }
                                 }
 
                                 ///fin
-
-
-
-
 
                             }
 
@@ -431,6 +424,7 @@ namespace Pesaje
             {
                 serialport2.Close();
             }
+        
         }
 
         public string va1_ (string g1)
@@ -1335,8 +1329,6 @@ namespace Pesaje
                         if (retorno2.ToString().Trim() == string.Empty)
                         {
 
-
-
                             //LURIN CABOS o TELARES -- impresora TSC MODEL : TE200
                             if (appConfigHabilitado == "Y" && (appConfigUbicacion == "LURIN") && (appConfigModelo == "METTLER_TOLEDO_BBA231" || appConfigModelo == "METTLER_TOLEDO_BBA221-3BB60C"))
                             {
@@ -1373,7 +1365,6 @@ namespace Pesaje
                             }
 
 
-
                         }
                         else
                         {
@@ -1385,7 +1376,7 @@ namespace Pesaje
                             {
                                 Log.Information("ImprimeCodebar1 : " + retorno2);
 
-                                ImprimeCodebar1(retorno2, Convert.ToDecimal(text), listBox1.SelectedValue.ToString(), lbl_item.Text);//listBox1.SelectedValue.ToString() , lbl_item.Text) ;
+                                ImprimeCodebar1(retorno2, Convert.ToDecimal(text), listBox1.SelectedValue.ToString(), lbl_item.Text, lb_cantCopia.Text);//listBox1.SelectedValue.ToString() , lbl_item.Text) ;
 
                             }
                             else
@@ -1395,24 +1386,33 @@ namespace Pesaje
                                 {
                                     //Imprime_Codebar(cmd.Parameters["@MSG"].Value.ToString(), Convert.ToDecimal(text.Trim()));
 
-                                    string mensajeLinea1 = "NPD : PM                                                                          FP : " + DateTime.Now.ToString();
-                                    string mensajeLinea2 = retorno2;
-                                    string mensajeLinea3 = retorno2;
-                                    string mensajeLinea4 = text.ToString() + " KG";
-                                    string mensajeLinea5 = "ID ITEM     : " + listBox1.SelectedValue.ToString();
-                                    string mensajeLinea6 = "DSC ITEM  :  " + lbl_item.Text;
+                                    int numeroDeCopiast = ConvertirACantidadValida(lb_cantCopia.Text, 1);
 
-                                    // Crear la instancia de TicketPrinter y pasar las dos líneas de texto
-                                    TicketPrinter ticketPrinter = new TicketPrinter(mensajeLinea1,
-                                                                                    mensajeLinea2,
-                                                                                    mensajeLinea3,
-                                                                                    mensajeLinea4,
-                                                                                    mensajeLinea5,
-                                                                                    mensajeLinea6
-                                                                                    );
+                                    for (int i = 0; i < numeroDeCopiast; i++)
+                                    {
+                                        Log.Information($"Imprimiendo copia {i + 1} de {numeroDeCopiast}");
+                                        // clsprinter.Class1.SendStringToPrinter("PROFIL", etiqueta); // Llamada al método de impresión
 
-                                    // Imprimir el ticket directamente sin mostrar la ventana
-                                    ticketPrinter.PrintTicket();
+                                        string mensajeLinea1 = "NPD : PM                                                                          FP : " + DateTime.Now.ToString();
+                                        string mensajeLinea2 = retorno2;
+                                        string mensajeLinea3 = retorno2;
+                                        string mensajeLinea4 = text.ToString() + " KG";
+                                        string mensajeLinea5 = "ID ITEM   : " + listBox1.SelectedValue.ToString();
+                                        string mensajeLinea6 = "DSC ITEM  : " + lbl_item.Text;
+
+                                        // Crear la instancia de TicketPrinter y pasar las dos líneas de texto
+                                        TicketPrinter ticketPrinter = new TicketPrinter(mensajeLinea1,
+                                                                                        mensajeLinea2,
+                                                                                        mensajeLinea3,
+                                                                                        mensajeLinea4,
+                                                                                        mensajeLinea5,
+                                                                                        mensajeLinea6
+                                                                                        );
+
+                                        // Imprimir el ticket directamente sin mostrar la ventana
+                                        ticketPrinter.PrintTicket();
+
+                                    }
 
                                 }
 
@@ -1424,8 +1424,6 @@ namespace Pesaje
 
                         }
                         //retorno2 = "012410156806300";
-
-
 
                     }
                     catch (Exception ex)
@@ -1447,7 +1445,7 @@ namespace Pesaje
 
         }
 
-        private static void ImprimeCodebar1(string codebar, decimal peso, string vlistBox1, string vlbl_item)
+        private static void ImprimeCodebar1(string codebar, decimal peso, string vlistBox1, string vlbl_item, string cantCopiat)
         {
             try
             {
@@ -1478,33 +1476,6 @@ namespace Pesaje
                 etiqueta = etiqueta.Replace("[FP]", DateTime.Today.ToShortDateString());
                 etiqueta = etiqueta.Replace("[IDITEM]", vlistBox1);//"Item1");//listBox1.SelectedValue.ToString()); //.SelectedValue.ToString()); 
 
-                ////version inicial
-                //etiqueta = etiqueta.Replace("[DESPRO]", vlbl_item);// lbl_item.Text);
-
-                //ini
-
-                ////// Dividir [DESPRO] en múltiples líneas
-                ////string descripcionCompleta = vlbl_item.Trim(); // Elimina espacios y caracteres invisibles
-                ////Log.Information("descripcionCompleta: " + descripcionCompleta);
-                ////int maxCharsPerLine = 35; // Máximo de caracteres por línea (ajústalo según el ancho del papel)
-                ////var lineasDescripcion = Regex.Matches(descripcionCompleta, ".{1," + maxCharsPerLine + "}")
-                ////                             .Cast<Match>()
-                ////                             .Select(m => m.Value.Trim()) // Limpia cada línea
-                ////                             .ToList();
-
-                ////// Generar las líneas dinámicamente en el formato ZPL
-                ////string textoDividido = "";
-                ////int yPosition = 425; // Posición Y inicial en el ZPL
-                ////foreach (var linea in lineasDescripcion)
-                ////{
-                ////    Log.Information("Línea generada: " + linea);
-                ////    textoDividido += $"A140,{yPosition},0,2,1,1,N,\"{linea}\"\n"; // Genera una línea ZPL
-                ////    yPosition += 25; // Incrementa la posición Y para la siguiente línea
-                ////}
-
-                ////// Asegúrate de que el texto generado esté limpio antes de reemplazarlo
-                ////Log.Information("Texto dividido generado:\n" + textoDividido);
-                ////etiqueta = etiqueta.Replace("[DESPRO]", textoDividido.Trim());
 
                 // Dividir la descripción en líneas de hasta 35 caracteres
                 string descripcionCompleta = vlbl_item.Trim();
@@ -1523,8 +1494,6 @@ namespace Pesaje
 
                 //fin
 
-
-
                 etiqueta = etiqueta.Replace("[codbar]", codebar);
 
                 // Para el área de cabos
@@ -1539,7 +1508,19 @@ namespace Pesaje
                 // Imprimir usando la DLL clsprinter y SendStringToPrinter
                 Log.Information("Inicio imprimir ");
                 Log.Information(etiqueta);
-                clsprinter.Class1.SendStringToPrinter("PROFIL", etiqueta);
+
+
+                int numeroDeCopias = ConvertirACantidadValida(cantCopiat, 1);
+
+                for (int i = 0; i < numeroDeCopias; i++)
+                {
+                    // Log de la copia actual
+                    Log.Information($"Imprimiendo copia {i + 1} de {numeroDeCopias}");
+
+                    // Enviar la etiqueta a la impresora
+                    clsprinter.Class1.SendStringToPrinter("PROFIL", etiqueta);
+                }
+                
 
                 // Mensaje opcional
                 // MessageBox.Show("Etiqueta Impresa", "FIBRAFIL", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1549,6 +1530,41 @@ namespace Pesaje
                 // Manejo de errores
                 Log.Information(ex, ex.ToString());
                 MessageBox.Show(ex.StackTrace);
+            }
+        }
+
+        public static int ConvertirACantidadValida(string cantidadTexto, int valorPorDefecto)
+        {
+            try
+            {
+                // Intentar convertir directamente si es un número
+                if (int.TryParse(cantidadTexto, out int resultado))
+                {
+                    return resultado;
+                }
+
+                // Intentar convertir texto en palabras a números
+                switch (cantidadTexto.Trim().ToLower())
+                {
+                    case "uno": return 1;
+                    case "dos": return 2;
+                    case "tres": return 3;
+                    case "cuatro": return 4;
+                    case "cinco": return 5;
+                    case "seis": return 6;
+                    case "siete": return 7;
+                    case "ocho": return 8;
+                    case "nueve": return 9;
+                    case "diez": return 10;
+                    default:
+                        Log.Information($"Valor inválido en configuración: {cantidadTexto}. Usando valor por defecto ({valorPorDefecto}).");
+                        return valorPorDefecto;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Error al procesar la cantidad de copias: {ex.Message}. Usando valor por defecto ({valorPorDefecto}).");
+                return valorPorDefecto;
             }
         }
 

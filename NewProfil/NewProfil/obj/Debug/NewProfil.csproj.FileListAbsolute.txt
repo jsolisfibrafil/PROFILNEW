@@ -51,6 +51,7 @@ C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\obj\Debug\Pesaje.Form1.r
 C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\obj\Debug\Pesaje.Formulario.Login.resources
 C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\obj\Debug\Pesaje.frmInformes.resources
 C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\obj\Debug\Pesaje.frm_OP_to_SAP.resources
+C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\obj\Debug\NewProfil.frm_reimpresion.resources
 C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\obj\Debug\Pesaje.mainForm.resources
 C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\obj\Debug\NewProfil.Properties.Resources.resources
 C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\obj\Debug\NewProfil.csproj.GenerateResource.cache

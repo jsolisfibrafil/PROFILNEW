@@ -56,6 +56,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.lb_version = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.lb_modBalanza = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,7 +84,7 @@
             // btnIN
             // 
             this.btnIN.Location = new System.Drawing.Point(141, 138);
-            this.btnIN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnIN.Margin = new System.Windows.Forms.Padding(4);
             this.btnIN.Name = "btnIN";
             this.btnIN.Size = new System.Drawing.Size(100, 28);
             this.btnIN.TabIndex = 8;
@@ -93,7 +95,7 @@
             // btnOUT
             // 
             this.btnOUT.Location = new System.Drawing.Point(305, 138);
-            this.btnOUT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOUT.Margin = new System.Windows.Forms.Padding(4);
             this.btnOUT.Name = "btnOUT";
             this.btnOUT.Size = new System.Drawing.Size(100, 28);
             this.btnOUT.TabIndex = 9;
@@ -116,7 +118,7 @@
             this.cmbArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbArea.FormattingEnabled = true;
             this.cmbArea.Location = new System.Drawing.Point(133, 12);
-            this.cmbArea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbArea.Margin = new System.Windows.Forms.Padding(4);
             this.cmbArea.Name = "cmbArea";
             this.cmbArea.Size = new System.Drawing.Size(345, 24);
             this.cmbArea.TabIndex = 13;
@@ -127,7 +129,7 @@
             this.cmbUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUser.FormattingEnabled = true;
             this.cmbUser.Location = new System.Drawing.Point(133, 41);
-            this.cmbUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbUser.Margin = new System.Windows.Forms.Padding(4);
             this.cmbUser.Name = "cmbUser";
             this.cmbUser.Size = new System.Drawing.Size(345, 24);
             this.cmbUser.TabIndex = 15;
@@ -146,8 +148,8 @@
             this.Panel1.Controls.Add(this.label7);
             this.Panel1.Controls.Add(this.label6);
             this.Panel1.Controls.Add(this.label50);
-            this.Panel1.Location = new System.Drawing.Point(181, 15);
-            this.Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel1.Location = new System.Drawing.Point(70, 15);
+            this.Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.Panel1.Name = "Panel1";
             this.Panel1.Size = new System.Drawing.Size(583, 238);
             this.Panel1.TabIndex = 16;
@@ -156,7 +158,7 @@
             // TextBox5
             // 
             this.TextBox5.Location = new System.Drawing.Point(148, 153);
-            this.TextBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBox5.Margin = new System.Windows.Forms.Padding(4);
             this.TextBox5.Name = "TextBox5";
             this.TextBox5.Size = new System.Drawing.Size(280, 22);
             this.TextBox5.TabIndex = 9;
@@ -164,7 +166,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(172, 197);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(229, 28);
             this.button3.TabIndex = 10;
@@ -175,7 +177,7 @@
             // TextBox4
             // 
             this.TextBox4.Location = new System.Drawing.Point(148, 121);
-            this.TextBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBox4.Margin = new System.Windows.Forms.Padding(4);
             this.TextBox4.Name = "TextBox4";
             this.TextBox4.Size = new System.Drawing.Size(280, 22);
             this.TextBox4.TabIndex = 8;
@@ -183,7 +185,7 @@
             // TextBox3
             // 
             this.TextBox3.Location = new System.Drawing.Point(148, 89);
-            this.TextBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBox3.Margin = new System.Windows.Forms.Padding(4);
             this.TextBox3.Name = "TextBox3";
             this.TextBox3.Size = new System.Drawing.Size(280, 22);
             this.TextBox3.TabIndex = 7;
@@ -191,7 +193,7 @@
             // TextBox2
             // 
             this.TextBox2.Location = new System.Drawing.Point(148, 58);
-            this.TextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.TextBox2.Name = "TextBox2";
             this.TextBox2.Size = new System.Drawing.Size(280, 22);
             this.TextBox2.TabIndex = 6;
@@ -199,7 +201,7 @@
             // TextBox1
             // 
             this.TextBox1.Location = new System.Drawing.Point(148, 27);
-            this.TextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.TextBox1.Name = "TextBox1";
             this.TextBox1.Size = new System.Drawing.Size(280, 22);
             this.TextBox1.TabIndex = 5;
@@ -258,7 +260,7 @@
             // 
             this.lbl_sede.AutoSize = true;
             this.lbl_sede.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lbl_sede.Location = new System.Drawing.Point(467, 180);
+            this.lbl_sede.Location = new System.Drawing.Point(423, 213);
             this.lbl_sede.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_sede.Name = "lbl_sede";
             this.lbl_sede.Size = new System.Drawing.Size(12, 16);
@@ -278,7 +280,7 @@
             // txtpsw
             // 
             this.txtpsw.Location = new System.Drawing.Point(133, 70);
-            this.txtpsw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtpsw.Margin = new System.Windows.Forms.Padding(4);
             this.txtpsw.Name = "txtpsw";
             this.txtpsw.PasswordChar = '*';
             this.txtpsw.Size = new System.Drawing.Size(345, 22);
@@ -288,7 +290,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(393, 180);
+            this.label1.Location = new System.Drawing.Point(360, 213);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 16);
@@ -298,8 +300,8 @@
             // lb_nameBaseDatos
             // 
             this.lb_nameBaseDatos.AutoSize = true;
-            this.lb_nameBaseDatos.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lb_nameBaseDatos.Location = new System.Drawing.Point(153, 213);
+            this.lb_nameBaseDatos.BackColor = System.Drawing.Color.LawnGreen;
+            this.lb_nameBaseDatos.Location = new System.Drawing.Point(142, 213);
             this.lb_nameBaseDatos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_nameBaseDatos.Name = "lb_nameBaseDatos";
             this.lb_nameBaseDatos.Size = new System.Drawing.Size(17, 16);
@@ -319,8 +321,8 @@
             // lb_version
             // 
             this.lb_version.AutoSize = true;
-            this.lb_version.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lb_version.Location = new System.Drawing.Point(153, 240);
+            this.lb_version.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lb_version.Location = new System.Drawing.Point(142, 240);
             this.lb_version.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_version.Name = "lb_version";
             this.lb_version.Size = new System.Drawing.Size(17, 16);
@@ -337,11 +339,34 @@
             this.label12.TabIndex = 24;
             this.label12.Text = "Versión : ";
             // 
+            // lb_modBalanza
+            // 
+            this.lb_modBalanza.AutoSize = true;
+            this.lb_modBalanza.BackColor = System.Drawing.Color.Yellow;
+            this.lb_modBalanza.Location = new System.Drawing.Point(142, 267);
+            this.lb_modBalanza.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_modBalanza.Name = "lb_modBalanza";
+            this.lb_modBalanza.Size = new System.Drawing.Size(12, 16);
+            this.lb_modBalanza.TabIndex = 25;
+            this.lb_modBalanza.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(64, 267);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(65, 16);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "Balanza : ";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 290);
+            this.ClientSize = new System.Drawing.Size(636, 333);
+            this.Controls.Add(this.lb_modBalanza);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.lb_version);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.lb_nameBaseDatos);
@@ -359,7 +384,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "INGRESO A PROFIL";
@@ -399,5 +424,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lb_version;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lb_modBalanza;
+        private System.Windows.Forms.Label label13;
     }
 }

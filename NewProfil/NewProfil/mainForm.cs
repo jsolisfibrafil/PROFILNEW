@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewProfil;
+using System;
 using System.Windows.Forms;
 
 namespace Pesaje
@@ -12,6 +13,11 @@ namespace Pesaje
 
         public string BaseDatos { get; set; }
         public string Version { get; set; }
+
+
+        public string Balanza { get; set; }
+
+
 
         public mainForm()
         {
@@ -60,6 +66,9 @@ namespace Pesaje
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+
+
+
             toolStripStatusLabel1.Text =    $" Área : {Area}";
             toolStripStatusLabel2.Text =    $" Maquina : {Maquina}";
             toolStripStatusLabel3.Text =    $" Usuario : {Usuario}";
@@ -68,6 +77,8 @@ namespace Pesaje
             toolStripStatusLabel5.Text = $" BaseDatos : {BaseDatos.Trim()}";
 
             toolStripStatusLabel6.Text = $" Versión : { Version.Trim()}";
+
+            toolStripStatusLabel7.Text = $" Balanza : {Balanza.Trim()}";
 
         }
 
@@ -107,6 +118,28 @@ namespace Pesaje
 
         private void oPERACIONESToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void ReEtiquetarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reEtiquetarToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RtiquetarToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            frm_reimpresion f_rim = new frm_reimpresion();
+
+            // Mostrar el formulario
+            f_rim.Show();
+
+            // Configurar el formulario como hijo MDI
+            f_rim.MdiParent = this;
 
         }
     }

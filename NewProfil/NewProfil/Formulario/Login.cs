@@ -1,7 +1,9 @@
-﻿using Serilog;
+﻿using NewProfil;
+using Serilog;
 using SkiaSharp;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
@@ -22,7 +24,20 @@ namespace Pesaje.Formulario
     {
 
         DataSet dts = new DataSet();
-        public static string vs_User, vs_Area, vs_Mac, vs_idUser, vs_idArea, vs_idMac, vs_isADM, vs_iArea, vs_Host, vs_MacAddres, vs_sede,vs_basedato, vs_version;
+        public static string vs_User, vs_Area, vs_Mac, vs_idUser, vs_idArea, vs_idMac, vs_isADM, vs_iArea, vs_Host, vs_MacAddres, vs_sede,vs_basedato, vs_version,vs_Balanza;
+
+        string appConfigKey = string.Empty;
+        string appConfigHabilitado = string.Empty;
+        string appConfigUbicacion = string.Empty;
+        string appConfigModelo = string.Empty;
+        string appConfigFuncion = string.Empty;
+
+        public string s_Nserver;
+        string connection_String = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
+        public SqlConnection OCN = new SqlConnection(ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString); // Reemplaza con tu cadena de conexión
+
+
+
 
         private void cmbArea_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -37,11 +52,7 @@ namespace Pesaje.Formulario
         }
 
         //public SqlConnection OCN = new SqlConnection();
-        string connection_String = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
-        private SqlConnection OCN = new SqlConnection(ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString); // Reemplaza con tu cadena de conexión
-
-
-
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -103,7 +114,8 @@ namespace Pesaje.Formulario
                         formPrincipal.BaseDatos = vs_basedato;
 
                         formPrincipal.Version = vs_version;
-                        
+                        formPrincipal.Balanza = vs_Balanza;
+
 
 
 
@@ -156,7 +168,6 @@ namespace Pesaje.Formulario
 
         }
 
-       
         private void button3_Click(object sender, EventArgs e)
         {
             SqlConnection sqt1 = new SqlConnection(connection_String);
@@ -218,11 +229,76 @@ namespace Pesaje.Formulario
         
         public Login()
         {
+            // INI
+
+            var balanzasConfig = ConfigurationManager.GetSection("BalanzasConfig") as NameValueCollection;
+
+            if (balanzasConfig != null)
+            {
+                foreach (string key in balanzasConfig.AllKeys)
+                {
+                    string value = balanzasConfig[key];
+                    var attributes = value.Split(';')
+                                          .Select(attr => attr.Split('='))
+                                          .ToDictionary(parts => parts[0], parts => parts[1]);
+
+                    //Console.WriteLine($"Balanza: {key}, Habilitado: {attributes["habilitado"]}, Ubicación: {attributes["ubicacion"]}, Modelo: {attributes["modelo"]}, Función: {attributes["funcion"]}");
+
+                    // Si "habilitado" es igual a 'Y', ejecuta un método
+                    if (attributes["habilitado"].ToUpper() == "Y")
+                    {
+                        //EjecutarAccionBalanza(key, attributes["ubicacion"], attributes["modelo"], attributes["funcion"]);
+                        appConfigKey = key;
+                        appConfigHabilitado = attributes["habilitado"];
+                        appConfigUbicacion = attributes["ubicacion"];
+                        appConfigModelo = attributes["modelo"];
+                        appConfigFuncion = attributes["funcion"];
+
+                        Log.Information($"Balanza configurado en APPCONFIG : {key}, Habilitado: {attributes["habilitado"]}, Ubicación: {attributes["ubicacion"]}, Modelo: {attributes["modelo"]}, Función: {attributes["funcion"]}");
+
+                    }
+
+
+                }
+            }
+
+
+            //FIN
+
+
             InitializeComponent();
+
+
+            ////ini nueva conexion general
+
+            //// Crear una instancia del manejador de la sección de configuración
+            //IConfigurationSectionHandler csh = new NameValueSectionHandler();
+
+            //// Obtener el NameValueCollection desde un nodo de configuración (xNode)
+            //var xNode = /* Tu XmlNode aquí */;
+            //NameValueCollection nvc = (NameValueCollection)csh.Create(null, null, xNode);
+
+            //// Llamar al método en el componente (ejemplo: abrir la conexión)
+            //bool blnStatus;
+            //MyComponent objMyComponent = new MyComponent();
+            //blnStatus = objMyComponent.OpenConnection(
+            //    nvc["Server"],
+            //    nvc["Database"],
+            //    nvc["user id"],
+            //    nvc["pwd"]
+            //);
+
+            //// Construir y asignar la cadena de conexión
+            //OCN.ConnectionString = $"Server={nvc["Server"]};Database={nvc["Database"]};User Id={nvc["user id"]};Password={nvc["pwd"]}";
+            //s_Nserver = nvc["Server"];
+
+
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
+
+            BalanzasConfigManager.InitializeConfig();
 
             SqlConnection sqt1 = new SqlConnection(connection_String);
 
@@ -234,9 +310,11 @@ namespace Pesaje.Formulario
             lb_nameBaseDatos.Text   = databaseName;
             vs_basedato             = databaseName;
 
-            lb_version.Text = "1.1.0";
+            lb_version.Text = "1.2.0";
             vs_version = lb_version.Text;
 
+            lb_modBalanza.Text = appConfigModelo;
+            vs_Balanza = lb_modBalanza.Text;
 
             vs_Host = System.Environment.MachineName;
             vs_MacAddres = GetMacAddress();
@@ -329,6 +407,25 @@ namespace Pesaje.Formulario
                 MessageBox.Show(ex.Message);
                 Log.Error(ex, ex.Message);
             }
+
+
+        }
+
+        public class MyComponent
+        {
+            public bool OpenConnection(string server, string database, string userId, string password)
+            {
+                // Aquí iría la lógica de abrir la conexión
+                return true; // Cambiar según la implementación
+            }
+        }
+
+        //
+        public void ConfigurarConexion()
+        {
+            
+
+
         }
 
         // Métodos auxiliares (si los tienes definidos)

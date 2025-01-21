@@ -76,6 +76,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.lb_cantCopia = new System.Windows.Forms.Label();
             this.grp_combos.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -548,11 +550,32 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Confirme los siguientes datos...";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(13, 480);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(166, 20);
+            this.label16.TabIndex = 42;
+            this.label16.Text = "Cantidad de copias : ";
+            // 
+            // lb_cantCopia
+            // 
+            this.lb_cantCopia.AutoSize = true;
+            this.lb_cantCopia.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_cantCopia.Location = new System.Drawing.Point(161, 480);
+            this.lb_cantCopia.Name = "lb_cantCopia";
+            this.lb_cantCopia.Size = new System.Drawing.Size(15, 20);
+            this.lb_cantCopia.TabIndex = 43;
+            this.lb_cantCopia.Text = "-";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 625);
+            this.Controls.Add(this.lb_cantCopia);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.grp_combos);
             this.Controls.Add(this.btnBorrarPesos);
             this.Controls.Add(this.tb_pesoobtenido);
@@ -653,6 +676,8 @@
         private System.Windows.Forms.ComboBox cmb_ayud;
         private System.Windows.Forms.ComboBox cmb_ope;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lb_cantCopia;
     }
 }
 

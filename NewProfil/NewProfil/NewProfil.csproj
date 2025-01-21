@@ -113,6 +113,7 @@
     <Compile Include="ArticuloBusqueda.Designer.cs">
       <DependentUpon>ArticuloBusqueda.cs</DependentUpon>
     </Compile>
+    <Compile Include="BalanzasConfigManager.cs" />
     <Compile Include="Conexion1.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -139,6 +140,12 @@
     <Compile Include="frm_OP_to_SAP.Designer.cs">
       <DependentUpon>frm_OP_to_SAP.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_reimpresion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_reimpresion.Designer.cs">
+      <DependentUpon>frm_reimpresion.cs</DependentUpon>
+    </Compile>
     <Compile Include="mainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_OP_to_SAP.resx">
       <DependentUpon>frm_OP_to_SAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_reimpresion.resx">
+      <DependentUpon>frm_reimpresion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>

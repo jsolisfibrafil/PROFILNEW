@@ -47,6 +47,7 @@
             this.importarObrerosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarOrdenProdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarGuiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reEtiquetarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pruebaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +58,7 @@
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -160,7 +162,8 @@
             this.importarItemsToolStripMenuItem,
             this.importarObrerosToolStripMenuItem,
             this.exportarOrdenProdToolStripMenuItem,
-            this.exportarGuiasToolStripMenuItem});
+            this.exportarGuiasToolStripMenuItem,
+            this.reEtiquetarToolStripMenuItem});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
             this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
             this.herramientasToolStripMenuItem.Text = "Herramientas";
@@ -202,6 +205,13 @@
             this.exportarGuiasToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.exportarGuiasToolStripMenuItem.Text = "Exportar Guias";
             // 
+            // reEtiquetarToolStripMenuItem
+            // 
+            this.reEtiquetarToolStripMenuItem.Name = "reEtiquetarToolStripMenuItem";
+            this.reEtiquetarToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
+            this.reEtiquetarToolStripMenuItem.Text = "Re-Etiquetar";
+            this.reEtiquetarToolStripMenuItem.Click += new System.EventHandler(this.RtiquetarToolStripMenuItem_Click_1);
+            // 
             // windowsToolStripMenuItem
             // 
             this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
@@ -229,7 +239,8 @@
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel5,
-            this.toolStripStatusLabel6});
+            this.toolStripStatusLabel6,
+            this.toolStripStatusLabel7});
             this.statusStrip1.Location = new System.Drawing.Point(0, 897);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 13, 0);
@@ -275,6 +286,14 @@
             this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
             this.toolStripStatusLabel6.Size = new System.Drawing.Size(151, 20);
             this.toolStripStatusLabel6.Text = "toolStripStatusLabel6";
+            // 
+            // toolStripStatusLabel7
+            // 
+            this.toolStripStatusLabel7.BackColor = System.Drawing.Color.Yellow;
+            this.toolStripStatusLabel7.LinkColor = System.Drawing.Color.Yellow;
+            this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
+            this.toolStripStatusLabel7.Size = new System.Drawing.Size(151, 20);
+            this.toolStripStatusLabel7.Text = "toolStripStatusLabel7";
             // 
             // mainForm
             // 
@@ -332,5 +351,7 @@
         private System.Windows.Forms.ToolStripMenuItem exportarGuiasToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
+        private System.Windows.Forms.ToolStripMenuItem reEtiquetarToolStripMenuItem;
     }
 }
