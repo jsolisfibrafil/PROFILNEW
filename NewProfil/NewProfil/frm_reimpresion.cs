@@ -11,6 +11,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
@@ -123,7 +124,29 @@ namespace NewProfil
                 etiqueta = etiqueta.Replace("[NPD]", lbl_npd.Text);
                 etiqueta = etiqueta.Replace("[FP]", lbl_fp.Text);
                 etiqueta = etiqueta.Replace("[IDITEM]", lbl_iditm.Text);
-                etiqueta = etiqueta.Replace("[DESPRO]", lbl_dscitm.Text);
+
+
+                //INI
+                // Dividir la descripción en líneas de hasta 35 caracteres
+
+                Log.Information(" Descripción : " + lbl_dscitm.Text.Trim());
+
+                string descripcionCompleta = lbl_dscitm.Text.Trim();
+                int maxCharsPerLine = 35;
+                var lineasDescripcion = Regex.Matches(descripcionCompleta, ".{1," + maxCharsPerLine + "}")
+                                             .Cast<Match>()
+                                             .Select(m => m.Value.Trim())
+                                             .ToList();
+
+                // Reemplazar dinámicamente las líneas en la etiqueta
+                etiqueta = etiqueta.Replace("[DESPRO1]", lineasDescripcion.ElementAtOrDefault(0) ?? "");
+                etiqueta = etiqueta.Replace("[DESPRO2]", lineasDescripcion.ElementAtOrDefault(1) ?? "");
+
+                Log.Information(etiqueta);
+                //FIN
+                //etiqueta = etiqueta.Replace("[DESPRO]", lbl_dscitm.Text);
+
+
                 etiqueta = etiqueta.Replace("[codbar]", lbl_codebar.Text);
 
                 if (rdb_si.Checked)

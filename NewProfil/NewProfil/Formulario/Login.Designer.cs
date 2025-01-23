@@ -148,7 +148,7 @@
             this.Panel1.Controls.Add(this.label7);
             this.Panel1.Controls.Add(this.label6);
             this.Panel1.Controls.Add(this.label50);
-            this.Panel1.Location = new System.Drawing.Point(70, 15);
+            this.Panel1.Location = new System.Drawing.Point(58, 25);
             this.Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.Panel1.Name = "Panel1";
             this.Panel1.Size = new System.Drawing.Size(583, 238);
@@ -259,7 +259,7 @@
             // lbl_sede
             // 
             this.lbl_sede.AutoSize = true;
-            this.lbl_sede.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lbl_sede.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.lbl_sede.Location = new System.Drawing.Point(423, 213);
             this.lbl_sede.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_sede.Name = "lbl_sede";

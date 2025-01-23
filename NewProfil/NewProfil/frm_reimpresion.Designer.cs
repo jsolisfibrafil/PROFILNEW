@@ -31,6 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt_codebar = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_peso = new System.Windows.Forms.Label();
+            this.lbl_dscitm = new System.Windows.Forms.Label();
+            this.lbl_iditm = new System.Windows.Forms.Label();
+            this.lbl_fp = new System.Windows.Forms.Label();
+            this.lbl_npd = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,11 +46,6 @@
             this.rdb_no = new System.Windows.Forms.RadioButton();
             this.rdb_si = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
-            this.lbl_npd = new System.Windows.Forms.Label();
-            this.lbl_fp = new System.Windows.Forms.Label();
-            this.lbl_iditm = new System.Windows.Forms.Label();
-            this.lbl_dscitm = new System.Windows.Forms.Label();
-            this.lbl_peso = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +85,52 @@
             this.groupBox1.Size = new System.Drawing.Size(626, 285);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // lbl_peso
+            // 
+            this.lbl_peso.AutoSize = true;
+            this.lbl_peso.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_peso.Location = new System.Drawing.Point(413, 207);
+            this.lbl_peso.Name = "lbl_peso";
+            this.lbl_peso.Size = new System.Drawing.Size(21, 29);
+            this.lbl_peso.TabIndex = 10;
+            this.lbl_peso.Text = "-";
+            // 
+            // lbl_dscitm
+            // 
+            this.lbl_dscitm.AutoSize = true;
+            this.lbl_dscitm.Location = new System.Drawing.Point(110, 242);
+            this.lbl_dscitm.Name = "lbl_dscitm";
+            this.lbl_dscitm.Size = new System.Drawing.Size(11, 16);
+            this.lbl_dscitm.TabIndex = 9;
+            this.lbl_dscitm.Text = "-";
+            // 
+            // lbl_iditm
+            // 
+            this.lbl_iditm.AutoSize = true;
+            this.lbl_iditm.Location = new System.Drawing.Point(110, 217);
+            this.lbl_iditm.Name = "lbl_iditm";
+            this.lbl_iditm.Size = new System.Drawing.Size(11, 16);
+            this.lbl_iditm.TabIndex = 8;
+            this.lbl_iditm.Text = "-";
+            // 
+            // lbl_fp
+            // 
+            this.lbl_fp.AutoSize = true;
+            this.lbl_fp.Location = new System.Drawing.Point(525, 33);
+            this.lbl_fp.Name = "lbl_fp";
+            this.lbl_fp.Size = new System.Drawing.Size(11, 16);
+            this.lbl_fp.TabIndex = 7;
+            this.lbl_fp.Text = "-";
+            // 
+            // lbl_npd
+            // 
+            this.lbl_npd.AutoSize = true;
+            this.lbl_npd.Location = new System.Drawing.Point(70, 33);
+            this.lbl_npd.Name = "lbl_npd";
+            this.lbl_npd.Size = new System.Drawing.Size(11, 16);
+            this.lbl_npd.TabIndex = 6;
+            this.lbl_npd.Text = "-";
             // 
             // label6
             // 
@@ -185,62 +231,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Print_ReEtiquetado);
             // 
-            // lbl_npd
-            // 
-            this.lbl_npd.AutoSize = true;
-            this.lbl_npd.Location = new System.Drawing.Point(70, 33);
-            this.lbl_npd.Name = "lbl_npd";
-            this.lbl_npd.Size = new System.Drawing.Size(14, 20);
-            this.lbl_npd.TabIndex = 6;
-            this.lbl_npd.Text = "-";
-            // 
-            // lbl_fp
-            // 
-            this.lbl_fp.AutoSize = true;
-            this.lbl_fp.Location = new System.Drawing.Point(525, 33);
-            this.lbl_fp.Name = "lbl_fp";
-            this.lbl_fp.Size = new System.Drawing.Size(11, 16);
-            this.lbl_fp.TabIndex = 7;
-            this.lbl_fp.Text = "-";
-            // 
-            // lbl_iditm
-            // 
-            this.lbl_iditm.AutoSize = true;
-            this.lbl_iditm.Location = new System.Drawing.Point(110, 217);
-            this.lbl_iditm.Name = "lbl_iditm";
-            this.lbl_iditm.Size = new System.Drawing.Size(11, 16);
-            this.lbl_iditm.TabIndex = 8;
-            this.lbl_iditm.Text = "-";
-            // 
-            // lbl_dscitm
-            // 
-            this.lbl_dscitm.AutoSize = true;
-            this.lbl_dscitm.Location = new System.Drawing.Point(110, 242);
-            this.lbl_dscitm.Name = "lbl_dscitm";
-            this.lbl_dscitm.Size = new System.Drawing.Size(11, 16);
-            this.lbl_dscitm.TabIndex = 9;
-            this.lbl_dscitm.Text = "-";
-            // 
-            // lbl_peso
-            // 
-            this.lbl_peso.AutoSize = true;
-            this.lbl_peso.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_peso.Location = new System.Drawing.Point(413, 207);
-            this.lbl_peso.Name = "lbl_peso";
-            this.lbl_peso.Size = new System.Drawing.Size(26, 36);
-            this.lbl_peso.TabIndex = 10;
-            this.lbl_peso.Text = "-";
-            // 
             // frm_reimpresion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(691, 450);
+            this.ClientSize = new System.Drawing.Size(673, 450);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txt_codebar);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frm_reimpresion";
             this.Text = "RE-Etiquetado";
             this.groupBox1.ResumeLayout(false);

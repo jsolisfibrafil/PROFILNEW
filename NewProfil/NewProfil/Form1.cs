@@ -1477,6 +1477,7 @@ namespace Pesaje
                 etiqueta = etiqueta.Replace("[IDITEM]", vlistBox1);//"Item1");//listBox1.SelectedValue.ToString()); //.SelectedValue.ToString()); 
 
 
+                //INI 
                 // Dividir la descripción en líneas de hasta 35 caracteres
                 string descripcionCompleta = vlbl_item.Trim();
                 int maxCharsPerLine = 35;
@@ -1490,9 +1491,7 @@ namespace Pesaje
                 etiqueta = etiqueta.Replace("[DESPRO2]", lineasDescripcion.ElementAtOrDefault(1) ?? "");
 
                 Log.Information(etiqueta);
-
-
-                //fin
+                //FIN
 
                 etiqueta = etiqueta.Replace("[codbar]", codebar);
 

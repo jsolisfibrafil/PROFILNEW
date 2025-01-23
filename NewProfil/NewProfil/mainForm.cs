@@ -142,5 +142,13 @@ namespace Pesaje
             f_rim.MdiParent = this;
 
         }
+
+        private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            System.Diagnostics.Process.Start("calc.exe");
+
+
+        }
     }
 }

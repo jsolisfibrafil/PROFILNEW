@@ -70,8 +70,8 @@
             this.mAESTROSToolStripMenuItem,
             this.oPERACIONESToolStripMenuItem,
             this.dATOSPRODUCCIONToolStripMenuItem,
-            this.vERToolStripMenuItem,
             this.herramientasToolStripMenuItem,
+            this.vERToolStripMenuItem,
             this.windowsToolStripMenuItem,
             this.ayudaToolStripMenuItem,
             this.pruebaToolStripMenuItem});
@@ -165,14 +165,15 @@
             this.exportarGuiasToolStripMenuItem,
             this.reEtiquetarToolStripMenuItem});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
-            this.herramientasToolStripMenuItem.Text = "Herramientas";
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(131, 24);
+            this.herramientasToolStripMenuItem.Text = "HERRAMIENTAS";
             // 
             // calculadoraToolStripMenuItem
             // 
             this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
             this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.calculadoraToolStripMenuItem.Text = "Calculadora";
+            this.calculadoraToolStripMenuItem.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
             // 
             // importarClientesToolStripMenuItem
             // 
@@ -268,7 +269,7 @@
             // 
             // toolStripStatusLabel4
             // 
-            this.toolStripStatusLabel4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.toolStripStatusLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
             this.toolStripStatusLabel4.Size = new System.Drawing.Size(151, 20);
             this.toolStripStatusLabel4.Text = "toolStripStatusLabel4";
