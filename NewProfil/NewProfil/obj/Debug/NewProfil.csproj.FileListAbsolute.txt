@@ -1,7 +1,7 @@
-C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\bin\Debug\arm64\libSkiaSharp.dll
 C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\bin\Debug\libSkiaSharp.dylib
 C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\bin\Debug\x86\libSkiaSharp.dll
 C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\bin\Debug\x64\libSkiaSharp.dll
+C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\bin\Debug\arm64\libSkiaSharp.dll
 C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\bin\Debug\x64\libSkiaSharp.so
 C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\bin\Debug\arm\libSkiaSharp.so
 C:\FIBRAFIL\CF3\PROFILNEW\PROFILNEW\NewProfil\NewProfil\bin\Debug\arm64\libSkiaSharp.so

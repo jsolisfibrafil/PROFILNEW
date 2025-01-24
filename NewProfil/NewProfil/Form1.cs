@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using static Pesaje.AreaCodeResolver;
 using System.Text;
 using System.Globalization;
+using NewProfil;
 
 
 namespace Pesaje
@@ -44,6 +45,7 @@ namespace Pesaje
         string appConfigUbicacion = string.Empty;
         string appConfigModelo = string.Empty;
         string appConfigFuncion = string.Empty;
+        string databaseName = string.Empty;
 
         StringBuilder dataBuffer = new StringBuilder();
 
@@ -52,7 +54,7 @@ namespace Pesaje
         //public string connection_String = ConfigurationManager.ConnectionStrings["logFile"].ConnectionString;
 
         string connection_String = ConfigurationManager.ConnectionStrings["conexiondb"].ConnectionString;
-
+       
         public event EventHandler MiEvento;
 
         public string Sede { get; set; }
@@ -98,6 +100,11 @@ namespace Pesaje
             Log.Logger = new LoggerConfiguration()
             .WriteTo.File(Path.Combine(logDirectory, "AppLog-.txt"), rollingInterval: RollingInterval.Day)
             .CreateLogger();
+
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connection_String);
+            databaseName = builder.InitialCatalog;
+
+
 
             InitializeComponent();
 
@@ -512,8 +519,10 @@ namespace Pesaje
                 //            "where U_FIB_AREA = '" + resolver.GetCodeByDescripcion(tb_area.Text) + "' and U_FIB_SEDE = '" + tb_sede.Text + "' and U_fib_telar = '" + cbMaquinaria.SelectedValue + "' " +
                 //            "order by RECORDKEY";
 
+                string baseDatos = databaseName;
+
                 string sentencia = "Select ItemNo, ItemName from OPROM0 " +
-                            "inner join SBO_FIBRAFIL_TEST_23_12_24..OITM on Itemcode collate SQL_Latin1_General_CP850_CI_AS = ItemNo collate SQL_Latin1_General_CP850_CI_AS " +
+                            "inner join " + baseDatos + "..OITM on Itemcode collate SQL_Latin1_General_CP850_CI_AS = ItemNo collate SQL_Latin1_General_CP850_CI_AS " +
                             "where U_FIB_AREA = '" + resolver.GetCodeByDescripcion(tb_area.Text) + "' and U_FIB_SEDE = '" + tb_sede.Text + "' and U_fib_telar = '" + cbMaquinaria.SelectedValue + "' " +
                             "order by RECORDKEY";
 

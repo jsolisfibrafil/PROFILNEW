@@ -441,6 +441,7 @@ namespace Pesaje.Formulario
                 IPHostEntry mIpHostEntry = Dns.GetHostEntry(mStrHost);
                 IPAddress[] mIpAddLst = mIpHostEntry.AddressList;
 
+
                 // Devuelve la primera IP
                 return mIpAddLst[0].ToString();
             }
