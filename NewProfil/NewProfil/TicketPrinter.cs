@@ -46,8 +46,7 @@ namespace Pesaje
         private Image GenerateBarcode(string text)
         {
             Barcode barcode = new Barcode();
-            // Generar el código de barras como imagen en formato CODE128
-            //Image img = barcode.GenerateBarcode .Encode(BarcodeStandard.Type.Code128, text, 150, 50); //.Encode(BarcodeStandard.Type.Code128, text, 150, 50);
+            
             Image img = ConvertSKImageToImage(barcode.Encode(BarcodeStandard.Type.Code128, text, 250, 75));
             return img;
         }

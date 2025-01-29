@@ -3,32 +3,36 @@
   "WorkspaceRootPath": "C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\newprofil\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|solutionrelative:newprofil\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|c:\\fibrafil\\cf3\\profilnew\\profilnew\\newprofil\\newprofil\\ticketprinter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|solutionrelative:newprofil\\ticketprinter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|c:\\fibrafil\\cf3\\profilnew\\profilnew\\newprofil\\newprofil\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|solutionrelative:newprofil\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|c:\\fibrafil\\cf3\\profilnew\\profilnew\\newprofil\\newprofil\\frm_reimpresion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|solutionrelative:newprofil\\frm_reimpresion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\newprofil\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|solutionrelative:newprofil\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\newprofil\\frm_reimpresion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|solutionrelative:newprofil\\frm_reimpresion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\newprofil\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|solutionrelative:newprofil\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|c:\\fibrafil\\cf3\\profilnew\\profilnew\\newprofil\\newprofil\\formulario\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\newprofil\\formulario\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|solutionrelative:newprofil\\formulario\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\newprofil\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|solutionrelative:newprofil\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\newprofil\\formulario\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|solutionrelative:newprofil\\formulario\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\newprofil\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|solutionrelative:newprofil\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\newprofil\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{65C51913-CC9C-4010-AD68-193FB63CF93C}|NewProfil\\NewProfil.csproj|solutionrelative:newprofil\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,12 +41,12 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 396,
-          "SelectedChildIndex": 3,
+          "DockedHeight": 475,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Login.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\NewProfil\\Formulario\\Login.cs",
               "RelativeDocumentMoniker": "NewProfil\\Formulario\\Login.cs",
@@ -55,13 +59,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "frm_reimpresion.cs",
               "DocumentMoniker": "C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\NewProfil\\frm_reimpresion.cs",
               "RelativeDocumentMoniker": "NewProfil\\frm_reimpresion.cs",
               "ToolTip": "C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\NewProfil\\frm_reimpresion.cs",
               "RelativeToolTip": "NewProfil\\frm_reimpresion.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAQwGEAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAkwDQAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-20T18:44:38.036Z",
               "IsPinned": true,
@@ -82,13 +86,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\NewProfil\\Form1.cs",
               "RelativeDocumentMoniker": "NewProfil\\Form1.cs",
               "ToolTip": "C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\NewProfil\\Form1.cs",
               "RelativeToolTip": "NewProfil\\Form1.cs",
-              "ViewState": "AgIAAPgBAAAAAAAAAAAmwAgCAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEUFAAAAAAAAAAAtwDoFAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-17T20:15:09.421Z",
               "IsPinned": true,
@@ -102,7 +106,7 @@
               "RelativeDocumentMoniker": "NewProfil\\Formulario\\Login.cs",
               "ToolTip": "C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\NewProfil\\Formulario\\Login.cs",
               "RelativeToolTip": "NewProfil\\Formulario\\Login.cs",
-              "ViewState": "AgIAAC8BAAAAAAAAAAAowEYBAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAYBAAAAAAAAAAAmwCYBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-17T19:33:35.602Z",
               "IsPinned": true,
@@ -142,20 +146,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "TicketPrinter.cs",
+              "DocumentMoniker": "C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\NewProfil\\TicketPrinter.cs",
+              "RelativeDocumentMoniker": "NewProfil\\TicketPrinter.cs",
+              "ToolTip": "C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\NewProfil\\TicketPrinter.cs",
+              "RelativeToolTip": "NewProfil\\TicketPrinter.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwCwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-28T14:52:50.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "App.config",
               "DocumentMoniker": "C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\NewProfil\\App.config",
               "RelativeDocumentMoniker": "NewProfil\\App.config",
               "ToolTip": "C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\NewProfil\\App.config",
               "RelativeToolTip": "NewProfil\\App.config",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAqwA4AAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAqwBoAAABnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-01-24T14:36:06.864Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-24T14:36:06.864Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "mainForm.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\FIBRAFIL\\CF3\\PROFILNEW\\PROFILNEW\\NewProfil\\NewProfil\\mainForm.cs",
               "RelativeDocumentMoniker": "NewProfil\\mainForm.cs",
@@ -168,7 +184,7 @@
           ]
         },
         {
-          "DockedHeight": 226,
+          "DockedHeight": 147,
           "SelectedChildIndex": -1,
           "Children": [
             {

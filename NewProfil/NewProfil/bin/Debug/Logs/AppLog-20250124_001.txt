@@ -1,0 +1,4 @@
+2025-01-24 15:40:03.211 -05:00 [INF] usando SP U_SP_FIB_INS_OPROM0
+2025-01-24 15:40:03.572 -05:00 [INF] dato devuelto cmd.Parameters[msg].Value.ToString() = BD: Esta máquina se encuentra ocupada en otra producción.
+2025-01-24 15:40:04.806 -05:00 [ERR] BD: Esta máquina se encuentra ocupada en otra producción.
+2025-01-24 15:40:04.807 -05:00 [INF] Se agrego item con exito
